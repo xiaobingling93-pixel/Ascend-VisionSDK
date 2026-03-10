@@ -64,7 +64,7 @@
     ![](figures/test-jpg.jpg "test-jpg")
 
 >[!NOTE] 说明
->若在openEuler系统上运行时，出现cmake不可用等问题可参考[系统命令yum、cmake不可用](系统命令yum-cmake不可用.md)解决。
+>若在openEuler系统上运行时，出现cmake不可用等问题可参考[系统命令yum、cmake不可用](faq.md#系统命令yumcmake不可用)解决。
 
 **代码解析<a name="section6305112522513"></a>**
 
@@ -190,7 +190,7 @@
 
 **运行推理<a name="section721002718517"></a>**
 
-1.  配置环境变量（以CANN的默认安装路径“/usr/local/Ascend/ascend-toolkit“和Vision SDK的安装路径/usr/local/Ascend/mxVision-_\{version\}_为例）。
+1.  配置环境变量（以CANN的默认安装路径“/usr/local/Ascend/ascend-toolkit”和Vision SDK的安装路径/usr/local/Ascend/mxVision-_\{version\}_为例）。
 
     ```
     source /usr/local/Ascend/ascend-toolkit/set_env.sh
@@ -221,7 +221,7 @@
     ******YoloV3PostProcess end******
     ```
 
-    推理完成后，在当前文件夹下生成“result.jpg“文件，图片结果如[图3](#fig1517927142414)所示，展示检测目标的坐标框及类别。
+    推理完成后，在当前文件夹下生成“result.jpg”文件，图片结果如[图3](#fig1517927142414)所示，展示检测目标的坐标框及类别。
 
     **图 3**  result.jpg文件<a name="fig1517927142414"></a>  
     ![](figures/result-jpg文件.jpg "result-jpg文件")
@@ -287,7 +287,7 @@
 
 5.  准备用于推理的图片数据。
 
-    用户可使用样例中的“test.jpg“测试图片，也可获取其他图片进行测试（请将获取的图片名称更名为“test.jpg“）。
+    用户可使用样例中的“test.jpg”测试图片，也可获取其他图片进行测试（请将获取的图片名称更名为“test.jpg”）。
 
     **图 2**  test.jpg<a name="fig288016489416"></a>  
     ![](figures/test-jpg-0.jpg "test-jpg-0")
@@ -296,7 +296,7 @@
 
 在该样例中，关键步骤与代码参考如下，不可以直接拷贝编译运行，完整样例代码请参考样例文件。
 
-1.  在“main.py“文件中，引入样例所需的第三方库以及Vision SDK模型推理所需文件。
+1.  在“main.py”文件中，引入样例所需的第三方库以及Vision SDK模型推理所需文件。
 
     ```
     import numpy as np  # 用于对多维数组进行计算
@@ -373,7 +373,7 @@
 
 **运行推理<a name="section754352812513"></a>**
 
-1.  配置环境变量（以CANN的默认安装路径“/usr/local/Ascend/ascend-toolkit“和Vision SDK的安装路径/usr/local/Ascend/mxVision-_\{version\}_为例）。
+1.  配置环境变量（以CANN的默认安装路径“/usr/local/Ascend/ascend-toolkit”和Vision SDK的安装路径/usr/local/Ascend/mxVision-_\{version\}_为例）。
 
     ```
     source /usr/local/Ascend/ascend-toolkit/set_env.sh
@@ -393,7 +393,7 @@
     save infer result success
     ```
 
-    推理完成后，在当前文件夹下生成“result.png“文件，图片结果如[图3](#fig1517927142414)所示，展示图片的类别标签及其对应的置信度。
+    推理完成后，在当前文件夹下生成“result.png”文件，图片结果如[图3](#fig1517927142414)所示，展示图片的类别标签及其对应的置信度。
 
     **图 3**  result.png文件<a name="fig1517927142414"></a>  
     ![](figures/result-png文件.png "result-png文件")
@@ -542,16 +542,16 @@
 
 在这段pipeline中，有以下关键概念：
 
--   “next“属性值指明了元件之间的连接关系。
--   用户通过“appsrc0“元件向Stream发送数据，通过“appsink0“元件从Stream获取推理结果。
--   “mxpi\_objectdetection0“元件用于对模型推理的输出张量进行后处理，比如在上述样例中，模型后处理元件处理上游模型推理元件输出的一维张量，最终返回模型的识别结果（目标的坐标、类别及其对应的置信度）。
--   “mxpi\_dataserialize0“元件将推理结果组装成JSON字符串输出。
+-   “next”属性值指明了元件之间的连接关系。
+-   用户通过“appsrc0”元件向Stream发送数据，通过“appsink0”元件从Stream获取推理结果。
+-   “mxpi\_objectdetection0”元件用于对模型推理的输出张量进行后处理，比如在上述样例中，模型后处理元件处理上游模型推理元件输出的一维张量，最终返回模型的识别结果（目标的坐标、类别及其对应的置信度）。
+-   “mxpi\_dataserialize0”元件将推理结果组装成JSON字符串输出。
 
 **代码解析<a name="section3313545161517"></a>**
 
-“pipelineSample/src“目录中的“main.cpp“文件为应用程序源码。
+“pipelineSample/src”目录中的“main.cpp”文件为应用程序源码。
 
-在本样例中，关键步骤与代码参考如下，不可以直接拷贝编译运行，需要根据实际情况修改pipeline文件路径、输入图片路径、Stream名称，Stream名称需要与pipeline文件中的业务推理流程的名称匹配，如上述pipeline文件的业务推理流程的名称为“objectdetection“。完整样例代码请参考样例文件。
+在本样例中，关键步骤与代码参考如下，不可以直接拷贝编译运行，需要根据实际情况修改pipeline文件路径、输入图片路径、Stream名称，Stream名称需要与pipeline文件中的业务推理流程的名称匹配，如上述pipeline文件的业务推理流程的名称为“objectdetection”。完整样例代码请参考样例文件。
 
 ```
 int main(int argc, char* argv[])
@@ -618,8 +618,8 @@ int main(int argc, char* argv[])
 
 **编译和运行应用<a name="section3545122819189"></a>**
 
-1.  登录已安装Vision SDK的开发环境，进入“pipelineSample/src“目录。
-2.  配置环境变量（以CANN的默认安装路径“/usr/local/Ascend/ascend-toolkit“和Vision SDK的安装路径/home/mxVision-_\{version\}_为例）。
+1.  登录已安装Vision SDK的开发环境，进入“pipelineSample/src”目录。
+2.  配置环境变量（以CANN的默认安装路径“/usr/local/Ascend/ascend-toolkit”和Vision SDK的安装路径/home/mxVision-_\{version\}_为例）。
 
     ```
     source /usr/local/Ascend/ascend-toolkit/set_env.sh
@@ -633,7 +633,7 @@ int main(int argc, char* argv[])
     ./run.sh
     ```
 
-    终端上屏显的结果如下，“classId“表示类别号、“className“表示类名称，“confidence“表示该分类的最大置信度：
+    终端上屏显的结果如下，“classId”表示类别号、“className”表示类名称，“confidence”表示该分类的最大置信度：
 
     ```
     Results:{

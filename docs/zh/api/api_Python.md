@@ -701,7 +701,7 @@ RoiBox的Vector类，实现了Vector的通用操作。
 
 **结构定义<a name="section25001045122620"></a>**
 
-由swig生成，仅展示部分业务相关接口，具体请参考“StreamManagerApi.py“。
+由swig生成，仅展示部分业务相关接口，具体请参考“StreamManagerApi.py”。
 
 ```
 class RoiBoxVector:
@@ -915,7 +915,7 @@ class MxMetadataOutput:
 
 **结构定义<a name="section448013119256"></a>**
 
-由swig生成，仅展示部分业务相关接口，具体请参考“StreamManagerApi.py“。
+由swig生成，仅展示部分业务相关接口，具体请参考“StreamManagerApi.py”。
 
 ```
 class MxBufferAndMetadataOutput:
@@ -947,7 +947,7 @@ class MxBufferAndMetadataOutput:
 
 **结构定义<a name="section52301621132618"></a>**
 
-由swig生成，仅展示部分业务相关接口，具体请参考“StreamManagerApi.py“。
+由swig生成，仅展示部分业务相关接口，具体请参考“StreamManagerApi.py”。
 
 ```
  class StringVector:
@@ -969,7 +969,7 @@ class MxBufferAndMetadataOutput:
 
 **结构定义<a name="section931714615272"></a>**
 
-由swig生成，仅展示部分业务相关接口，具体请参考“StreamManagerApi.py“。
+由swig生成，仅展示部分业务相关接口，具体请参考“StreamManagerApi.py”。
 
 ```
 class InProtobufVector:
@@ -991,7 +991,7 @@ class InProtobufVector:
 
 **结构定义<a name="section1175154013272"></a>**
 
-由swig生成，仅展示部分业务相关接口，具体请参考“StreamManagerApi.py“。
+由swig生成，仅展示部分业务相关接口，具体请参考“StreamManagerApi.py”。
 
 ```
 class OutProtobufVector:
@@ -1013,7 +1013,7 @@ class OutProtobufVector:
 
 **结构定义<a name="section28182992811"></a>**
 
-由swig生成，仅展示部分业务相关接口，具体请参考“StreamManagerApi.py“。
+由swig生成，仅展示部分业务相关接口，具体请参考“StreamManagerApi.py”。
 
 ```
 class MetadataInputVector:
@@ -1035,7 +1035,7 @@ class MetadataInputVector:
 
 **结构定义<a name="section9474169163019"></a>**
 
-由swig生成，仅展示部分业务相关接口，具体请参考“StreamManagerApi.py“。
+由swig生成，仅展示部分业务相关接口，具体请参考“StreamManagerApi.py”。
 
 ```
 class MetadataOutputVector:
@@ -1210,10 +1210,10 @@ mx_init(config: AppGlobalCfgExtra)
 
 **函数功能<a name="section1432565411361"></a>**
 
-全局去初始化，释放Log、Device等相关资源，需与全局初始化接口（[mx\_init\(\)](mx_init.md)）配套使用。
+全局去初始化，释放Log、Device等相关资源，需与全局初始化接口（[mx\_init\(\)](#mx_init)）配套使用。
 
 > [!NOTE] 说明
->-   涉及申请Device侧资源的类（[Tensor](Tensor-259.md)、[Model](Model-290.md)、[Image](Image-262.md)、[ImageProcessor](ImageProcessor-267.md)、[VideoEncoder](VideoEncoder-280.md)和[VideoDecoder](VideoDecoder-273.md)）与mx\_deinit\(\)的作用域冲突，因此，这些类的作用域不能大于或等于mx\_deinit\(\)的作用域。
+>-   涉及申请Device侧资源的类（[Tensor](#ZH-CN_TOPIC_0000001813201172)、[Model](#ZH-CN_TOPIC_0000001813201248)、[Image](#ZH-CN_TOPIC_0000001813201280)、[ImageProcessor](#ZH-CN_TOPIC_0000001860120493)、[VideoEncoder](#ZH-CN_TOPIC_0000001813360488)和[VideoDecoder](#ZH-CN_TOPIC_0000001860120573)）与mx\_deinit\(\)的作用域冲突，因此，这些类的作用域不能大于或等于mx\_deinit\(\)的作用域。
 >-   执行完mx\_deinit\(\)后，日志级别将会失效，且日志无法落盘。
 
 **函数原型<a name="section997114918358"></a>**
@@ -1233,7 +1233,7 @@ mx_deinit()
 
 ## 媒体数据处理<a name="ZH-CN_TOPIC_0000001860120721"></a>
 
-### Tensor<a name="ZH-CN_TOPIC_0000001813201172"></a>
+### Tensor<a id="ZH-CN_TOPIC_0000001813201172"></a>
 
 #### 类说明<a name="ZH-CN_TOPIC_0000001884339458"></a>
 
@@ -1359,7 +1359,7 @@ set_tensor_value(value: float, dataType: dtype)
 
 
 
-### Image<a name="ZH-CN_TOPIC_0000001813201280"></a>
+### Image<a id="ZH-CN_TOPIC_0000001813201280"></a>
 
 #### 类说明<a name="ZH-CN_TOPIC_0000001930194813"></a>
 
@@ -1587,7 +1587,7 @@ dump_buffer(filePath: str, forceOverwrite: bool = False);
 
 
 
-### ImageProcessor<a name="ZH-CN_TOPIC_0000001860120493"></a>
+### ImageProcessor<a id="ZH-CN_TOPIC_0000001860120493"></a>
 
 #### 类说明<a name="ZH-CN_TOPIC_0000001813200680"></a>
 
@@ -1625,7 +1625,7 @@ convert_format(inputImage: Image, outputFormat: image_format)
 返回转换输出Image对象。
 
 
-#### crop<a name="ZH-CN_TOPIC_0000001860120601"></a>
+#### crop<a id="ZH-CN_TOPIC_0000001860120601"></a>
 
 **函数功能<a name="section2093910419288"></a>**
 
@@ -1656,7 +1656,7 @@ crop(inputImage: Image, cropRectVec: List)
 抠图失败，抛出Runtime异常。
 
 
-#### crop<a name="ZH-CN_TOPIC_0000001813200812"></a>
+#### crop<a id="ZH-CN_TOPIC_0000001813200812"></a>
 
 **函数功能<a name="section2093910419288"></a>**
 
@@ -1693,8 +1693,8 @@ crop(inputImageVec: List, cropRectVec: List)
 
 ImageProcessor类的图像抠图并贴图接口。接口使用流程请参考[抠图贴图](../user_guide.md#抠图贴图)。
 
-1.  从“inputImage“中抠取一块图像，缩放至指定贴图区域的大小。
-2.  将抠图后的图片贴到“pastedImage“的指定贴图区域。输入输出格式、分辨率范围、对齐方式请参见[CropAndPaste](api_C++.md#cropandpaste)。
+1.  从“inputImage”中抠取一块图像，缩放至指定贴图区域的大小。
+2.  将抠图后的图片贴到“pastedImage”的指定贴图区域。输入输出格式、分辨率范围、对齐方式请参见[CropAndPaste](api_C++.md#cropandpaste)。
 
 **函数原型<a name="section16327853162119"></a>**
 
@@ -2043,13 +2043,13 @@ registerVdecCallBack(callback_func: Callable)
 
 
 
-### VideoDecoder<a name="ZH-CN_TOPIC_0000001860120573"></a>
+### VideoDecoder<a id="ZH-CN_TOPIC_0000001860120573"></a>
 
 #### 类说明<a name="ZH-CN_TOPIC_0000001860120385"></a>
 
 视频解码类，用于提供视频解码接口。
 
-接口使用流程请参考[视频解码](zh-cn_topic_0000001623653350.md)。
+接口使用流程请参考[视频解码](../user_guide.md#视频解码)。
 
 -   为确保资源正确回收，建议在函数或类的成员方法中定义和运行VideoDecoder。若在全局作用域中定义VideoDecoder，则需要在程序结束时使用del函数删除构造的VideoDecoder对象。
 
@@ -2204,7 +2204,7 @@ registerVencCallBack(callback_func: Callable)
 
 
 
-### VideoEncoder<a name="ZH-CN_TOPIC_0000001813360488"></a>
+### VideoEncoder<a id="ZH-CN_TOPIC_0000001813360488"></a>
 
 #### 类说明<a name="ZH-CN_TOPIC_0000001813200500"></a>
 
@@ -2992,7 +2992,7 @@ tensor_to_image(tensor: Tensor, imageFormat: image_format)
 
 ## 模型推理<a name="ZH-CN_TOPIC_0000001813361080"></a>
 
-### Model<a name="ZH-CN_TOPIC_0000001813201248"></a>
+### Model<a id="ZH-CN_TOPIC_0000001813201248"></a>
 
 #### 总体说明<a name="ZH-CN_TOPIC_0000001933515953"></a>
 
