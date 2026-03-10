@@ -2,9 +2,9 @@
 
 ## 总体说明<a name="ZH-CN_TOPIC_0000001888715704"></a>
 
-Vision SDK中实现的插件继承自[MxPluginBase](MxPluginBase.md)。插件以“mxpi\_“开头，包含“status”、“deviceId”、“dataSource”三个公共属性以及GStreamer原生属性“parent”和“name”，具体说明如[表1](#table350211521917)所示。
+Vision SDK中实现的插件继承自[MxPluginBase](./api_C++.md#mxpluginbase)。插件以“mxpi\_”开头，包含“status”、“deviceId”、“dataSource”三个公共属性以及GStreamer原生属性“parent”和“name”，具体说明如[表1](#table350211521917)所示。
 
-**表 1**  插件属性说明
+**表 1**  插件属性说明<a id="table350211521917"></a>
 
 |属性|说明|
 |--|--|
@@ -59,7 +59,7 @@ Atlas 推理系列产品
 </tbody>
 </table>
 
-**表 1**  appsrc插件的属性<a id="#table5955252142211"></a>
+**表 1**  appsrc插件的属性<a id="table5955252142211"></a>
 
 |属性名|描述|是否为必选项|是否可修改|
 |--|--|--|--|
@@ -87,15 +87,15 @@ Atlas 推理系列产品
 
 > [!NOTICE] 须知
 >-   当使用拉流插件的加密传输功能时，前置条件如下：
->    1.  安装“libgiognutls.so“。
->    2.  设置“GIO\_MODULE\_DIR“环境变量（“libgiognutls.so“所在的文件夹路径）。
->    3.  编写pipeline时配置拉流插件的属性“tlsCertFilePathList“、“tlsValidationFlags“。
+>    1.  安装“libgiognutls.so”。
+>    2.  设置“GIO\_MODULE\_DIR”环境变量（“libgiognutls.so”所在的文件夹路径）。
+>    3.  编写pipeline时配置拉流插件的属性“tlsCertFilePathList”、“tlsValidationFlags”。
 >-   推荐使用加密登录，非加密登录有安全风险。
 >    加密登录时，建议用户把用户名、密码加密保存到开发的应用中，使用Vision SDK构建pipeline时先解密再调用CreateMultipleStreams进行构建。
 >    -   **如果使用配置文件作为pipeline模板时，建议将参数敏感信息部分在配置文件中使用$\{_xxxx_\}替代（其中_xxxx_为对应的参数名），包括rtspurl中的用户名密码、tlsCertFilePathList中的口令信息。在使用Vision SDK构建pipeline时，先读取文件内容，解密后，将$\{_xxxx_\}替换为用户名和密码，再调用CreateMultipleStreams进行串流。**
 >    -   如选择将用户名、证书密码等值直接明文写在配置文件中，存在信息泄露的风险。请妥善保管用户名及密码。若密钥中包含特殊字符，请将其进行url编码，如username:pass@word@xxx.xxx.xxx.xxx:xxx/xxx应写为username:pass%40word@xxx.xxx.xxx.xxx:xxx/xxx（@字符的url编码为%40）。
 >    -   拉流插件元素默认模板的作者信息为  **root <<user@hostname.org\>\>**。
->-   Vision SDK软件包的安装路径下的“lib/plugins“中的“libmxpi\_rtspvideoinfo.so”为mxpi\_rtspsrc插件的依赖，不可作为插件单独使用。
+>-   Vision SDK软件包的安装路径下的“lib/plugins”中的“libmxpi\_rtspvideoinfo.so”为mxpi\_rtspsrc插件的依赖，不可作为插件单独使用。
 >-   如果用户自行下载gst-launch-1.0执行插件，为了避免敏感信息泄露，请使用**-q**命令禁止打印入参。
 
 <a name="table1898413351076"></a>
@@ -127,24 +127,24 @@ Atlas 推理系列产品
 </tbody>
 </table>
 
-**表 1**  mxpi\_rtspsrc插件的属性
+**表 1**  mxpi\_rtspsrc插件的属性<a id="table19971829183311"></a>
 
 |属性名|描述|是否为必填项|是否可修改|
 |--|--|--|--|
 |rtspUrl|RTSP取流地址（可以从网络摄像机获取，也可通过Live555等工具将本地视频文件转换为RTSP流）。|是|是|
 |channelId|表示视频拉流的路数标识，默认值为0。|否|是|
 |timeout|表示一段时间（timeout）没有拉流后，会断开拉流，默认值为0。|否|是|
-|fpsMode|是否打印拉流帧率，只能填0或1。0：不打印帧率（默认）。1：打印帧率。首次拉流的流地址无效时，属性为1时也不打印帧率。|否|是|
-|tlsValidationFlags|用于验证服务的TLS证书验证标识，取值范围参考如下, rtsp场景下不生效：1 (0x00000001)：unknown-ca2 (0x00000002)：bad-identity4 (0x00000004)：not-activated8 (0x00000008)：expired16 (0x00000010)：revoked32 (0x00000020)：insecure64 (0x00000040)：generic-error127 (0x0000007f)：validate-all|否|是|
-|tlsCertFilePathList|依次填写CertCrt、CertKey、CaCert、Token，Crl，以逗号隔开，默认值为空, rtsp场景下不生效。（证书及密钥相关文件的权限需设置为400）CertCrt：本地（客户端）证书路径。CertKey：本地（客户端）证书私钥路径。CaCert：服务端CA证书路径。Token：本地（客户端）加密私钥解密口令。Crl：服务端证书吊销列表，该配置项为可选项。不配置时，插件不会校验服务端证书是否被吊销。|否|是|
+|fpsMode|是否打印拉流帧率，只能填0或1。<br>0：不打印帧率（默认）。<br>1：打印帧率。<br>首次拉流的流地址无效时，属性为1时也不打印帧率。|否|是|
+|tlsValidationFlags|用于验证服务的TLS证书验证标识，取值范围参考如下, rtsp场景下不生效：<br>1 (0x00000001)：unknown-ca<br>2 (0x00000002)：bad-identity<br>4 (0x00000004)：not-activated<br>8 (0x00000008)：expired<br>16 (0x00000010)：revoked<br>32 (0x00000020)：insecure<br>64 (0x00000040)：generic-error<br>127 (0x0000007f)：validate-all|否|是|
+|tlsCertFilePathList|依次填写CertCrt、CertKey、CaCert、Token，Crl，以逗号隔开，默认值为空, rtsp场景下不生效。（证书及密钥相关文件的权限需设置为400）<br>CertCrt：本地（客户端）证书路径。<br>CertKey：本地（客户端）证书私钥路径。<br>CaCert：服务端CA证书路径。<br>Token：本地（客户端）加密私钥解密口令。<br>Crl：服务端证书吊销列表，该配置项为可选项。不配置时，插件不会校验服务端证书是否被吊销。|否|是|
 |async-handling|处理异步状态更改。|否|是|
 |message-forward|转发所有子消息。|否|是|
 
 
 **插件示例<a name="section14423457294"></a>**
 
--   “rtspUrl“参数传入RTSP取流地址，示例以**加密形式**展示，需传入用户名与密码。
--   “tlsCertFilePathList“参数传入了“server.crt“、“server.key“、“ca.crt“和“server.crl“证书相关文件路径，证书生成与制作指导请参见[自签名证书制作参考](zh-cn_topic_0000001572082912.md)。
+-   “rtspUrl”参数传入RTSP取流地址，示例以**加密形式**展示，需传入用户名与密码。
+-   “tlsCertFilePathList”参数传入了“server.crt”、“server.key”、“ca.crt”和“server.crl”证书相关文件路径。
 
 ```
 "mxpi_rtspsrc0": {
@@ -245,7 +245,7 @@ Atlas 推理系列产品
 </tbody>
 </table>
 
-**表 1**  appsink插件的属性<a id="#table57814461183"></a>
+**表 1**  appsink插件的属性<a id="table57814461183"></a>
 
 |属性名|描述|是否为必选项|是否可修改|
 |--|--|--|--|
@@ -576,7 +576,7 @@ Atlas 推理系列产品
 </tbody>
 </table>
 
-**表 1**  queue插件的属性<a id="#table55731131242"></a>
+**表 1**  queue插件的属性<a id="table55731131242"></a>
 
 |属性名|描述|是否为必选项|是否可修改|
 |--|--|--|--|
@@ -630,7 +630,7 @@ Atlas 推理系列产品
 >-   tee插件一般与queue插件配合使用，即tee插件的每个输出端口连接queue插件。
 >-   tee插件通过浅拷贝对同一个buffer进行多路分发，需要保证该buffer经过多分支处理后，能在同一个appsink端口输出，以防出现coredump问题。
 
-**表 1**  tee插件的属性
+**表 1**  tee插件的属性<a id="table41711615102715"></a>
 
 |属性名|描述|是否为必选项|是否可修改|
 |--|--|--|--|
@@ -689,7 +689,7 @@ Atlas 推理系列产品
 
 
 >[!NOTE] 说明
->默认情况下，该插件只能用于单分支Stream的业务，否则可能导致其他分支数据处理异常。如需在多分支Stream场景，请将“removeSourceData“设置为“no“。
+>默认情况下，该插件只能用于单分支Stream的业务，否则可能导致其他分支数据处理异常。如需在多分支Stream场景，请将“removeSourceData”设置为“no”。
 
 **示例<a name="section17273834153813"></a>**
 
@@ -697,7 +697,7 @@ Atlas 推理系列产品
 
 ![](../figures/mxpi_datatransfer.png)
 
-如上图所示，以缩放图像数据为例。用户可以将解码后的数据（Host内存）发送给Stream，通过该插件就可以将数据转移到Device侧，缩放插件正常运行，输出结果经过该插件转移后缩放后图像数据被转移至Host，用户获取到该数据就可以在Host侧正常访问。如图所示的案例中，发送数据和接收结果需要用“SendProtobuf\(\)”和“GetProtobuf\(\)”接口实现，具体请参见[图4](zh-cn_topic_0000001623533233.md#fig1117311918555)。
+如上图所示，以缩放图像数据为例。用户可以将解码后的数据（Host内存）发送给Stream，通过该插件就可以将数据转移到Device侧，缩放插件正常运行，输出结果经过该插件转移后缩放后图像数据被转移至Host，用户获取到该数据就可以在Host侧正常访问。如图所示的案例中，发送数据和接收结果需要用“SendProtobuf\(\)”和“GetProtobuf\(\)”接口实现，具体请参见[图 SendProtobuf/GetProtobuf数据流图](../user_guide.md#业务集成)。
 
 
 ### mxpi\_nmsoverlapedroiV2<a name="ZH-CN_TOPIC_0000001928189285"></a>
@@ -1727,7 +1727,7 @@ pipeline样例：
 
 **模型后处理介绍<a name="section02992114215"></a>**
 
-详细内容见[模型后处理类参考（modelinfer框架）](模型后处理类参考（modelinfer框架）.md)。
+详细内容见[模型后处理类参考（modelinfer框架）](api_C++.md#模型后处理类参考modelinfer框架)。
 
 
 ### mxpi\_tensorinfer<a name="ZH-CN_TOPIC_0000001928269713"></a>
@@ -1849,7 +1849,7 @@ pipeline样例：
 </tbody>
 </table>
 
-**表 1**  MxModelPostProcessorBase（及MxImagePostProcessorBase）的属性<a id="#table5955252142211"></a>
+**表 1**  MxModelPostProcessorBase（及MxImagePostProcessorBase）的属性<a id="table5955252142211"></a>
 
 |属性名|描述|是否为必选项|是否可修改|
 |--|--|--|--|
@@ -1867,7 +1867,7 @@ pipeline样例：
 |dataSourceImage|内部调试中，请勿使用。|否|否|
 
 
-**表 2**  Python后处理的属性
+**表 2**  Python后处理的属性<a id="table1178742619507"></a>
 
 |属性名|描述|是否为必选项|是否可修改|
 |--|--|--|--|
@@ -1917,7 +1917,7 @@ pipeline样例：
 </tr>
 <tr id="row17611191910533"><th class="firstcol" valign="top" width="20%" id="mcps1.1.3.6.1"><p id="p16611131911532"><a name="p16611131911532"></a><a name="p16611131911532"></a>属性</p>
 </th>
-<td class="cellrowborder" valign="top" width="80%" headers="mcps1.1.3.6.1 "><p id="p19611161975316"><a name="p19611161975316"></a><a name="p19611161975316"></a>请参见<a href="后处理插件基类.md#table5955252142211">表1</a>和<a href="后处理插件基类.md#table1178742619507">表2</a>。</p>
+<td class="cellrowborder" valign="top" width="80%" headers="mcps1.1.3.6.1 "><p id="p19611161975316"><a name="p19611161975316"></a><a name="p19611161975316"></a>请参见<a href="#table5955252142211">表1</a>和<a href="#table1178742619507">表2</a>。</p>
 </td>
 </tr>
 </tbody>
@@ -1988,7 +1988,7 @@ C++后处理插件pipeline样例：
 </tr>
 <tr id="row17611191910533"><th class="firstcol" valign="top" width="20%" id="mcps1.1.3.6.1"><p id="p16611131911532"><a name="p16611131911532"></a><a name="p16611131911532"></a>属性</p>
 </th>
-<td class="cellrowborder" valign="top" width="80%" headers="mcps1.1.3.6.1 "><p id="p19611161975316"><a name="p19611161975316"></a><a name="p19611161975316"></a>请参见<a href="后处理插件基类.md#table5955252142211">表1</a>和<a href="后处理插件基类.md#table1178742619507">表2</a>。</p>
+<td class="cellrowborder" valign="top" width="80%" headers="mcps1.1.3.6.1 "><p id="p19611161975316"><a name="p19611161975316"></a><a name="p19611161975316"></a>请参见<a href="#table5955252142211">表1</a>和<a href="#table1178742619507">表2</a>。</p>
 </td>
 </tr>
 </tbody>
@@ -2059,7 +2059,7 @@ C++后处理插件pipeline样例：
 </tr>
 <tr id="row17611191910533"><th class="firstcol" valign="top" width="20%" id="mcps1.1.3.6.1"><p id="p16611131911532"><a name="p16611131911532"></a><a name="p16611131911532"></a>属性</p>
 </th>
-<td class="cellrowborder" valign="top" width="80%" headers="mcps1.1.3.6.1 "><p id="p19611161975316"><a name="p19611161975316"></a><a name="p19611161975316"></a>请参见<a href="后处理插件基类.md#table5955252142211">表1</a>和<a href="后处理插件基类.md#table1178742619507">表2</a>。</p>
+<td class="cellrowborder" valign="top" width="80%" headers="mcps1.1.3.6.1 "><p id="p19611161975316"><a name="p19611161975316"></a><a name="p19611161975316"></a>请参见<a href="#table5955252142211">表1</a>和<a href="#table1178742619507">表2</a>。</p>
 </td>
 </tr>
 </tbody>
@@ -2130,7 +2130,7 @@ C++后处理插件pipeline样例：
 </tr>
 <tr id="row17611191910533"><th class="firstcol" valign="top" width="20%" id="mcps1.1.3.6.1"><p id="p16611131911532"><a name="p16611131911532"></a><a name="p16611131911532"></a>属性</p>
 </th>
-<td class="cellrowborder" valign="top" width="80%" headers="mcps1.1.3.6.1 "><p id="p19611161975316"><a name="p19611161975316"></a><a name="p19611161975316"></a>请参见<a href="后处理插件基类.md#table5955252142211">表1</a>和<a href="后处理插件基类.md#table1178742619507">表2</a>。</p>
+<td class="cellrowborder" valign="top" width="80%" headers="mcps1.1.3.6.1 "><p id="p19611161975316"><a name="p19611161975316"></a><a name="p19611161975316"></a>请参见<a href="#table5955252142211">表1</a>和<a href="#table1178742619507">表2</a>。</p>
 </td>
 </tr>
 </tbody>
@@ -2201,7 +2201,7 @@ C++后处理插件pipeline样例：
 </tr>
 <tr id="row17611191910533"><th class="firstcol" valign="top" width="20%" id="mcps1.1.3.6.1"><p id="p16611131911532"><a name="p16611131911532"></a><a name="p16611131911532"></a>属性</p>
 </th>
-<td class="cellrowborder" valign="top" width="80%" headers="mcps1.1.3.6.1 "><p id="p19611161975316"><a name="p19611161975316"></a><a name="p19611161975316"></a>请参见<a href="后处理插件基类.md#table5955252142211">表1</a>和<a href="后处理插件基类.md#table1178742619507">表2</a>。</p>
+<td class="cellrowborder" valign="top" width="80%" headers="mcps1.1.3.6.1 "><p id="p19611161975316"><a name="p19611161975316"></a><a name="p19611161975316"></a>请参见<a href="#table5955252142211">表1</a>和<a href="#table1178742619507">表2</a>。</p>
 </td>
 </tr>
 </tbody>
@@ -2272,7 +2272,7 @@ C++后处理插件pipeline样例：
 </tr>
 <tr id="row17611191910533"><th class="firstcol" valign="top" width="20%" id="mcps1.1.3.6.1"><p id="p16611131911532"><a name="p16611131911532"></a><a name="p16611131911532"></a>属性</p>
 </th>
-<td class="cellrowborder" valign="top" width="80%" headers="mcps1.1.3.6.1 "><p id="p19611161975316"><a name="p19611161975316"></a><a name="p19611161975316"></a>请参见<a href="后处理插件基类.md#table5955252142211">表1</a>和<a href="后处理插件基类.md#table1178742619507">表2</a>。</p>
+<td class="cellrowborder" valign="top" width="80%" headers="mcps1.1.3.6.1 "><p id="p19611161975316"><a name="p19611161975316"></a><a name="p19611161975316"></a>请参见<a href="#table5955252142211">表1</a>和<a href="#table1178742619507">表2</a>。</p>
 </td>
 </tr>
 </tbody>
@@ -2470,7 +2470,7 @@ C++后处理插件pipeline样例：
 
 
 > [!NOTE] 说明 
->请注意“afterFaceAlignmentHeight“与“afterFaceAlignmentWidth“属性值与输入图片的元数据的一致性，否则会由于参数不一致而产生错误信息，导致对齐结果获取失败。同时OpenCV要求高度和宽度需要为**2**的倍数。
+>请注意“afterFaceAlignmentHeight”与“afterFaceAlignmentWidth”属性值与输入图片的元数据的一致性，否则会由于参数不一致而产生错误信息，导致对齐结果获取失败。同时OpenCV要求高度和宽度需要为**2**的倍数。
 
 
 ### mxpi\_qualitydetection<a name="ZH-CN_TOPIC_0000001928189317"></a>
@@ -2657,7 +2657,7 @@ OSD基础功能相关插件。
 
 >[!NOTICE] 须知
 >-   确保当前用户ATC相关环境变量已设置正确，可以正常使用ATC工具。
->-   用户需具备ASCEND\_OPP\_PATH目录写权限。root用户默认ASCEND\_OPP\_PATH路径为：“/usr/local/Ascend/cann/opp“；普通用户默认ASCEND\_OPP\_PATH路径为：“$HOME/Ascend/cann/opp“。
+>-   用户需具备ASCEND\_OPP\_PATH目录写权限。root用户默认ASCEND\_OPP\_PATH路径为：“/usr/local/Ascend/cann/opp”；普通用户默认ASCEND\_OPP\_PATH路径为：“$HOME/Ascend/cann/opp”。
 
 <a name="table17383121414181"></a>
 <table><tbody><tr id="row143841714171819"><th class="firstcol" valign="top" width="20%" id="mcps1.1.3.1.1"><p id="p64681418313"><a name="p64681418313"></a><a name="p64681418313"></a>功能描述</p>
@@ -2943,7 +2943,7 @@ pipeline样例：
 </tbody>
 </table>
 
-**表 1**  mxpi\_osdinstancemerger插件的属性
+**表 1**  mxpi\_osdinstancemerger插件的属性<a id="table20499122203916"></a>
 
 |属性名|描述|是否为必选项|是否可修改|
 |--|--|--|--|
@@ -3006,7 +3006,7 @@ pipeline样例：
 </tbody>
 </table>
 
-**表 1**  mxpi\_channelselector插件的属性
+**表 1**  mxpi\_channelselector插件的属性<a id="table15662756115"></a>
 
 |属性名|描述|是否为必选项|是否可修改|
 |--|--|--|--|
@@ -3220,7 +3220,7 @@ pipeline样例：
 </tbody>
 </table>
 
-**表 1**  mxpi\_bufferstablizer插件的属性
+**表 1**  mxpi\_bufferstablizer插件的属性<a id="table209745519438"></a>
 
 |属性名|描述|是否为必选项|是否可修改|
 |--|--|--|--|
@@ -3242,6 +3242,3 @@ pipeline样例：
  "next": "queue400"
 },
 ```
-
-
-
