@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -eu
+
+# Check if the shell supports pipefail
+if [[ -o pipefail ]]; then
+    set -o pipefail
+fi
 
 echo "[INFO] Pre-smoke install start..."
 

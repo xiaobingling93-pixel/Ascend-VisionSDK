@@ -17,7 +17,7 @@ fi
 # collecting cases
 # ------------------------------------------------------------------------------
 mapfile -t CASES < <(
-    find "$PRESMOKE_DIR" -maxdepth 1 -type f -name "*.sh" | sort
+    find "$PRESMOKE_DIR" -type f -name "*.sh" | sort
 )
 
 if [ "${#CASES[@]}" -eq 0 ]; then
