@@ -54,6 +54,12 @@ echo " VERSION  : ${VERSION}"
 echo " TEST     : ${RUN_TEST}"
 echo "========================================"
 
+# Update VERSION in mxBase/build/setup.py
+SETUP_PY="${ROOT_DIR}/mxBase/build/setup.py"
+if [[ -f "${SETUP_PY}" ]]; then
+    echo "Updating VERSION in ${SETUP_PY} to ${VERSION}"
+    sed -i "s/^VERSION = .*$/VERSION = '${VERSION}'/g" "${SETUP_PY}"
+fi
 
 run_script() {
     local script_path="$1"
