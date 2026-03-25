@@ -232,7 +232,7 @@ private:
     APP_ERROR InitEncodeChannel(int32_t deviceId);
     APP_ERROR CheckDeviceId(int32_t deviceId);
     APP_ERROR CheckFormat(const Image& inputImage);
-    bool IsAscend310POrAtlas800IA2();
+    bool IsAscend310POrAtlas800IA2() const;
 };
 
 ImageProcessorDptr::ImageProcessorDptr(const int32_t deviceId, ImageProcessor* pImageProcessor)
@@ -322,7 +322,7 @@ ImageProcessorDptr::~ImageProcessorDptr()
     qPtr_ = nullptr;
 }
 
-bool ImageProcessorDptr::IsAscend310POrAtlas800IA2()
+bool ImageProcessorDptr::IsAscend310POrAtlas800IA2() const
 {
     static bool isAscend310POrAtlas800IA2 = DeviceManager::IsAscend310P() || DeviceManager::IsAtlas800IA2();
     return isAscend310POrAtlas800IA2;

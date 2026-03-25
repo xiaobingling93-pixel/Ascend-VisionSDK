@@ -197,7 +197,7 @@ namespace MxBase {
             return APP_ERR_COMM_INVALID_PARAM;
         }
 
-        bool CheckRange(const std::string paramName, uint32_t input, uint32_t min, uint32_t max)
+        bool CheckRange(const std::string paramName, uint32_t input, uint32_t min, uint32_t max) const
         {
             if (input < min || input > max) {
                 LogError << "Input param(" << paramName << ") is invalid(" << input
