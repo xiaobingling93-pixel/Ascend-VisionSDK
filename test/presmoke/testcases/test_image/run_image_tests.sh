@@ -1,9 +1,19 @@
 #!/bin/bash
 TEST_CASES=(
     "test_tensor_to_image" "TestTensorToImageFromImageSuccess" "0"  # Normal test case
+    "test_tensor_to_image" "TestHwcTensorToRgbSuccess" "0"  # Normal test case
+    "test_tensor_to_image" "TestNhwcTensorToRgbSuccess" "0"  # Normal test case
     "test_tensor_to_image" "Test2DimTensorToYuvSuccess" "0"        # Normal test case
+    "test_tensor_to_image" "TestWithStrideTensorToYuvSuccess" "0"  # Normal test case
+    "test_tensor_to_image" "TestNoStrideTensorToYuvSuccess" "0"  # Normal test case
+    "test_tensor_to_image" "TestAnyHeightTensorToYuvSuccess" "0"  # Normal test case
+    "test_tensor_to_image" "TestAnyHeightTensorToRgbSuccess" "0"  # Normal test case
     "test_tensor_to_image" "TestUint32TensorToRgbFailed" "1"       # Abnormal test case
     "test_tensor_to_image" "Test2DimTensorToBgrFailed" "1"         # Abnormal test case
+    "test_tensor_to_image" "TestEmptyTensorFailed" "1"  # Abnormal test case
+    "test_tensor_to_image" "TestThreeDimTensorToYuvFailed" "1"  # Abnormal test case
+    "test_tensor_to_image" "TestOneDimTensorToYuvsp422Failed" "1"  # Abnormal test case
+    "test_tensor_to_image" "TestTwoBatchTensorToYuvspFailed" "1"  # Abnormal test case
     "test_image_to_tensor" "TestYuvsp420ToTensorSuccess" "0"       # Normal test case
     "test_image_to_tensor" "TestYuvsp422ToTensorSuccess" "0"       # Normal test case
 )

@@ -1,9 +1,19 @@
 #!/bin/bash
 TEST_CASES=(
     "test_tensor_ops" "TestRescaleUint8SyncSuccess" "0"  # Normal test case
+    "test_tensor_ops" "TestRescaleIntCoefficientSyncSuccess" "0"  # Normal test case
+    "test_tensor_ops" "TestRescaleLargeBiasSyncSuccess" "0"  # Normal test case
+    "test_tensor_ops" "TestRescaleZeroScaleSyncSuccess" "0"  # Normal test case
+    "test_tensor_ops" "TestRescaleFloat32VectorSyncSuccess" "0"  # Normal test case
+    "test_tensor_ops" "TestRescaleUint8PreallocatedSyncSuccess" "0"  # Normal test case
+    "test_tensor_ops" "TestRescaleUint8NoMallocOutputSyncSuccess" "0"  # Normal test case
     "test_tensor_ops" "TestRescaleFloat32AsyncSuccess" "0"        # Normal test case
+    "test_tensor_ops" "TestRescaleFloat16AsyncSuccess" "0"  # Normal test case
     "test_tensor_ops" "TestRescaleInt32SyncFailed" "1"       # Abnormal test case
+    "test_tensor_ops" "TestRescaleUint8FiveDimSyncFailed" "1"  # Abnormal test case
+    "test_tensor_ops" "TestRescaleUint8Float16OutputSyncFailed" "1"  # Abnormal test case
     "test_tensor_ops" "TestRescaleInt32AsyncFailed" "1"         # Abnormal test case
+    "test_tensor_ops" "TestRescaleStreamDeviceMismatchAsyncFailed" "1"  # Abnormal test case
 )
 
 # Working directory
@@ -23,7 +33,7 @@ mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
 # Build with cmake
- echo "Building test_tensor_to_image and test_image_to_tensor..."
+echo "Building test_tensor_ops..."
 if ! cmake .. ; then
     echo "CMake configuration failed!"
     exit 1
