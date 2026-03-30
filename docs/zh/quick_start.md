@@ -14,7 +14,7 @@
 
 **准备工作<a name="section13208327751"></a>**
 
-1.  请先完成Vision SDK安装部署后，再进行快速入门样例。
+1. 请先完成Vision SDK安装部署后，再进行快速入门样例。
 
     **表 1**  环境要求软件依赖
 
@@ -27,13 +27,12 @@
 |npu-firmware固件包|Ascend HDK 25.0.RC1|
 |numpy|1.25.2|pip3 install numpy==1.25.2|
 
-
-2.  获取样例代码。
+2. 获取样例代码。
 
     请访问[获取链接](https://mindx.sdk-6e12.obs.cn-north-4.myhuaweicloud.com/mindxsdk-referenceapps%20/mxVision/YoloV3Infer/YoloV3Infer.zip)，获取样例代码压缩包。
 
-3.  登录已安装Vision SDK的开发环境并将样例代码压缩包上传。
-4.  <a name="li25721054121120"></a>解压样例代码压缩包，进入解压后的目录，命令参考如下。
+3. 登录已安装Vision SDK的开发环境并将样例代码压缩包上传。
+4. <a name="li25721054121120"></a>解压样例代码压缩包，进入解压后的目录，命令参考如下。
 
     ```
     unzip YoloV3Infer.zip
@@ -55,8 +54,8 @@
     ├── test.jpg                  # 测试用图片，需要用户自行准备
     ```
 
-5.  参考[4](#li25721054121120)解压目录中“README.md”的“准备模型”章节，准备用于推理的yolov3\_tf.pb模型。
-6.  准备用于推理的图片数据。
+5. 参考[4](#li25721054121120)解压目录中“README.md”的“准备模型”章节，准备用于推理的yolov3\_tf.pb模型。
+6. 准备用于推理的图片数据。
 
     用户需使用自行获取的图片进行测试（请将获取的图片名称更名为“test.jpg”），以下图片为展示用途。
 
@@ -70,7 +69,7 @@
 
 在该样例中，关键步骤与代码参考如下，不可以直接拷贝编译运行，完整样例代码请参考样例文件。
 
-1.  初始化资源，配置模型相关变量，如模型路径、配置文件路径、标签路径等。
+1. 初始化资源，配置模型相关变量，如模型路径、配置文件路径、标签路径等。
 
     ```
     // 初始化资源和变量
@@ -87,7 +86,7 @@
     APP_ERROR ret = MxBase::MxInit();
     ```
 
-2.  对输入数据进行前处理。执行MxInit初始化资源，同时初始化ImageProcessor对象后，解码图片，得到Image对象，再进行相应的图片缩放，之后将其转化为推理所需要的数据格式（Tensor类型）。
+2. 对输入数据进行前处理。执行MxInit初始化资源，同时初始化ImageProcessor对象后，解码图片，得到Image对象，再进行相应的图片缩放，之后将其转化为推理所需要的数据格式（Tensor类型）。
 
     ```
     // 前处理 
@@ -115,7 +114,7 @@
     ret = tensorImg.ToDevice(deviceId);
     ```
 
-3.  构建模型类后，输入前处理构建的Tensor对象，执行Infer接口，之后得到模型输出结果yoloV3Outputs。
+3. 构建模型类后，输入前处理构建的Tensor对象，执行Infer接口，之后得到模型输出结果yoloV3Outputs。
 
     ```
     // 模型推理 
@@ -128,7 +127,7 @@
     std::vector<MxBase::Tensor> yoloV3Outputs = yoloV3.Infer(yoloV3Inputs);
     ```
 
-4.  对模型输出进行后处理。利用Vision SDK提供的后处理模块（也可自行开发），可得到目标检测框及其目标类别，并通过opencv将其在原图上呈现。
+4. 对模型输出进行后处理。利用Vision SDK提供的后处理模块（也可自行开发），可得到目标检测框及其目标类别，并通过opencv将其在原图上呈现。
 
     ```
     // 后处理 
@@ -177,7 +176,7 @@
     ret = yolov3PostProcess.DeInit();
     ```
 
-5.  去初始化，释放资源。
+5. 去初始化，释放资源。
 
     ```
     // 去初始化 
@@ -190,14 +189,14 @@
 
 **运行推理<a name="section721002718517"></a>**
 
-1.  配置环境变量（以CANN的默认安装路径“/usr/local/Ascend/ascend-toolkit”和Vision SDK的安装路径/usr/local/Ascend/mxVision-_\{version\}_为例）。
+1. 配置环境变量（以CANN的默认安装路径“/usr/local/Ascend/ascend-toolkit”和Vision SDK的安装路径/usr/local/Ascend/mxVision-_\{version\}_为例）。
 
     ```
     source /usr/local/Ascend/ascend-toolkit/set_env.sh
     source /usr/local/Ascend/mxVision-{version}/set_env.sh
     ```
 
-2.  运行推理（运行该脚本前，需根据Vision SDK安装路径修改CMakeLists.txt文件中的MX\_SDK\_HOME变量）。
+2. 运行推理（运行该脚本前，需根据Vision SDK安装路径修改CMakeLists.txt文件中的MX\_SDK\_HOME变量）。
 
     ```
     bash run.sh
@@ -226,7 +225,6 @@
     **图 3**  result.jpg文件<a name="fig1517927142414"></a>  
     ![](figures/result-jpg文件.jpg "result-jpg文件")
 
-
 ## API接口开发方式（Python）<a name="ZH-CN_TOPIC_0000001608028273"></a>
 
 本章节介绍的样例适用于Atlas 推理系列产品和Atlas 200I/500 A2 推理产品。
@@ -240,7 +238,7 @@
 
 **准备工作<a name="section8662112082519"></a>**
 
-1.  请先完成Vision SDK安装部署后，再进行快速入门样例。
+1. 请先完成Vision SDK安装部署后，再进行快速入门样例。
 
     **表 1**  环境要求软件依赖
 
@@ -255,13 +253,12 @@
 |opencv-python|4.9.0.80|pip3 install opencv-python==4.9.0.80|
 |Python|3.9.2|建议通过获取源码包编译安装，安装步骤可参考[安装Python依赖](appendix.md#安装python依赖)。|
 
-
-2.  获取样例代码。
+2. 获取样例代码。
 
     请访问[获取链接](https://mindx.sdk-6e12.obs.cn-north-4.myhuaweicloud.com/mindxsdk-referenceapps%20/mxVision/resnet50_sdk_python/resnet50_sdk_python_sample.zip)，获取样例代码压缩包。
 
-3.  登录已安装Vision SDK的开发环境并将样例代码压缩包上传。
-4.  解压样例代码压缩包，进入解压后的目录，命令参考如下。
+3. 登录已安装Vision SDK的开发环境并将样例代码压缩包上传。
+4. 解压样例代码压缩包，进入解压后的目录，命令参考如下。
 
     ```
     unzip resnet50_sdk_python_sample.zip
@@ -285,7 +282,7 @@
     |   |   |-- resnet50_clsidx_to_labels.names
     ```
 
-5.  准备用于推理的图片数据。
+5. 准备用于推理的图片数据。
 
     用户可使用样例中的“test.jpg”测试图片，也可获取其他图片进行测试（请将获取的图片名称更名为“test.jpg”）。
 
@@ -296,7 +293,7 @@
 
 在该样例中，关键步骤与代码参考如下，不可以直接拷贝编译运行，完整样例代码请参考样例文件。
 
-1.  在“main.py”文件中，引入样例所需的第三方库以及Vision SDK模型推理所需文件。
+1. 在“main.py”文件中，引入样例所需的第三方库以及Vision SDK模型推理所需文件。
 
     ```
     import numpy as np  # 用于对多维数组进行计算
@@ -316,7 +313,7 @@
         base.mx_deinit() # 去初始化 Vision SDK 资源
     ```
 
-2.  配置模型相关变量，如图片路径、模型路径、配置文件路径、标签路径等。
+2. 配置模型相关变量，如图片路径、模型路径、配置文件路径、标签路径等。
 
     ```
     '''配置模型相关变量'''
@@ -328,7 +325,7 @@
     img_size = 256
     ```
 
-3.  对输入数据进行前处理。先使用OpenCV读入图片，得到三维数组，再进行相应的图片裁剪、缩放、转换颜色空间等处理并将其转化为推理所需要的数据格式（Tensor类型）。
+3. 对输入数据进行前处理。先使用OpenCV读入图片，得到三维数组，再进行相应的图片裁剪、缩放、转换颜色空间等处理并将其转化为推理所需要的数据格式（Tensor类型）。
 
     ```
     '''前处理'''
@@ -347,7 +344,7 @@
     img = Tensor(img) # 将numpy转为Tensor类
     ```
 
-4.  使用model.infer\(\)接口进行模型推理，得到模型输出结果。
+4. 使用model.infer\(\)接口进行模型推理，得到模型输出结果。
 
     ```
     '''模型推理'''
@@ -355,7 +352,7 @@
     output = model.infer([img])[0]  # 执行推理。输入数据类型：List[base.Tensor]， 返回模型推理输出的 List[base.Tensor]
     ```
 
-5.  对模型输出进行后处理。利用Vision SDK提供的后处理模块，可得到预测类别及其置信度并将其在原图上呈现。
+5. 对模型输出进行后处理。利用Vision SDK提供的后处理模块，可得到预测类别及其置信度并将其在原图上呈现。
 
     ```
     '''后处理'''
@@ -373,14 +370,14 @@
 
 **运行推理<a name="section754352812513"></a>**
 
-1.  配置环境变量（以CANN的默认安装路径“/usr/local/Ascend/ascend-toolkit”和Vision SDK的安装路径/usr/local/Ascend/mxVision-_\{version\}_为例）。
+1. 配置环境变量（以CANN的默认安装路径“/usr/local/Ascend/ascend-toolkit”和Vision SDK的安装路径/usr/local/Ascend/mxVision-_\{version\}_为例）。
 
     ```
     source /usr/local/Ascend/ascend-toolkit/set_env.sh
     source /usr/local/Ascend/mxVision-{version}/set_env.sh
     ```
 
-2.  运行推理。
+2. 运行推理。
 
     ```
     bash run.sh
@@ -398,7 +395,6 @@
     **图 3**  result.png文件<a name="fig1517927142414"></a>  
     ![](figures/result-png文件.png "result-png文件")
 
-
 ## 流程编排开发方式<a name="ZH-CN_TOPIC_0000001557748396"></a>
 
 本章节介绍的样例适用于Atlas 推理系列产品和Atlas 200I/500 A2 推理产品。
@@ -409,25 +405,25 @@
 
 **准备工作<a name="section146421527181117"></a>**
 
-1.  请先完成Vision SDK安装部署后，再进行快速入门样例。
+1. 请先完成Vision SDK安装部署后，再进行快速入门样例。
 
     **表 1**  环境要求软件依赖
 
-|软件依赖名称|推荐版本|获取链接|
-|--|--|--|
-|操作系统|请参见支持的硬件和操作系统|-|
-|系统依赖|-|Ubuntu系统或CentOS系统|
-|CANN开发套件包|8.1.RC1|CANN获取链接|
-|npu-driver驱动包|Ascend HDK 25.0.RC1|单击获取链接，在左侧配套资源的“编辑资源选择”中进行配置，筛选配套的软件包，确认版本信息后获取所需软件包。请参见各硬件产品中驱动和固件安装升级指南获取对应的指导。|
-|npu-firmware固件包|Ascend HDK 25.0.RC1|
-
-
-2.  获取样例代码。
+    |软件依赖名称|推荐版本|获取链接|
+    |--|--|--|
+    |操作系统|请参见支持的硬件和操作系统|-|
+    |系统依赖|-|Ubuntu系统或CentOS系统|
+    |CANN开发套件包|8.1.RC1|CANN获取链接|
+    |npu-driver驱动包|Ascend HDK 25.0.RC1|单击获取链接，在左侧配套资源的“编辑资源选择”中进行配置，筛选配套的软件包，确认版本信息后获取所需软件包。请参见各硬件产品中驱动和固件安装升级指南获取对应的指导。|
+    |npu-firmware固件包|Ascend HDK 25.0.RC1|
+    
+2. 获取样例代码。
 
     请访问[获取链接](https://mindx.sdk-6e12.obs.cn-north-4.myhuaweicloud.com/mindxsdk-referenceapps%20/mxVision/pipelineSample/pipelineSample.zip)，获取样例代码压缩包。
 
-3.  登录已安装Vision SDK的开发环境并将样例代码压缩包上传。
-4.  <a name="li143504413543"></a>解压样例代码压缩包，进入解压后的目录，命令参考如下。
+3. 登录已安装Vision SDK的开发环境并将样例代码压缩包上传。
+
+4. <a name="li143504413543"></a>解压样例代码压缩包，进入解压后的目录，命令参考如下。
 
     ```
     unzip pipelineSample.zip 
@@ -452,9 +448,10 @@
     |   |-- README.md
     |   |-- run.sh                   //运行程序的脚本，运行前建议使用dos2unix工具执行dos2unix run.sh命令，对脚本进行格式化处理
     ```
+    
+5. 参考[4](#li143504413543)解压目录中“README.md”的“准备模型”章节，准备用于推理的yolov3\_tf.pb模型。
 
-5.  参考[4](#li143504413543)解压目录中“README.md”的“准备模型”章节，准备用于推理的yolov3\_tf.pb模型。
-6.  准备用于推理的图片数据。
+6. 准备用于推理的图片数据。
 
     用户需使用自行获取的图片进行测试（请将获取的图片名称更名为与样例代码的图片名字一致，如dog1\_1024\_683.jpg），以下图片为展示用途。
 
@@ -542,10 +539,10 @@
 
 在这段pipeline中，有以下关键概念：
 
--   “next”属性值指明了元件之间的连接关系。
--   用户通过“appsrc0”元件向Stream发送数据，通过“appsink0”元件从Stream获取推理结果。
--   “mxpi\_objectdetection0”元件用于对模型推理的输出张量进行后处理，比如在上述样例中，模型后处理元件处理上游模型推理元件输出的一维张量，最终返回模型的识别结果（目标的坐标、类别及其对应的置信度）。
--   “mxpi\_dataserialize0”元件将推理结果组装成JSON字符串输出。
+- “next”属性值指明了元件之间的连接关系。
+- 用户通过“appsrc0”元件向Stream发送数据，通过“appsink0”元件从Stream获取推理结果。
+- “mxpi\_objectdetection0”元件用于对模型推理的输出张量进行后处理，比如在上述样例中，模型后处理元件处理上游模型推理元件输出的一维张量，最终返回模型的识别结果（目标的坐标、类别及其对应的置信度）。
+- “mxpi\_dataserialize0”元件将推理结果组装成JSON字符串输出。
 
 **代码解析<a name="section3313545161517"></a>**
 
@@ -618,15 +615,15 @@ int main(int argc, char* argv[])
 
 **编译和运行应用<a name="section3545122819189"></a>**
 
-1.  登录已安装Vision SDK的开发环境，进入“pipelineSample/src”目录。
-2.  配置环境变量（以CANN的默认安装路径“/usr/local/Ascend/ascend-toolkit”和Vision SDK的安装路径/home/mxVision-_\{version\}_为例）。
+1. 登录已安装Vision SDK的开发环境，进入“pipelineSample/src”目录。
+2. 配置环境变量（以CANN的默认安装路径“/usr/local/Ascend/ascend-toolkit”和Vision SDK的安装路径/home/mxVision-_\{version\}_为例）。
 
     ```
     source /usr/local/Ascend/ascend-toolkit/set_env.sh
     source /home/mxVision-{version}/set_env.sh
     ```
 
-3.  运行应用，执行编译脚本。
+3. 运行应用，执行编译脚本。
 
     ```
     chmod +x run.sh
@@ -649,5 +646,3 @@ int main(int argc, char* argv[])
         }]
     }
     ```
-
-

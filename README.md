@@ -1,20 +1,20 @@
 # Vision SDK
--   [最新消息](#最新消息)
--   [简介](#简介)
--   [目录结构](#目录结构)
--   [版本说明](#版本说明)
--   [环境部署](#环境部署)
--   [编译流程](#编译流程)
--   [快速入门](#快速入门)
--   [功能介绍](#功能介绍)
--   [API参考](#API参考)
--   [FAQ](#FAQ)
--   [安全声明](#安全声明)
--   [免责声明](#免责声明)
--   [License](#License)
--   [贡献声明](#贡献声明)
--   [建议与交流](#建议与交流)
 
+- [最新消息](#最新消息)
+- [简介](#简介)
+- [目录结构](#目录结构)
+- [版本说明](#版本说明)
+- [环境部署](#环境部署)
+- [编译流程](#编译流程)
+- [快速入门](#快速入门)
+- [功能介绍](#功能介绍)
+- [API参考](#API参考)
+- [FAQ](#FAQ)
+- [安全声明](#安全声明)
+- [免责声明](#免责声明)
+- [License](#License)
+- [贡献声明](#贡献声明)
+- [建议与交流](#建议与交流)
 
 # 最新消息
 
@@ -30,7 +30,7 @@
         
 [![Zread](https://img.shields.io/badge/Zread-Ask_AI-_.svg?style=flat&color=0052D9&labelColor=000000&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQuOTYxNTYgMS42MDAxSDIuMjQxNTZDMS44ODgxIDEuNjAwMSAxLjYwMTU2IDEuODg2NjQgMS42MDE1NiAyLjI0MDFWNC45NjAxQzEuNjAxNTYgNS4zMTM1NiAxLjg4ODEgNS42MDAxIDIuMjQxNTYgNS42MDAxSDQuOTYxNTZDNS4zMTUwMiA1LjYwMDEgNS42MDE1NiA1LjMxMzU2IDUuNjAxNTYgNC45NjAxVjIuMjQwMUM1LjYwMTU2IDEuODg2NjQgNS4zMTUwMiAxLjYwMDEgNC45NjE1NiAxLjYwMDFaIiBmaWxsPSIjZmZmIi8%2BCjxwYXRoIGQ9Ik00Ljk2MTU2IDEwLjM5OTlIMi4yNDE1NkMxLjg4ODEgMTAuMzk5OSAxLjYwMTU2IDEwLjY4NjQgMS42MDE1NiAxMS4wMzk5VjEzLjc1OTlDMS42MDE1NiAxNC4xMTM0IDEuODg4MSAxNC4zOTk5IDIuMjQxNTYgMTQuMzk5OUg0Ljk2MTU2QzUuMzE1MDIgMTQuMzk5OSA1LjYwMTU2IDE0LjExMzQgNS42MDE1NiAxMy43NTk5VjExLjAzOTlDNS42MDE1NiAxMC42ODY0IDUuMzE1MDIgMTAuMzk5OSA0Ljk2MTU2IDEwLjM5OTlaIiBmaWxsPSIjZmZmIi8%2BCjxwYXRoIGQ9Ik0xMy43NTg0IDEuNjAwMUgxMS4wMzg0QzEwLjY4NSAxLjYwMDEgMTAuMzk4NCAxLjg4NjY0IDEwLjM5ODQgMi4yNDAxVjQuOTYwMUMxMC4zOTg0IDUuMzEzNTYgMTAuNjg1IDUuNjAwMSAxMS4wMzg0IDUuNjAwMUgxMy43NTg0QzE0LjExMTkgNS42MDAxIDE0LjM5ODQgNS4zMTM1NiAxNC4zOTg0IDQuOTYwMVYyLjI0MDFDMTQuMzk4NCAxLjg4NjY0IDE0LjExMTkgMS42MDAxIDEzLjc1ODQgMS42MDAxWiIgZmlsbD0iI2ZmZiIvPgo8cGF0aCBkPSJNNCAxMkwxMiA0TDQgMTJaIiBmaWxsPSIjZmZmIi8%2BCjxwYXRoIGQ9Ik00IDEyTDEyIDQiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K&logoColor=ffffff)](https://zread.ai/Ascend/VisionSDK)&nbsp;&nbsp;&nbsp;&nbsp;
 [![DeepWiki](https://img.shields.io/badge/DeepWiki-Ask_AI-_.svg?style=flat&color=0052D9&labelColor=000000&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAyCAYAAAAnWDnqAAAAAXNSR0IArs4c6QAAA05JREFUaEPtmUtyEzEQhtWTQyQLHNak2AB7ZnyXZMEjXMGeK/AIi+QuHrMnbChYY7MIh8g01fJoopFb0uhhEqqcbWTp06/uv1saEDv4O3n3dV60RfP947Mm9/SQc0ICFQgzfc4CYZoTPAswgSJCCUJUnAAoRHOAUOcATwbmVLWdGoH//PB8mnKqScAhsD0kYP3j/Yt5LPQe2KvcXmGvRHcDnpxfL2zOYJ1mFwrryWTz0advv1Ut4CJgf5uhDuDj5eUcAUoahrdY/56ebRWeraTjMt/00Sh3UDtjgHtQNHwcRGOC98BJEAEymycmYcWwOprTgcB6VZ5JK5TAJ+fXGLBm3FDAmn6oPPjR4rKCAoJCal2eAiQp2x0vxTPB3ALO2CRkwmDy5WohzBDwSEFKRwPbknEggCPB/imwrycgxX2NzoMCHhPkDwqYMr9tRcP5qNrMZHkVnOjRMWwLCcr8ohBVb1OMjxLwGCvjTikrsBOiA6fNyCrm8V1rP93iVPpwaE+gO0SsWmPiXB+jikdf6SizrT5qKasx5j8ABbHpFTx+vFXp9EnYQmLx02h1QTTrl6eDqxLnGjporxl3NL3agEvXdT0WmEost648sQOYAeJS9Q7bfUVoMGnjo4AZdUMQku50McDcMWcBPvr0SzbTAFDfvJqwLzgxwATnCgnp4wDl6Aa+Ax283gghmj+vj7feE2KBBRMW3FzOpLOADl0Isb5587h/U4gGvkt5v60Z1VLG8BhYjbzRwyQZemwAd6cCR5/XFWLYZRIMpX39AR0tjaGGiGzLVyhse5C9RKC6ai42ppWPKiBagOvaYk8lO7DajerabOZP46Lby5wKjw1HCRx7p9sVMOWGzb/vA1hwiWc6jm3MvQDTogQkiqIhJV0nBQBTU+3okKCFDy9WwferkHjtxib7t3xIUQtHxnIwtx4mpg26/HfwVNVDb4oI9RHmx5WGelRVlrtiw43zboCLaxv46AZeB3IlTkwouebTr1y2NjSpHz68WNFjHvupy3q8TFn3Hos2IAk4Ju5dCo8B3wP7VPr/FGaKiG+T+v+TQqIrOqMTL1VdWV1DdmcbO8KXBz6esmYWYKPwDL5b5FA1a0hwapHiom0r/cKaoqr+27/XcrS5UwSMbQAAAABJRU5ErkJggg==)](https://deepwiki.com/Ascend/VisionSDK)
- 	 
+   
 </div>
  
 # 目录结构
@@ -43,6 +43,7 @@ Vision SDK
 ├── tools              
 ├── opensource                 
 ```
+
 # 版本说明
 
 Vision SDK的版本说明包含Vision SDK的软件版本配套关系以及每个版本的特性变更说明。具体请参见[版本说明](./docs/zh/release_notes.md)。
@@ -59,50 +60,58 @@ Vision SDK的版本说明包含Vision SDK的软件版本配套关系以及每个
 # 编译流程
 
 本节以CANN 8.3.RC2相关配套为例，介绍如何通过源码编译生成 Vision SDK，其中NPU驱动、固件和CANN软件包可以通过昇腾社区下载。执行下述操作前请确保拉取Vision SDK代码仓并进入工程目录。
+
 1. 编译依赖下载
-```bash
-cd VisionSDK
-wget https://mindcluster.obs.cn-north-4.myhuaweicloud.com/opensource-arm-gcc4.tar.gz
-wget https://mindcluster.obs.cn-north-4.myhuaweicloud.com/opensource-device-arm-gcc4.tar.gz
-wget https://mindcluster.obs.cn-north-4.myhuaweicloud.com/opensource-x86-gcc4.tar.gz
-wget https://mindcluster.obs.cn-north-4.myhuaweicloud.com/opensource-device-x86-gcc4.tar.gz
-cd opensource/opensource
-git clone -b release-2.5.0 https://gitcode.com/gh_mirrors/ma/makeself.git
-git clone -b v2.5.0.x https://gitcode.com/cann-src-third-party/makeself.git makeself_patch
-```
+
+    ```bash
+    cd VisionSDK
+    wget https://mindcluster.obs.cn-north-4.myhuaweicloud.com/opensource-arm-gcc4.tar.gz
+    wget https://mindcluster.obs.cn-north-4.myhuaweicloud.com/opensource-device-arm-gcc4.tar.gz
+    wget https://mindcluster.obs.cn-north-4.myhuaweicloud.com/opensource-x86-gcc4.tar.gz
+    wget https://mindcluster.obs.cn-north-4.myhuaweicloud.com/opensource-device-x86-gcc4.tar.gz
+    cd opensource/opensource
+    git clone -b release-2.5.0 https://gitcode.com/gh_mirrors/ma/makeself.git
+    git clone -b v2.5.0.x https://gitcode.com/cann-src-third-party/makeself.git makeself_patch
+    ```
+
 2. 执行编译
-```bash
-cd VisionSDK
-mkdir -p ../ci/config && echo "version: 1.0.0" > ../ci/config/config.ini
-# arm架构执行
-bash build_all.sh arm-gcc4 aarch64 notest
-# x86架构执行
-bash build_all.sh x86-gcc4 x86_64 notest
-```
+
+    ```bash
+    cd VisionSDK
+    mkdir -p ../ci/config && echo "version: 1.0.0" > ../ci/config/config.ini
+    # arm架构执行
+    bash build_all.sh arm-gcc4 aarch64 notest
+    # x86架构执行
+    bash build_all.sh x86-gcc4 x86_64 notest
+    ```
+
 3. 验证产品构建包
-```bash
-cd VisionSDK/output/Software/mxVision
-./Ascend-mindxsdk-mxvision_{version}_linux-{arch}.run --install
-```
+
+    ```bash
+    cd VisionSDK/output/Software/mxVision
+    ./Ascend-mindxsdk-mxvision_{version}_linux-{arch}.run --install
+    ```
+
 4. 测试构建
-```bash
-# 安装lcov2.0用于统计测试覆盖率和生成可视化报告
-apt update
-apt install -y libcapture-tiny-perl libdatetime-perl libtimedate-perl
-wget https://github.com/linux-test-project/lcov/releases/download/v2.0/lcov-2.0.tar.gz
-tar -xzf lcov-2.0.tar.gz && cd lcov-2.0
-make install
-# 下载测试依赖
-cd VisionSDK/opensource/opensource
-git clone -b v2.7.x-h3 https://gitcode.com/cann-src-third-party/mockcpp.git mockcpp_patch
-git clone -b mindsdk https://gitcode.com/Ascend/mockcpp.git mockcpp
-git clone -b release-1.11.0 https://gitcode.com/GitHub_Trending/go/googletest.git googletest
-cd VisionSDK
-# arm架构执行
-bash build_all.sh arm-gcc4 aarch64 test
-# x86架构执行
-bash build_all.sh x86-gcc4 x86_64 test
-```
+
+    ```bash
+    # 安装lcov2.0用于统计测试覆盖率和生成可视化报告
+    apt update
+    apt install -y libcapture-tiny-perl libdatetime-perl libtimedate-perl
+    wget https://github.com/linux-test-project/lcov/releases/download/v2.0/lcov-2.0.tar.gz
+    tar -xzf lcov-2.0.tar.gz && cd lcov-2.0
+    make install
+    # 下载测试依赖
+    cd VisionSDK/opensource/opensource
+    git clone -b v2.7.x-h3 https://gitcode.com/cann-src-third-party/mockcpp.git mockcpp_patch
+    git clone -b mindsdk https://gitcode.com/Ascend/mockcpp.git mockcpp
+    git clone -b release-1.11.0 https://gitcode.com/GitHub_Trending/go/googletest.git googletest
+    cd VisionSDK
+    # arm架构执行
+    bash build_all.sh arm-gcc4 aarch64 test
+    # x86架构执行
+    bash build_all.sh x86-gcc4 x86_64 test
+    ```
  
 # 快速入门
  
@@ -110,27 +119,22 @@ bash build_all.sh x86-gcc4 x86_64 test
 
 - [C++开发样例](./docs/zh/quick_start.md#api接口开发方式c)展示了如何使用Vision SDK C++接口开发图像目标检测应用，适用于Atlas推理系列产品。样例使用TensorFlow框架中的YoloV3模型。关键步骤包括初始化资源、对输入图像进行预处理（如缩放和转换为Tensor格式）、使用YoloV3模型执行推理，并对模型输出进行后处理，识别出目标并通过OpenCV进行可视化。推理完成后，输出结果显示检测到的目标边界框及其类别标签。
 
-
 ## API接口开发方式（Python）
 
 - [Python开发样例](./docs/zh/quick_start.md#api接口开发方式python)展示了如何使用Vision SDK Python接口开发图像分类应用，适用于Atlas推理系列产品。样例使用Caffe框架中的ResNet-50模型。工作流程包括初始化资源、对输入图像进行预处理（如缩放并转换为模型所需的格式）、使用ResNet-50模型执行推理，并对推理结果进行后处理，获取预测的类别标签和置信度。结果显示在图像上，并将带有预测标签和置信度的图像保存。
-
 
 ## 流程编排开发方式
 
 - [流程编排开发样例](./docs/zh/quick_start.md#流程编排开发方式)展示了如何使用Vision SDK的流程编排功能开发图像分类应用，适用于Atlas推理系列产品。样例使用YoloV3模型进行图像分类。过程包括创建pipeline配置文件，定义图像解码、缩放、推理和后处理等任务的顺序。使用`MxStreamManager`管理流程，数据被发送到流进行处理。pipeline输出分类结果，结果可以进一步处理或显示。
 
- # 功能介绍
+# 功能介绍
 
  Vision SDK 提供了涵盖常见视觉任务的功能模块，包括但不限于：
 
-*   视频与图像智能分析
-*   目标检测与识别
-*   图像分类
-*   行为识别与结构化分析
-
-
-
+* 视频与图像智能分析
+* 目标检测与识别
+* 图像分类
+* 行为识别与结构化分析
 
 # API参考
  
