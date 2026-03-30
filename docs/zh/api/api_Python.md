@@ -3,18 +3,18 @@
 ## 使用须知<a name="ZH-CN_TOPIC_0000001813200964"></a>
 
 > [!NOTICE] 须知
->-   本章节开放的类，请遵循同一个类实例在单一线程中使用的原则，请勿将同一个类实例在不同的线程中使用。
->-   请注意输入为集合数据类型的函数，应基于性能和实际业务需求限制长度，以防止可能出现的内存问题。
->-   传入接口内的JSON相关内容中请勿包含注释，否则会引起解析失败。
->-   若JSON相关内容中单个object存在key值相同键值对，接口将默认保留最后一组键值对作为解析结果。
->-   使用Python数据结构以及方法前，请确保已导入正确的模块。
->-   本章节中重载函数（如[SendData](#senddata)）或函数中有默认值（如[get\_result](#get_result)）时，函数中的参数名仅是为了方便描述参数含义而定义，实际函数的入参定义为\*args，请用户传参时不要指定参数名。
+>
+>- 本章节开放的类，请遵循同一个类实例在单一线程中使用的原则，请勿将同一个类实例在不同的线程中使用。
+>- 请注意输入为集合数据类型的函数，应基于性能和实际业务需求限制长度，以防止可能出现的内存问题。
+>- 传入接口内的JSON相关内容中请勿包含注释，否则会引起解析失败。
+>- 若JSON相关内容中单个object存在key值相同键值对，接口将默认保留最后一组键值对作为解析结果。
+>- 使用Python数据结构以及方法前，请确保已导入正确的模块。
+>- 本章节中重载函数（如[SendData](#senddata)）或函数中有默认值（如[get\_result](#get_result)）时，函数中的参数名仅是为了方便描述参数含义而定义，实际函数的入参定义为\*args，请用户传参时不要指定参数名。
 
 **Python推理数据流程图<a name="section191744017012"></a>**
 
 **图 1**  推理数据流图<a name="fig1839111481406"></a>  
 ![](../figures/推理数据流图.png "推理数据流图")
-
 
 ## 依赖列表说明<a name="ZH-CN_TOPIC_0000001813201084"></a>
 
@@ -31,14 +31,12 @@
 |log|用于不同级别的日志打印。|
 |post|包含多种模型后处理类（ResNet-50、YoloV3等）。|
 
-
 依赖使用方法如下：
 
 ```
 from mindx.sdk import base
 from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 ```
-
 
 ## Python枚举类型及数据类<a name="ZH-CN_TOPIC_0000001860120217"></a>
 
@@ -49,7 +47,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 本章节数据类仅展示其属性，相关函数不予以全部展示。
 
 本章节的数据类由swig生成，某些数据类型仅展示了部分业务相关接口，具体请参考base.py、post.py、log.py和dvpp.py。需要注意的是，swig框架会自动生成SwigPyIterator等对内使用类和函数，建议不要使用。
-
 
 #### 基本数据枚举类型<a name="ZH-CN_TOPIC_0000001813360152"></a>
 
@@ -71,8 +68,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |base.double|double类型。|
 |base.bool|bool类型。|
 
-
-
 #### AttributeInfo类<a name="ZH-CN_TOPIC_0000001813201412"></a>
 
 **表 1**  AttributeInfo类属性说明
@@ -84,10 +79,8 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |attrValue|str|属性值。|
 |confidence|float|置信度。|
 
-
 > [!NOTE] 说明 
 >该类重写了\_\_str\_\_和\_\_repr\_\_方法，用于展示对象信息，建议用户不要直接调用。
-
 
 #### borderType补边方式枚举类型<a name="ZH-CN_TOPIC_0000001860001061"></a>
 
@@ -100,8 +93,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |base.border_reflect|边界元素的镜像，镜像包括边界元素。例如：ba|abc*******fgh|hg（其中*表示任意图像元素）。|
 |base.border_reflect_101|边界元素的镜像，镜像不包括边界元素。例如：cb|abc****fgh|gf（其中*表示任意图像元素）。|
 
-
-
 #### BufferInput类<a name="ZH-CN_TOPIC_0000001813200488"></a>
 
 **表 1**  BufferInput类属性说明
@@ -112,8 +103,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |frame_info|str|帧信息。|
 |vision_info|str|图片信息。|
 
-
-
 #### BufferOutput类<a name="ZH-CN_TOPIC_0000001813200784"></a>
 
 |属性名|类型|说明|
@@ -122,8 +111,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |error_msg|str|错误信息。|
 |data|str|输出结果。|
 |get_byte_data()|函数，返回byte类型数据|该函数用来返回二进制数据，也可以返回正常的推理结果。|
-
-
 
 #### ClassInfo类<a name="ZH-CN_TOPIC_0000001860121213"></a>
 
@@ -135,10 +122,8 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |className|str|类名。|
 |confidence|float|置信度。|
 
-
 > [!NOTE] 说明 
 >该类重写了\_\_str\_\_和\_\_repr\_\_方法，用于展示对象信息，建议用户不要直接调用。
-
 
 #### Color类<a name="ZH-CN_TOPIC_0000001813361012"></a>
 
@@ -148,8 +133,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |channel_one|int|1通道取值，范围[0, 255]。|
 |channel_two|int|2通道取值，范围[0, 255]。|
 
-
-
 #### CropRoiBox类<a name="ZH-CN_TOPIC_0000002513840185"></a>
 
 |属性名|类型|说明|
@@ -158,8 +141,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |y0|float|左上角纵坐标。|
 |x1|float|右下角横坐标。|
 |y1|float|右下角纵坐标。|
-
-
 
 #### DataOutput类<a name="ZH-CN_TOPIC_0000001813200676"></a>
 
@@ -171,8 +152,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |metadata_list|List[MetadataOutput]|protobuf类型的输出结果。|
 |set_error_info(int, str)|函数，无返回值|设置错误信息。|
 
-
-
 #### Dim类<a name="ZH-CN_TOPIC_0000001813360312"></a>
 
 |参数|类型|说明|
@@ -181,8 +160,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |right|int|右侧补边像素数量。|
 |top|int|上方补边像素数量。|
 |bottom|int|下方补边像素数量。|
-
-
 
 #### dtype类<a name="ZH-CN_TOPIC_0000001860001389"></a>
 
@@ -202,8 +179,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |dtype.bool|bool类型。|
 |dtype.undefined|未定义类型。|
 
-
-
 #### KeyPointDetectionInfo类<a name="ZH-CN_TOPIC_0000001860000701"></a>
 
 **表 1**  KeyPointDetectionInfo类属性说明
@@ -214,10 +189,8 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |scoreMap|dict|每个关键点对应的置信度。|
 |score|float|整体置信度。|
 
-
 > [!NOTE] 说明
 >该类重写了\_\_str\_\_和\_\_repr\_\_方法，用于展示对象信息，建议用户不要直接调用。
-
 
 #### image.format类<a name="ZH-CN_TOPIC_0000001813360340"></a>
 
@@ -229,8 +202,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |image.format.nv21|NV21格式类型。|
 |image.format.bgr|BGR888格式类型。|
 |image.format.rgb|RGB888格式类型。|
-
-
 
 #### image\_format图片格式枚举类型<a name="ZH-CN_TOPIC_0000001860001233"></a>
 
@@ -257,8 +228,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |base.rgba|RGBA_8888 的图像格式。|
 |base.bgra|BGRA_8888 的图像格式。|
 
-
-
 #### interpolation缩放方式格式枚举类型<a name="ZH-CN_TOPIC_0000001860000945"></a>
 
 **表 1**  缩放方式格式类型
@@ -271,8 +240,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |base.bilinear_similar_tensorflow|业界通用的Bilinear算法（与TensorFlow算法的计算过程类似，在Atlas 推理系列产品上，不支持此选项）。|
 |base.nearestneighbor_tensorflow|业界通用的Nearest Neighbor算法（与TensorFlow算法的计算过程类似，在Atlas 推理系列产品上，不支持此选项）。|
 
-
-
 #### MetadataInput类<a name="ZH-CN_TOPIC_0000001860001301"></a>
 
 |属性名|类型|说明|
@@ -280,8 +247,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |data_source|str|源字段。|
 |data_type|str|protobuf数据类型。|
 |serialized_metadata|str|protobuf数据的序列化表示。|
-
-
 
 #### MetadataOutput类<a name="ZH-CN_TOPIC_0000001813361248"></a>
 
@@ -293,8 +258,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |serialized_metadata|str|protobuf数据的序列化表示。|
 |set_error_info(int, str)|函数，无返回值|设置错误信息。|
 |get_byte_data()|函数，返回byte类型数据|该函数用于返回byte类型的protobuf数据序列化表示。|
-
-
 
 #### ModelLoadOptV2类<a name="ZH-CN_TOPIC_0000001860120521"></a>
 
@@ -315,8 +278,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |workSize|int|推理模型所在工作内存大小，单位Byte。（默认为0，当modelWorkPtr为0时无效。）|
 |weightSize|int|推理模型权值内存大小，单位Byte。（默认为0，当modelWeightPtr为0时无效。）|
 
-
-
 #### ModelLoadType模型加载方式枚举类型<a name="ZH-CN_TOPIC_0000001813361212"></a>
 
 **表 1**  模型加载方式
@@ -328,8 +289,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |base.load_model_from_file_with_mem|从文件加载离线模型数据，由用户自行管理模型运行的内存。|
 |base.load_model_from_mem_with_mem|从内存加载离线模型数据，由用户自行管理模型运行的内存。|
 
-
-
 #### ModelType模型枚举类型<a name="ZH-CN_TOPIC_0000001813200752"></a>
 
 **表 1**  模型类型
@@ -338,8 +297,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |--|--|
 |base.model_type_om|OM模型。|
 |base.model_type_mindir|MindIR模型。（对于MindIR模型，仅支持静态Shape和动态Batch。）|
-
-
 
 #### MxDataInput类<a name="ZH-CN_TOPIC_0000001860001433"></a>
 
@@ -350,8 +307,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |customParam|str|自定义的参数。|
 |roiBoxs|List[float]|裁剪框坐标数组，[x0,y0,x1,x1]。|
 
-
-
 #### MxDataOutput类<a name="ZH-CN_TOPIC_0000001813200588"></a>
 
 |属性名|类型|说明|
@@ -359,8 +314,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |errorCode|int|返回的错误码，0为成功。|
 |dataSize|int|数据大小。|
 |data|str|推理结果。|
-
-
 
 #### visionDataFormat图像数据格式排布枚举类型<a name="ZH-CN_TOPIC_0000001813360548"></a>
 
@@ -370,8 +323,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |--|--|
 |NCHW|图像数据按NCHW格式排布。|
 |NHWC|图像数据按NHWC格式排布。|
-
-
 
 #### StreamFormat视频流数据格式枚举类型<a name="ZH-CN_TOPIC_0000001860000261"></a>
 
@@ -383,8 +334,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |base.h264_baseline_level|**H.264** 格式视频流，**基本画质**。|
 |base.h264_main_level|**H.264** 格式视频流，**主流画质**。|
 |base.h264_high_level|**H.264** 格式视频流，**高级画质**。|
-
-
 
 #### ObjectInfo类<a name="ZH-CN_TOPIC_0000001813360912"></a>
 
@@ -401,10 +350,8 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |y0|float|左上角y坐标。|
 |y1|float|右下角y坐标。|
 
-
 > [!NOTE] 说明 
 >该类重写了\_\_str\_\_和\_\_repr\_\_方法，用于展示对象信息，建议用户不要直接调用。
-
 
 #### Point类<a name="ZH-CN_TOPIC_0000001860120541"></a>
 
@@ -412,8 +359,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |--|--|--|
 |x|int|横坐标（以图像左上角为原点）。|
 |y|int|纵坐标（以图像左上角为原点）。|
-
-
 
 #### Rect类<a name="ZH-CN_TOPIC_0000001860001141"></a>
 
@@ -423,8 +368,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |y0|int|矩形框左上角坐标的**纵坐标**。|
 |x1|int|矩形框右下角坐标的**横坐标**。|
 |y1|int|矩形框右下角坐标的**纵坐标**。|
-
-
 
 #### ResizedImageInfo类<a name="ZH-CN_TOPIC_0000001860001101"></a>
 
@@ -439,10 +382,8 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |widthResize|int|resize后的宽度。|
 |keepAspectRatioScaling|float|缩放比例。|
 
-
 > [!NOTE] 说明 
 >该类重写了\_\_str\_\_和\_\_repr\_\_方法，用于展示对象信息，建议用户不要直接调用。
-
 
 #### ResizeType类<a name="ZH-CN_TOPIC_0000001860121169"></a>
 
@@ -454,8 +395,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |RESIZER_STRETCHING|ResizeType 枚举类型。|拉伸缩放。|
 |RESIZER_TF_KEEP_ASPECT_RATIO|ResizeType 枚举类型。|基于TensorFlow的等比率缩放。|
 
-
-
 #### Resize缩放枚举类型<a name="ZH-CN_TOPIC_0000001813361340"></a>
 
 **表 1**  Resize参数类型说明
@@ -466,8 +405,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |base.resize_stretching|ResizeType.RESIZER_STRETCHING。|
 |base.resize_tf_keep_ratio|ResizeType.RESIZER_TF_KEEP_ASPECT_RATIO。|
 
-
-
 #### SemanticSegInfo类<a name="ZH-CN_TOPIC_0000001860000297"></a>
 
 **表 1**  SemanticSegInfo类属性说明
@@ -477,10 +414,8 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |pixels|list|像素集。|
 |labelMap|list|标签映射。|
 
-
 > [!NOTE] 说明
 >该类重写了\_\_str\_\_和\_\_repr\_\_方法，用于展示对象信息，建议用户不要直接调用。
-
 
 #### Size类<a name="ZH-CN_TOPIC_0000001813360500"></a>
 
@@ -488,8 +423,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |--|--|--|
 |width|int|图像宽。|
 |height|int|图像高。|
-
-
 
 #### TextObjectInfo类<a name="ZH-CN_TOPIC_0000001860121121"></a>
 
@@ -508,10 +441,8 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |y2|float|第三检测点的y坐标。|
 |y3|float|第四检测点的y坐标。|
 
-
 > [!NOTE] 说明 
 >该类重写了\_\_str\_\_和\_\_repr\_\_方法，用于展示对象信息，建议用户不要直接调用。
-
 
 #### TextsInfo类<a name="ZH-CN_TOPIC_0000001860120453"></a>
 
@@ -521,10 +452,8 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |--|--|--|
 |text|数组|text内容。|
 
-
 > [!NOTE] 说明 
 >该类重写了\_\_str\_\_和\_\_repr\_\_方法，用于展示对象信息，建议用户不要直接调用。
-
 
 #### type类<a name="ZH-CN_TOPIC_0000001860001045"></a>
 
@@ -535,8 +464,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |type.memory_host|Host侧内存类型。|
 |type.memory_device|Device侧内存类型。|
 |type.memory_dvpp|DVPP内存类型。|
-
-
 
 #### VideoDecodeConfig类<a name="ZH-CN_TOPIC_0000001860121153"></a>
 
@@ -550,14 +477,12 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |outputImageFormat|image_format枚举类|解码后输出的图像格式，默认值为：base.nv12。<li>Atlas 200I/500 A2 推理产品环境只支持base.nv12、base.nv21、base.rgb和base.bgr四种格式。<li>Atlas 推理系列产品环境只支持base.nv12、base.nv21、base.rgb和base.bgr四种格式|
 |skipInterval|int|视频解码的跳帧参数，取值范围：[0, 250]，默认值：0。|
 
-
-
 #### VideoEncodeConfig类<a name="ZH-CN_TOPIC_0000001813201616"></a>
 
 |参数名|类型|说明|
 |--|--|--|
-|width|int|编码后视频帧数据的宽，默认值：1920，必须与待编码图片的宽（original_width）一致。<li>Atlas 200I/500 A2 推理产品，取值范围：[114, 8192]，输入的视频宽需要对齐2。<li>Atlas 推理系列产品，取值范围：[128, 4096]，输入的视频宽需要对齐2。视频编码的最大分辨率（宽 * 高）不能超过4096 * 2304。|
-|height|int|编码后视频帧数据的高，默认值：1080，必须与待编码图片的高（original_height）一致。<li>Atlas 200I/500 A2 推理产品，取值范围：[114, 8192]，输入的视频高需要对齐2。<li>Atlas 推理系列产品，取值范围：[128, 4096]，输入的视频高需要对齐2。视频编码的最大分辨率（宽 * 高）不能超过4096 * 2304。|
+|width|int|编码后视频帧数据的宽，默认值：1920，必须与待编码图片的宽（original_width）一致。<li>Atlas 200I/500 A2 推理产品，取值范围：[114, 8192]，输入的视频宽需要对齐2。<li>Atlas 推理系列产品，取值范围：[128, 4096]，输入的视频宽需要对齐2。视频编码的最大分辨率（宽 \* 高）不能超过4096 \* 2304。|
+|height|int|编码后视频帧数据的高，默认值：1080，必须与待编码图片的高（original_height）一致。<li>Atlas 200I/500 A2 推理产品，取值范围：[114, 8192]，输入的视频高需要对齐2。<li>Atlas 推理系列产品，取值范围：[128, 4096]，输入的视频高需要对齐2。视频编码的最大分辨率（宽 \* 高）不能超过4096 \* 2304。|
 |outputVideoFormat|StreamFormat枚举类|编码后输出的视频格式，H.264格式视频支持base.h264_baseline_level、base.h264_main_level和base.h264_high_level三种格式，H.265格式视频只支持base.h265_main_level格式。默认值为base.h264_main_level。|
 |inputImageFormat|image_format枚举类|输入的图像格式，只支持base.nv12、base.nv21两种格式，默认值为：base.nv12。|
 |keyFrameInterval|int|视频I帧间隔大小，默认为30。<li>Atlas 200I/500 A2 推理产品，取值范围：[1, 65536]。<li>Atlas 推理系列产品，取值范围：[1, 65536]。|
@@ -579,13 +504,11 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |direction|int|在基于纹理宏块级码率控制时，用于控制加减方向。默认值为8，取值范围：[0, 16]。该参数仅在Atlas 推理系列产品上生效。|
 |rowQpDelta|int|行级码率控制调节幅度是一帧内行级调节的最大范围，其中行级以宏块行为单位。调节幅度越大，允许行级调整的QP范围越大，码率越平稳。对于图像复杂度分布不均匀的场景，行级码率控制调节幅度设置过大会带来图像质量不均匀。默认值为1，取值范围：[0, 10]，设置为0表示关闭基于行的宏块级码率控制。该参数仅在Atlas 推理系列产品上生效。|
 
-
 **SetThresholdI参数说明<a name="section11435162211470"></a>**
 
 |参数名|类型|说明|
 |--|--|--|
 |threshold_i|list|list中值的取值范围：[0,255]。如果不通过此函数设置thresholdI的值，thresholdI默认值为[0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255]。<be>减方向的数值设置为0，表示关闭当前级；加方向的数值设置为255，表示关闭当前级。|
-
 
 **SetThresholdP参数说明<a name="section5799848184713"></a>**
 
@@ -593,13 +516,11 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |--|--|--|
 |threshold_p|list|list中值的取值范围：[0,255]。如果不通过此函数设置thresholdP的值，thresholdP默认值为[0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255]。<br>减方向的数值设置为0，表示关闭当前级；加方向的数值设置为255，表示关闭当前级。|
 
-
 **SetThresholdB参数说明<a name="section1569265414717"></a>**
 
 |参数名|类型|说明|
 |--|--|--|
 |threshold_b|list|list中值的取值范围：[0,255]。如果不通过此函数设置thresholdB的值，thresholdB默认值为[0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255]。<br>减方向的数值设置为0，表示关闭当前级；加方向的数值设置为255，表示关闭当前级。|
-
 
 **推荐配置<a name="section106092517497"></a>**
 
@@ -607,16 +528,14 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 
 |画质/分辨率|srcRate|keyFrameInterval|maxBitRate|
 |--|--|--|--|
-|4K3840 * 2160/4096 * 2160|25或30|50或60|H.264： 8000 ~ 12000<br>H.265： 8000 ~ 12000|
-|2K2560 * 1440|25或30|50或60|H.264： 6000 ~ 10000<br>H.265： 6000 ~ 10000|
-|1080P（蓝光）1920 * 1080|25或30|50或60|H.264： 2000~6000<br>H.265： 1000~4000|
-|720P（高清）1280 * 720|25或30|50或60|H.264： 1000~3000<br>H.265： 800~2000|
-|480P/D1_N（标清）854 * 480/720 * 480|25或30|50或60|H.264： 600~1400<br>H.265： 300~700|
-|576P/D1   （标清）720 * 576|25或30|50或60|H.264： 600~1400<br>H.265： 300~700|
-|270P（流畅）480 * 270|25或30|50或60|-|
-|CIF P/N352 * 288/320 * 240|25或30|50或60|H.264： 250<br>H.265： 250|
-
-
+|4K3840 \* 2160/4096 \* 2160|25或30|50或60|H.264： 8000 ~ 12000<br>H.265： 8000 ~ 12000|
+|2K2560 \* 1440|25或30|50或60|H.264： 6000 ~ 10000<br>H.265： 6000 ~ 10000|
+|1080P（蓝光）1920 \* 1080|25或30|50或60|H.264： 2000~6000<br>H.265： 1000~4000|
+|720P（高清）1280 \* 720|25或30|50或60|H.264： 1000~3000<br>H.265： 800~2000|
+|480P/D1_N（标清）854 \* 480/720 \* 480|25或30|50或60|H.264： 600~1400<br>H.265： 300~700|
+|576P/D1   （标清）720 \* 576|25或30|50或60|H.264： 600~1400<br>H.265： 300~700|
+|270P（流畅）480 \* 270|25或30|50或60|-|
+|CIF P/N352 \* 288/320 \* 240|25或30|50或60|H.264： 250<br>H.265： 250|
 
 #### AppGlobalCfgExtra类<a name="ZH-CN_TOPIC_0000002164133849"></a>
 
@@ -626,8 +545,6 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |jpegdChnNum|int|JPEGD通道资源池大小。默认值为“DEFAULT_JPEGD_CHN_NUM = 24”。取值范围为[1, 64]。|
 |pngdChnNum|int|PNGD通道资源池大小。默认值为“DEFAULT_JPEGD_CHN_NUM = 24”。取值范围为[1, 64]。|
 |jpegeChnNum|int|JPEGE通道资源池大小。默认值为“DEFAULT_JPEGE_CHN_NUM = 24”。取值范围为[1, 48]。|
-
-
 
 #### cvt\_color\_mode色域转换枚举类型<a name="ZH-CN_TOPIC_0000002287916997"></a>
 
@@ -655,15 +572,11 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |base.color_rgb2yvusp420|色域空间由RGB转换为YVUSP420。|
 |base.color_bgr2yvusp420|色域空间由BGR转换为YVUSP420。|
 
-
-
-
 ### 流程编排数据类<a name="ZH-CN_TOPIC_0000001813201220"></a>
 
 #### 总体说明<a name="ZH-CN_TOPIC_0000001897710465"></a>
 
 本章节的数据类由swig生成，某些数据类型仅展示了部分业务相关接口，具体请参考“StreamManagerApi.py”和“stream.py”。需要注意的是，swig框架会自动生成SwigPyIterator等对内使用类和函数，建议不要使用。
-
 
 #### RoiBox<a name="ZH-CN_TOPIC_0000001860121105"></a>
 
@@ -691,8 +604,6 @@ class RoiBox:
 |x1|float|右下角横坐标。|
 |y1|float|右下角纵坐标。|
 
-
-
 #### RoiBoxVector<a name="ZH-CN_TOPIC_0000001860120365"></a>
 
 **功能<a name="section114991545192618"></a>**
@@ -713,7 +624,6 @@ class RoiBoxVector:
         pass
     ...
 ```
-
 
 #### MxDataInput<a name="ZH-CN_TOPIC_0000001813361332"></a>
 
@@ -741,8 +651,6 @@ class MxDataInput :
 |customParam|bytes|自定义的参数，保留参数。|
 |roiBoxs|RoiBoxVector|裁剪框坐标数组。|
 
-
-
 #### MxDataOutput<a name="ZH-CN_TOPIC_0000001813201184"></a>
 
 **功能<a name="section311231782712"></a>**
@@ -764,8 +672,6 @@ class MxDataOutput:
 |--|--|--|
 |errorCode|int|输出错误码。|
 |data|bytes|输出结果数据。|
-
-
 
 #### MxProtobufIn<a name="ZH-CN_TOPIC_0000001860121305"></a>
 
@@ -791,8 +697,6 @@ class MxProtobufIn:
 |type|bytes|输入protobuf数据的类型。|
 |protobuf|bytes|输入protobuf的value数据，需要反序列化为与类型对应的数据。|
 
-
-
 #### MxProtobufOut<a name="ZH-CN_TOPIC_0000001813201300"></a>
 
 **功能<a name="section311231782712"></a>**
@@ -816,8 +720,6 @@ class MxProtobufOut:
 |errorCode|int|输出错误码。|
 |messageName|bytes|输出protobuf数据的key。|
 |messageBuf|bytes|输出protobuf数据的value，需要反序列化为与类型对应的数据。|
-
-
 
 #### MxDataInputExt<a name="ZH-CN_TOPIC_0000001860120081"></a>
 
@@ -849,8 +751,6 @@ class MxDataInputExt :
 |mxpiFrameInfo|bytes|图片的frame信息序列化成字符串。|
 |mxpiVisionInfo|bytes|图片信息序列化成字符串。|
 
-
-
 #### MxMetadataInput<a name="ZH-CN_TOPIC_0000001813201004"></a>
 
 **功能<a name="section311231782712"></a>**
@@ -874,8 +774,6 @@ class MxMetadataInput:
 |datasource|bytes|挂载元数据时使用的dataSource，用于下游插件获取元数据。|
 |dataType|bytes|元数据的数据类型。|
 |serializedMetadata|bytes|序列化的元数据。|
-
-
 
 #### MxMetadataOutput<a name="ZH-CN_TOPIC_0000001813201424"></a>
 
@@ -904,8 +802,6 @@ class MxMetadataOutput:
 |errorMsg|bytes|输出错误信息。|
 |dataType|bytes|元数据的数据类型。|
 |serializedMetadata|bytes|序列化的元数据。|
-
-
 
 #### MxBufferAndMetadataOutput<a name="ZH-CN_TOPIC_0000001813200420"></a>
 
@@ -937,8 +833,6 @@ class MxBufferAndMetadataOutput:
 |bufferOutput|MxBufferOutput|输出结果数据。|
 |metadataVec|MetadataOutputVector|输出元数据信息。|
 
-
-
 #### StringVector<a name="ZH-CN_TOPIC_0000001813361176"></a>
 
 **功能<a name="section1449719416261"></a>**
@@ -959,7 +853,6 @@ class MxBufferAndMetadataOutput:
         pass
     ...  
 ```
-
 
 #### InProtobufVector<a name="ZH-CN_TOPIC_0000001860120937"></a>
 
@@ -982,7 +875,6 @@ class InProtobufVector:
     ...  
 ```
 
-
 #### OutProtobufVector<a name="ZH-CN_TOPIC_0000001813201628"></a>
 
 **功能<a name="section199931328192713"></a>**
@@ -1003,7 +895,6 @@ class OutProtobufVector:
         pass
     ...  
 ```
-
 
 #### MetadataInputVector<a name="ZH-CN_TOPIC_0000001813201328"></a>
 
@@ -1026,7 +917,6 @@ class MetadataInputVector:
     ...  
 ```
 
-
 #### MetadataOutputVector<a name="ZH-CN_TOPIC_0000001860000305"></a>
 
 **功能<a name="section1847416915301"></a>**
@@ -1047,7 +937,6 @@ class MetadataOutputVector:
         pass
     ...
 ```
-
 
 #### MxBufferInput<a name="ZH-CN_TOPIC_0000001860120769"></a>
 
@@ -1072,8 +961,6 @@ class MxBufferInput:
 |data|bytes|输入的数据。|
 |mxpiFrameInfo|bytes|输入Frame数据。|
 |mxpiVisionInfo|bytes|输入图片数据。|
-
-
 
 #### MxBufferOutput<a name="ZH-CN_TOPIC_0000001860001025"></a>
 
@@ -1100,9 +987,6 @@ class MxBufferOutput:
 |errorCode|int|输出的错误码。|
 |errorMsg|bytes|输出的错误信息。|
 |data|bytes|输出的数据。|
-
-
-
 
 ### 内部辅助数据类<a name="ZH-CN_TOPIC_0000002164132269"></a>
 
@@ -1147,16 +1031,12 @@ class MxBufferOutput:
 |MetadataOutputVector|辅助映射c++中std::vector\<PyStream::MetadataOutput>|stream.py|
 |PluginNodeVector|辅助映射c++中std::vector\<PyStream::PluginNode>|stream.py|
 
-
 下表所列类为回调辅助类，不建议用户直接使用，具体请参考base.py。
 
 |数据类型|功能|定义文件|
 |--|--|--|
 |VdecCallBackerHelperVdecCallBackerAux|VdecCallBacker回调辅助类|base.py|
 |VencCallBackerHelperVencCallBackerAux|VencCallBackerr回调辅助类|base.py|
-
-
-
 
 ## 初始化和去初始化<a name="ZH-CN_TOPIC_0000001860000797"></a>
 
@@ -1167,7 +1047,6 @@ class MxBufferOutput:
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
 
 ### mx\_init<a name="ZH-CN_TOPIC_0000001860000217"></a>
 
@@ -1197,14 +1076,11 @@ mx_init(config: AppGlobalCfgExtra)
 |--|--|--|
 |config|AppGlobalCfgExtra|AppGlobalCfgExtra类型，应用全局配置。|
 
-
 **返回参数说明<a name="section34928557275"></a>**
 
 |数据结构|说明|
 |--|--|
 |int|程序执行返回的错误码。|
-
-
 
 ### mx\_deinit<a name="ZH-CN_TOPIC_0000001813200432"></a>
 
@@ -1213,8 +1089,9 @@ mx_init(config: AppGlobalCfgExtra)
 全局去初始化，释放Log、Device等相关资源，需与全局初始化接口（[mx\_init\(\)](#mx_init)）配套使用。
 
 > [!NOTE] 说明
->-   涉及申请Device侧资源的类（[Tensor](#ZH-CN_TOPIC_0000001813201172)、[Model](#ZH-CN_TOPIC_0000001813201248)、[Image](#ZH-CN_TOPIC_0000001813201280)、[ImageProcessor](#ZH-CN_TOPIC_0000001860120493)、[VideoEncoder](#ZH-CN_TOPIC_0000001813360488)和[VideoDecoder](#ZH-CN_TOPIC_0000001860120573)）与mx\_deinit\(\)的作用域冲突，因此，这些类的作用域不能大于或等于mx\_deinit\(\)的作用域。
->-   执行完mx\_deinit\(\)后，日志级别将会失效，且日志无法落盘。
+>
+>- 涉及申请Device侧资源的类（[Tensor](#ZH-CN_TOPIC_0000001813201172)、[Model](#ZH-CN_TOPIC_0000001813201248)、[Image](#ZH-CN_TOPIC_0000001813201280)、[ImageProcessor](#ZH-CN_TOPIC_0000001860120493)、[VideoEncoder](#ZH-CN_TOPIC_0000001813360488)和[VideoDecoder](#ZH-CN_TOPIC_0000001860120573)）与mx\_deinit\(\)的作用域冲突，因此，这些类的作用域不能大于或等于mx\_deinit\(\)的作用域。
+>- 执行完mx\_deinit\(\)后，日志级别将会失效，且日志无法落盘。
 
 **函数原型<a name="section997114918358"></a>**
 
@@ -1227,9 +1104,6 @@ mx_deinit()
 |数据结构|说明|
 |--|--|
 |int|程序执行返回的错误码。|
-
-
-
 
 ## 媒体数据处理<a name="ZH-CN_TOPIC_0000001860120721"></a>
 
@@ -1244,7 +1118,6 @@ Tensor数据类，作为模型推理的输入与输出的数据结构。
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
 
 #### Tensor<a name="ZH-CN_TOPIC_0000001860120189"></a>
 
@@ -1273,11 +1146,9 @@ Tensor(buffer: ndarray)
 |--|--|--|
 |buffer|numpy数组|待转换为Tensor的numpy数组。|
 
-
 **返回参数说明<a name="section5672104693618"></a>**
 
 Tensor对象。
-
 
 #### to\_device<a name="ZH-CN_TOPIC_0000001813361112"></a>
 
@@ -1297,11 +1168,9 @@ to_device(deviceId: int)
 |--|--|--|
 |deviceId|int|Device设备的ID号。|
 
-
 **抛异常接口<a name="section549713524306"></a>**
 
 分配Tensor内存失败及拷贝到Device侧失败，抛出Runtime异常。
-
 
 #### to\_host<a name="ZH-CN_TOPIC_0000001813360536"></a>
 
@@ -1319,7 +1188,6 @@ to_host()
 
 分配Tensor内存失败及拷贝到Host侧失败，抛出Runtime异常。
 
-
 #### Tensor类的属性列表<a name="ZH-CN_TOPIC_0000001860120485"></a>
 
 |属性名|说明|备注|
@@ -1328,16 +1196,14 @@ to_host()
 |dtype|Tensor数据类型|base.dtype数据类型。|
 |shape|Tensor的维度信息|返回的是list数据类型。|
 
-
-
 #### set\_tensor\_value<a name="ZH-CN_TOPIC_0000002311422001"></a>
 
 **函数功能<a name="section114117322353"></a>**
 
 设置Tensor的值，支持dtype.int32、dtype.uint8、dtype.float16、dtype.float32类型。
 
--   请注意数据类型与数据范围。
--   Tensor对象需在Device侧且数据类型与调用的set\_tensor\_value的方法匹配。
+- 请注意数据类型与数据范围。
+- Tensor对象需在Device侧且数据类型与调用的set\_tensor\_value的方法匹配。
 
 **函数原型<a name="section165101681683"></a>**
 
@@ -1352,12 +1218,9 @@ set_tensor_value(value: float, dataType: dtype)
 |value|float|需要设置的值，不可为空。|
 |dataType|dtype枚举类型|dataType: dtype转换类型，不可为空，支持的输入有：dtype.float16,dtype.float32,dtype.uint8,dtype.int32。|
 
-
 **返回参数说明<a name="section396462851513"></a>**
 
 返回进行张量设置值后的Tensor类数据。
-
-
 
 ### Image<a id="ZH-CN_TOPIC_0000001813201280"></a>
 
@@ -1371,13 +1234,12 @@ Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
 
-
 #### Image<a name="ZH-CN_TOPIC_0000001813361440"></a>
 
 **函数功能<a name="section848202711379"></a>**
 
--   构造一个空的Image对象。
--   从Host侧的numpy的ndarray转为Image对象。
+- 构造一个空的Image对象。
+- 从Host侧的numpy的ndarray转为Image对象。
 
 **函数原型<a name="section1762108194818"></a>**
 
@@ -1397,15 +1259,14 @@ Image(b: ndarray, format: image_format, imageSizeInfo: Tuple = DEFAULT_IMAGE_SIZ
 |format|image_format|图像色域格式，支持以下色域类型。<li>base.yuv_400<li>base.rgb<li>base.bgr<li>base.rgba<li>base.bgra<li>base.argb<li>base.abgr<br>b（输入ndarray）形状中的通道数（C）需要与色域类型一致，各色域类型对应通道数参见如下。<li>yuv_400为1。<li>bgr、rgb为3。<li>rgba、bgra、argb、abgr为4。|
 |imageSizeInfo|Tuple(Size, Size)|图像**有效宽高**与**对齐后宽高**的组合，有效宽、高应不超过对齐后的宽、高，输入方式参见如下。<br>tuple(有效宽高，对齐后的宽高)<li>有效宽、高取值范围为[6, 8192]。<li>对齐后宽、高取值范围为[16, 8192]，其中宽为16的倍数、高为2的倍数。<li>b（输入ndarray）形状中的高宽需要与有效宽高和对齐宽高其中之一保持一致。<li>默认值为DEFAULT_IMAGE_SIZE_INFO，其中**有效宽高**与**对齐后宽高**均为(0, 0)，若该参数为默认值，则自动根据b的形状获取有效宽高和对齐宽高。|
 
-
 > [!NOTE] 说明 
->-   从opencv读取图片转换的ndarray，若形状为WHC（宽，高，通道数），需要进行转置为HWC（高，宽，通道数）之后进行构造。
->-   从get\_tensor/to\_tensor/get\_original\_tensor接口获取的tensor，转换为ndarray后，形状为NHWC（个数，高，宽，通道数）或NHW（个数，高，宽），需要根据实际情况截取或扩展到HWC之后进行构造。
+>
+>- 从opencv读取图片转换的ndarray，若形状为WHC（宽，高，通道数），需要进行转置为HWC（高，宽，通道数）之后进行构造。
+>- 从get\_tensor/to\_tensor/get\_original\_tensor接口获取的tensor，转换为ndarray后，形状为NHWC（个数，高，宽，通道数）或NHW（个数，高，宽），需要根据实际情况截取或扩展到HWC之后进行构造。
 
 **返回参数说明<a name="section64217334514"></a>**
 
 Image对象。
-
 
 #### to\_tensor<a name="ZH-CN_TOPIC_0000001813360364"></a>
 
@@ -1423,7 +1284,6 @@ to_tensor()
 
 返回Tensor。
 
-
 #### get\_tensor<a name="ZH-CN_TOPIC_0000001813201208"></a>
 
 **函数功能<a name="section848202711379"></a>**
@@ -1440,7 +1300,6 @@ get_tensor()
 
 返回Tensor。
 
-
 #### get\_original\_tensor<a name="ZH-CN_TOPIC_0000001860000365"></a>
 
 **函数功能<a name="section848202711379"></a>**
@@ -1449,13 +1308,13 @@ get_tensor()
 
 支持以下图片色域类型。
 
--   base.yuv\_400
--   base.rgb
--   base.bgr
--   base.rgba
--   base.bgra
--   base.argb
--   base.abgr
+- base.yuv\_400
+- base.rgb
+- base.bgr
+- base.rgba
+- base.bgra
+- base.argb
+- base.abgr
 
 如需将图片转换为ndarray时，请将图片在Host侧通过该接口转为Tensor，再转为ndarray。
 
@@ -1468,7 +1327,6 @@ get_original_tensor()
 **返回参数说明<a name="section5672104693618"></a>**
 
 返回Tensor。
-
 
 #### to\_device<a name="ZH-CN_TOPIC_0000001860000725"></a>
 
@@ -1488,11 +1346,9 @@ to_device(deviceId: int)
 |--|--|--|
 |deviceId|int|Device设备的ID号。|
 
-
 **抛异常接口<a name="section549713524306"></a>**
 
 调用Tensor的to\_device函数失败，抛出Runtime异常。
-
 
 #### to\_host<a name="ZH-CN_TOPIC_0000001860120413"></a>
 
@@ -1509,7 +1365,6 @@ to_host()
 **抛异常接口<a name="section549713524306"></a>**
 
 调用Tensor的to\_host函数失败，抛出Runtime异常。
-
 
 #### serialize<a name="ZH-CN_TOPIC_0000001860000661"></a>
 
@@ -1530,8 +1385,6 @@ serialize(filePath: str, forceOverwrite: bool = False);
 |filePath|str|序列化后的数据文件保存路径（包括文件名称），不支持软链接。|
 |forceOverwrite|bool|保存时是否强制覆盖已有文件，默认为False，不覆盖。|
 
-
-
 #### unserialize<a name="ZH-CN_TOPIC_0000001860121033"></a>
 
 **函数功能<a name="section864313219"></a>**
@@ -1549,8 +1402,6 @@ unserialize(filePath: str);
 |参数名|类型|说明|
 |--|--|--|
 |filePath|str|落盘数据文件保存路径，输入文件大小支持范围为(0, 4GB]。|
-
-
 
 #### dump\_buffer<a name="ZH-CN_TOPIC_0000001860001353"></a>
 
@@ -1571,8 +1422,6 @@ dump_buffer(filePath: str, forceOverwrite: bool = False);
 |filePath|str|落盘数据文件路径（包含文件名称），不支持软链接。|
 |forceOverwrite|bool|保存时是否强制覆盖已有文件，默认为False，不覆盖。|
 
-
-
 #### Image类的属性列表<a name="ZH-CN_TOPIC_0000001813360404"></a>
 
 |属性名|说明|
@@ -1583,9 +1432,6 @@ dump_buffer(filePath: str, forceOverwrite: bool = False);
 |original_height|返回Image类的原始高。|
 |original_width|返回Image类的原始宽。|
 |format|返回图像的格式。|
-
-
-
 
 ### ImageProcessor<a id="ZH-CN_TOPIC_0000001860120493"></a>
 
@@ -1598,7 +1444,6 @@ dump_buffer(filePath: str, forceOverwrite: bool = False);
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
 
 #### convert\_format<a name="ZH-CN_TOPIC_0000002159448172"></a>
 
@@ -1616,14 +1461,12 @@ convert_format(inputImage: Image, outputFormat: image_format)
 
 |参数名|类型|说明|
 |--|--|--|
-|inputImage|Image类|输入转换前的Image类。decode接口和其他VPC接口获取的Image类可以直接作为输入。<li>输入图片宽高范围应该在32 * 6 ~ 4096 * 4096之间。<li>当前输入Image类的格式支持YUV_SP_420、YVU_SP_420、RGB_888、BGR_888。|
-|outputFormat|image_format枚举类|色域转换的目标格式，支持YUV_SP_420、YVU_SP_420、RGB_888、BGR_888四种格式对应的枚举类。<li>输出Image类的宽自动与16对齐，高与2对齐，因此宽高范围为：32 * 6 ~ 4096 * 4096。<li>输出Image类宽高保持与输入Image类一致。<li>请确保转换前的格式与转换后的格式不同。|
-
+|inputImage|Image类|输入转换前的Image类。decode接口和其他VPC接口获取的Image类可以直接作为输入。<li>输入图片宽高范围应该在32 \* 6 ~ 4096 \* 4096之间。<li>当前输入Image类的格式支持YUV_SP_420、YVU_SP_420、RGB_888、BGR_888。|
+|outputFormat|image_format枚举类|色域转换的目标格式，支持YUV_SP_420、YVU_SP_420、RGB_888、BGR_888四种格式对应的枚举类。<li>输出Image类的宽自动与16对齐，高与2对齐，因此宽高范围为：32 \* 6 ~ 4096 \* 4096。<li>输出Image类宽高保持与输入Image类一致。<li>请确保转换前的格式与转换后的格式不同。|
 
 **返回参数说明<a name="section819710191484"></a>**
 
 返回转换输出Image对象。
-
 
 #### crop<a id="ZH-CN_TOPIC_0000001860120601"></a>
 
@@ -1646,7 +1489,6 @@ crop(inputImage: Image, cropRectVec: List)
 |inputImage|Image类|输入抠图前的Image类。|
 |cropRectVec|List[Rect]|输入图像的抠图坐标框列表。|
 
-
 **返回参数说明<a name="section8858848122818"></a>**
 
 返回抠图后的Image类列表List\[Image\]。
@@ -1654,7 +1496,6 @@ crop(inputImage: Image, cropRectVec: List)
 **抛异常接口<a name="section549713524306"></a>**
 
 抠图失败，抛出Runtime异常。
-
 
 #### crop<a id="ZH-CN_TOPIC_0000001813200812"></a>
 
@@ -1677,7 +1518,6 @@ crop(inputImageVec: List, cropRectVec: List)
 |inputImageVec|List[Image]|输入抠图前的Image类列表。|
 |cropRectVec|List[Rect]|输入图像的抠图坐标框列表。|
 
-
 **返回参数说明<a name="section8858848122818"></a>**
 
 返回抠图后的Image类列表List\[Image\]。
@@ -1686,15 +1526,14 @@ crop(inputImageVec: List, cropRectVec: List)
 
 抠图失败，抛出Runtime异常。
 
-
 #### crop\_paste<a name="ZH-CN_TOPIC_0000001860121253"></a>
 
 **函数功能<a name="section2093910419288"></a>**
 
 ImageProcessor类的图像抠图并贴图接口。接口使用流程请参考[抠图贴图](../user_guide.md#抠图贴图)。
 
-1.  从“inputImage”中抠取一块图像，缩放至指定贴图区域的大小。
-2.  将抠图后的图片贴到“pastedImage”的指定贴图区域。输入输出格式、分辨率范围、对齐方式请参见[CropAndPaste](api_C++.md#cropandpaste)。
+1. 从“inputImage”中抠取一块图像，缩放至指定贴图区域的大小。
+2. 将抠图后的图片贴到“pastedImage”的指定贴图区域。输入输出格式、分辨率范围、对齐方式请参见[CropAndPaste](api_C++.md#cropandpaste)。
 
 **函数原型<a name="section16327853162119"></a>**
 
@@ -1710,11 +1549,9 @@ crop_paste(inputImage: Image, cropPasteRect: Tuple, pastedImage: Image)
 |cropPasteRect|Tuple(Rect, Rect)|输入图像的抠图参数。第一个Rect对应抠图参数，第二个Rect对应贴图参数。|
 |pastedImage|Image类|被贴图的Image类。|
 
-
 **抛异常接口<a name="section549713524306"></a>**
 
 抠图并贴图失败，抛出Runtime异常。
-
 
 #### crop\_resize<a name="ZH-CN_TOPIC_0000001860000577"></a>
 
@@ -1737,7 +1574,6 @@ crop_resize(inputImage: Image, cropResizeVec: List)
 |inputImage|Image类|输入抠图缩放前的Image类。|
 |cropResizeVec|List[tuple(Rect, Size)]|输入图像的抠图缩放参数列表。Rect为抠图坐标框，Size为缩放宽高。|
 
-
 **返回参数说明<a name="section8858848122818"></a>**
 
 返回抠图缩放后的Image类列表List\[Image\]。
@@ -1745,7 +1581,6 @@ crop_resize(inputImage: Image, cropResizeVec: List)
 **抛异常接口<a name="section549713524306"></a>**
 
 抠图缩放失败，抛出Runtime异常。
-
 
 #### decode<a name="ZH-CN_TOPIC_0000001860120797"></a>
 
@@ -1768,7 +1603,6 @@ decode(inputPath: str, decodeFormat: image_format)
 |inputPath|str|输入待解码的图片路径。|
 |decodeFormat|image_format枚举类|输入解码后图片的格式。（PNG格式解码无需设置。）|
 
-
 **返回参数说明<a name="section8858848122818"></a>**
 
 返回解码后的Image类。
@@ -1776,7 +1610,6 @@ decode(inputPath: str, decodeFormat: image_format)
 **抛异常接口<a name="section549713524306"></a>**
 
 图片路径错误、解码格式错误、解码失败，抛出Runtime异常。
-
 
 #### decode\_bytes<a name="ZH-CN_TOPIC_0000002277137254"></a>
 
@@ -1800,7 +1633,6 @@ decode_bytes(data: bytes, dataSize: int, decodeFormat: image_format)
 |dataSize|int|二进制数据有效长度。需与输入数据长度保持一致。|
 |decodeFormat|image_format枚举类|输入解码后图片的格式（PNG格式解码时无需设置），默认为base.nv12。|
 
-
 **返回参数说明<a name="section890820125118"></a>**
 
 返回解码后的image类。
@@ -1808,7 +1640,6 @@ decode_bytes(data: bytes, dataSize: int, decodeFormat: image_format)
 **抛异常接口<a name="section1326252395115"></a>**
 
 数据类型或长度不匹配、解码格式错误、解码失败，抛出Runtime异常。
-
 
 #### encode<a name="ZH-CN_TOPIC_0000001813360380"></a>
 
@@ -1832,11 +1663,9 @@ encode(inputImage: Image, savePath: str, encodeLevel: int)
 |savePath|str|输入编码后保存的图片路径，文件后缀名限制为 **jpg**，编码后图片保存至该路径下。|
 |encodeLevel|int|默认为100，Atlas 200I/500 A2 推理产品、Atlas 推理系列产品的范围为[1, 100]。|
 
-
 **抛异常接口<a name="section549713524306"></a>**
 
 图片路径错误、编码级别错误、编码失败，抛出Runtime异常。
-
 
 #### encode\_bytes<a name="ZH-CN_TOPIC_0000002311713809"></a>
 
@@ -1859,7 +1688,6 @@ encode_bytes(inputImage: Image, encodeLevel: int)
 |inputImage|Image|输入编码前的Image类。|
 |encodeLevel|int|默认为“100”，Atlas 200I/500 A2 推理产品、Atlas 推理系列产品的范围为[1,100]。|
 
-
 **返回参数说明<a name="section9115185205911"></a>**
 
 编码后的二进制bytes数据。
@@ -1867,7 +1695,6 @@ encode_bytes(inputImage: Image, encodeLevel: int)
 **抛异常接口<a name="section17419261600"></a>**
 
 编码级别错误、编码失败，抛出Runtime异常。
-
 
 #### ImageProcessor<a name="ZH-CN_TOPIC_0000001813361288"></a>
 
@@ -1887,11 +1714,9 @@ ImageProcessor(deviceId: int = 0)
 |--|--|--|
 |deviceId|int|图像处理类部署的芯片，默认为0号芯片。取值范围：[0, 识别到的芯片个数 - 1]|
 
-
 **返回参数说明<a name="section5672104693618"></a>**
 
 ImageProcessor对象。
-
 
 #### padding<a name="ZH-CN_TOPIC_0000001860120245"></a>
 
@@ -1916,7 +1741,6 @@ padding(inputImage: Image, padDim: Dim, color: Color, borderType: borderType)
 |color|Color类|输入补边三通道颜色，仅在borderType设置为BORDER_CONSTANT时有效。|
 |borderType|borderType参数枚举类|输入补边方式。具体请参见borderType补边方式枚举类型。|
 
-
 **返回参数说明<a name="section209784209154"></a>**
 
 返回补边后的Image类。
@@ -1924,7 +1748,6 @@ padding(inputImage: Image, padDim: Dim, color: Color, borderType: borderType)
 **抛异常接口<a name="section13001924121518"></a>**
 
 补边失败，抛出Runtime异常。
-
 
 #### resize<a name="ZH-CN_TOPIC_0000001860120949"></a>
 
@@ -1948,7 +1771,6 @@ resize(inputImage: Image, resize: Size, interpolation: interpolation)
 |resize|Size类|输入图像缩放的宽高。|
 |interpolation|interpolation参数枚举类|输入图像的缩放方式，默认为HUAWEI_HIGH_ORDER_FILTER。|
 
-
 **返回参数说明<a name="section8858848122818"></a>**
 
 返回缩放后的Image类。
@@ -1956,8 +1778,6 @@ resize(inputImage: Image, resize: Size, interpolation: interpolation)
 **抛异常接口<a name="section549713524306"></a>**
 
 缩放失败，抛出Runtime异常。
-
-
 
 ### VdecCallBacker<a name="ZH-CN_TOPIC_0000001860000973"></a>
 
@@ -1970,7 +1790,6 @@ resize(inputImage: Image, resize: Size, interpolation: interpolation)
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
 
 #### 回调函数格式<a name="ZH-CN_TOPIC_0000001813361060"></a>
 
@@ -1996,10 +1815,8 @@ def callback_func(decodedImage: Image, channelId: int, frameId: int) -> None
 |channelId|int|视频流索引，在VideoDecoder类初始化设置。|
 |frameId|int|视频帧索引，由VideoDecoder类的decode函数来设置。|
 
-
 > [!NOTICE] 须知 
 >在回调函数中抛异常会触发C++侧抛出异常，引起程序coredump，建议在回调中捕获异常并处理。
-
 
 #### VdecCallBacker<a name="ZH-CN_TOPIC_0000001860000329"></a>
 
@@ -2016,7 +1833,6 @@ VdecCallBacker()
 **返回参数说明<a name="section5672104693618"></a>**
 
 VdecCallBacker对象。
-
 
 #### registerVdecCallBack<a name="ZH-CN_TOPIC_0000001860120637"></a>
 
@@ -2036,12 +1852,9 @@ registerVdecCallBack(callback_func: Callable)
 |--|--|--|
 |callback_func|Python定义的函数名|需传入按指定格式定义的函数，否则将抛出异常。|
 
-
 **抛异常接口<a name="section549713524306"></a>**
 
 未按指定格式传入定义的回调函数，将抛出TypeError异常或Runtime异常。
-
-
 
 ### VideoDecoder<a id="ZH-CN_TOPIC_0000001860120573"></a>
 
@@ -2051,14 +1864,13 @@ registerVdecCallBack(callback_func: Callable)
 
 接口使用流程请参考[视频解码](../user_guide.md#视频解码)。
 
--   为确保资源正确回收，建议在函数或类的成员方法中定义和运行VideoDecoder。若在全局作用域中定义VideoDecoder，则需要在程序结束时使用del函数删除构造的VideoDecoder对象。
+- 为确保资源正确回收，建议在函数或类的成员方法中定义和运行VideoDecoder。若在全局作用域中定义VideoDecoder，则需要在程序结束时使用del函数删除构造的VideoDecoder对象。
 
 **支持的型号<a name="section1714913853014"></a>**
 
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
 
 #### decode<a name="ZH-CN_TOPIC_0000001860001009"></a>
 
@@ -2079,7 +1891,6 @@ decode(inputData: buffer, frameId: int)
 |inputData|二进制数据类型|传入视频帧二进制数据。|
 |frameId|int|输入解码前视频帧的帧ID。|
 
-
 **返回参数说明<a name="section8858848122818"></a>**
 
 无。（默认解码方式为非实时出帧，解码过程中存在缓存帧，Vdec需要在收到码流中的多帧数据后，才开始输出解码结果。）
@@ -2087,7 +1898,6 @@ decode(inputData: buffer, frameId: int)
 **抛异常接口<a name="section549713524306"></a>**
 
 解码失败，抛出Runtime异常。
-
 
 #### VideoDecoder<a name="ZH-CN_TOPIC_0000001813360348"></a>
 
@@ -2112,12 +1922,9 @@ VideoDecoder(pyVdecConfig: VideoDecodeConfig, pyVdecCallBacker: VdecCallBacker, 
 |deviceId|int|视频解码器部署的芯片，默认为0号芯片。取值范围：[0, 识别到的芯片个数 - 1]。|
 |channelId|int|视频解码器的视频流索引。Atlas 200I/500 A2 推理产品：取值范围：[0, 127]。若存在重复构造相同channelId的场景，则会构造失败。Atlas 推理系列产品：取值范围：[0, 255]。若存在重复构造相同channelId的场景，则会进行自动调整channelId。|
 
-
 **返回参数说明<a name="section726365285"></a>**
 
 VideoDecoder对象。
-
-
 
 ### VencCallBacker<a name="ZH-CN_TOPIC_0000001860120293"></a>
 
@@ -2130,7 +1937,6 @@ VideoDecoder对象。
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
 
 #### 回调函数格式<a name="ZH-CN_TOPIC_0000001813200508"></a>
 
@@ -2157,10 +1963,8 @@ def callback_func(pyBytes: bytes, outDataSize: int, channelId: int, frameId: int
 |channelId|int|视频流索引，在VideoEncoder类初始化设置。|
 |frameId|int|视频帧索引，由VideoEncoder类的encode函数来设置。|
 
-
 > [!NOTICE] 须知 
 >在回调函数中抛异常会触发C++侧抛出异常，引起程序coredump，建议在回调中捕获异常并处理。
-
 
 #### VencCallBacker<a name="ZH-CN_TOPIC_0000001813200868"></a>
 
@@ -2177,7 +1981,6 @@ VencCallBacker()
 **返回参数说明<a name="section5672104693618"></a>**
 
 VencCallBacker对象。
-
 
 #### registerVencCallBack<a name="ZH-CN_TOPIC_0000001813360580"></a>
 
@@ -2197,12 +2000,9 @@ registerVencCallBack(callback_func: Callable)
 |--|--|--|
 |callback_func|Python定义的函数名|需传入按指定格式定义的函数，否则将抛出异常。|
 
-
 **抛异常接口<a name="section549713524306"></a>**
 
 未按指定格式传入定义的回调函数，将抛出TypeError异常或Runtime异常。
-
-
 
 ### VideoEncoder<a id="ZH-CN_TOPIC_0000001813360488"></a>
 
@@ -2212,7 +2012,7 @@ VideoEncoder类，作为视频编码类，主要开放视频编码接口。
 
 接口使用流程请参考[视频编码](../user_guide.md#视频编码)。
 
--   为确保资源正确回收，建议在函数或类的成员方法中定义和运行VideoEncoder。若在全局作用域中定义VideoEncoder，则需要在程序结束时使用del函数删除构造的VideoEncoder对象。
+- 为确保资源正确回收，建议在函数或类的成员方法中定义和运行VideoEncoder。若在全局作用域中定义VideoEncoder，则需要在程序结束时使用del函数删除构造的VideoEncoder对象。
 
 **支持的型号<a name="section1714913853014"></a>**
 
@@ -2221,10 +2021,10 @@ Atlas 200I/500 A2 推理产品
 Atlas 推理系列产品
 
 > [!NOTE] 说明 
->-   VideoEncoder类涉及申请Device侧资源，与mx\_deinit的作用域冲突，因此，其作用域不能大于或等于mx\_deinit的作用域。
->-   编码器运行时可能会因为送帧频率过快、大于芯片处理速度等原因，导致某一帧编码失败。建议用户合理控制调用Encode接口的频率。如，当编码帧率为30fps时，调用Encode接口的间隔可以控制在33ms。
->-   当某一帧编码失败时，编码器会继续处理后续帧数据。用户可以通过回调函数中的帧ID等信息感知到该帧编码结果未获取。
-
+>
+>- VideoEncoder类涉及申请Device侧资源，与mx\_deinit的作用域冲突，因此，其作用域不能大于或等于mx\_deinit的作用域。
+>- 编码器运行时可能会因为送帧频率过快、大于芯片处理速度等原因，导致某一帧编码失败。建议用户合理控制调用Encode接口的频率。如，当编码帧率为30fps时，调用Encode接口的间隔可以控制在33ms。
+>- 当某一帧编码失败时，编码器会继续处理后续帧数据。用户可以通过回调函数中的帧ID等信息感知到该帧编码结果未获取。
 
 #### encode<a name="ZH-CN_TOPIC_0000001860120337"></a>
 
@@ -2245,11 +2045,9 @@ encode(inputImage: Image, frameId: int)
 |inputImage|Image类|输入编码前的Image类。|
 |frameId|int|输入视频帧索引。|
 
-
 **抛异常接口<a name="section549713524306"></a>**
 
 编码失败，抛出Runtime异常。
-
 
 #### VideoEncoder<a name="ZH-CN_TOPIC_0000001813201096"></a>
 
@@ -2274,12 +2072,9 @@ VideoEncoder(pyVencConfig: VideoEncodeConfig, pyVencCallBacker: VencCallBacker, 
 |deviceId|int|视频编码器部署的芯片，默认为0号芯片。取值范围：[0, 识别到的芯片个数 - 1]。|
 |channelId|int|视频编码器的视频流索引。默认值为0。<li>Atlas 200I/500 A2 推理产品：只能实例化一个VideoEncoder，因此用户无需设置channelId。<li>Atlas 推理系列产品：取值范围：[0, 127]。|
 
-
 **返回参数说明<a name="section726365285"></a>**
 
 VideoEncoder对象。
-
-
 
 ### DeviceMemory<a name="ZH-CN_TOPIC_0000001860000525"></a>
 
@@ -2292,7 +2087,6 @@ VideoEncoder对象。
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
 
 #### DeviceMemory<a name="ZH-CN_TOPIC_0000001813201256"></a>
 
@@ -2312,11 +2106,9 @@ DeviceMemory(size: int)
 |--|--|--|
 |size|int|申请内存的大小，单位Byte。|
 
-
 **返回参数说明<a name="section059318141568"></a>**
 
 DeviceMemory对象。
-
 
 #### get\_data<a name="ZH-CN_TOPIC_0000001860120093"></a>
 
@@ -2336,9 +2128,6 @@ get_data()
 |--|--|--|
 |Output|int|返回对象内存指针中的值。|
 
-
-
-
 ### dvpp<a name="ZH-CN_TOPIC_0000001860001073"></a>
 
 #### 模块说明<a name="ZH-CN_TOPIC_0000001813200764"></a>
@@ -2350,7 +2139,6 @@ dvpp模块预计于2025年12月退出，建议使用[ImageProcessor类](#imagepr
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
 
 #### read\_image<a name="ZH-CN_TOPIC_0000001813200836"></a>
 
@@ -2376,7 +2164,6 @@ read_image(inputPath: str, deviceId: int, decodeFormat: image_format)
 |deviceId|int|Device设备的ID号。|
 |decodeFormat|image_format枚举类|输入图片的解码格式。|
 
-
 **返回参数说明<a name="section17312155433315"></a>**
 
 Image对象。
@@ -2384,7 +2171,6 @@ Image对象。
 **抛异常接口<a name="section549713524306"></a>**
 
 创建ImageProcessor失败、图片解码失败，抛出Runtime异常。
-
 
 #### resize<a name="ZH-CN_TOPIC_0000001860120421"></a>
 
@@ -2408,7 +2194,6 @@ resize(inputImage: Image, resize: Size, interpolation: interpolation)
 |resize|Size类|输入图像缩放的宽高。|
 |interpolation|interpolation参数枚举类|输入图像的缩放方式，默认为HUAWEI_HIGH_ORDER_FILTER 。|
 
-
 **返回参数说明<a name="section8881352346"></a>**
 
 Image对象。
@@ -2416,8 +2201,6 @@ Image对象。
 **抛异常接口<a name="section549713524306"></a>**
 
 创建ImageProcessor失败、图片缩放失败，抛出Runtime异常。
-
-
 
 ### TensorOperations<a name="ZH-CN_TOPIC_0000002254020894"></a>
 
@@ -2429,8 +2212,8 @@ Image对象。
 
 接口的硬件支持情况如[表1](#table56016237434)所示，标识的含义如下：
 
--   √：支持
--   x：不支持
+- √：支持
+- x：不支持
 
 **表 1**  接口的硬件支持情况<a id="table56016237434"></a>
 
@@ -2447,8 +2230,6 @@ Image对象。
 |min_operator|√|√|x|
 |max_operator|√|√|x|
 
-
-
 #### clip<a name="ZH-CN_TOPIC_0000002253919992"></a>
 
 **函数功能<a name="section581113337449"></a>**
@@ -2457,8 +2238,8 @@ Image对象。
 
 当前支持Atlas 推理系列产品和Atlas 200I/500 A2 推理产品。
 
--   接口中的输入输出Tensor必须在Device侧。
--   输入参数对应Tensor的形状（Shape）不超过4维。
+- 接口中的输入输出Tensor必须在Device侧。
+- 输入参数对应Tensor的形状（Shape）不超过4维。
 
 **函数原型<a name="section373951414312"></a>**
 
@@ -2474,11 +2255,9 @@ clip(inputTensor: Tensor, minVal: float, maxVal: float)
 |minVal|输入|float类型，张量中裁剪后的最小值，小于最小值的元素将会被替换为最小值。“minVal”需小于或等于“maxVal”。|
 |maxVal|输入|float类型，张量中裁剪后的最大值，大于最大值的元素将会被替换为最大值。“maxVal”需大于或等于“minVal”。|
 
-
 **返回参数说明<a name="section1548214278509"></a>**
 
 返回裁剪后的Tensor类数据。
-
 
 #### convert\_to<a name="ZH-CN_TOPIC_0000002288480289"></a>
 
@@ -2488,7 +2267,7 @@ clip(inputTensor: Tensor, minVal: float, maxVal: float)
 
 当前支持Atlas 推理系列产品和Atlas 200I/500 A2 推理产品。
 
--   接口中的输入输出Tensor必须在Device侧。
+- 接口中的输入输出Tensor必须在Device侧。
 
 **函数原型<a name="section11112154114217"></a>**
 
@@ -2503,11 +2282,9 @@ convert_to(inputTensor: Tensor, dataType: dtype)
 |inputTensor|输入|Tensor类，输入张量。|
 |dataType|输入|dtype类，指定转换的类型。|
 
-
 **返回参数说明<a name="section3618133710241"></a>**
 
 返回类型转换后的Tensor类数据。
-
 
 #### cvt\_color<a name="ZH-CN_TOPIC_0000002288553333"></a>
 
@@ -2517,8 +2294,8 @@ convert_to(inputTensor: Tensor, dataType: dtype)
 
 若设置“keepMargin”为“true”，输出宽度自动与16对齐。默认值为“false”，不保留Tensor中无效的边界区域。各产品支持的色域转换类型如[表1 色域转换类型](#table399416321366)所示，标识的含义如下：
 
--   √：支持
--   x：不支持
+- √：支持
+- x：不支持
 
     **表 1**  色域转换类型<a id="table399416321366"></a>
 
@@ -2544,7 +2321,6 @@ convert_to(inputTensor: Tensor, dataType: dtype)
 |GRAY转RGB|x|√|x|
 |RGB转mRGBA|x|√|x|
 
-
 > [!NOTE] 说明 
 >RGBA转mRGBA需要依赖CANN 8.0.RC1或CANN 8.0.RC1以后的版本。
 
@@ -2562,11 +2338,9 @@ cvt_color(inputTensor: Tensor, cvtColorMode: cvt_color_mode, keepMargin = False)
 |cvtColorMode|输入|枚举类值，对应色域转换的原始类型和目标类型。若**“cvtColorMode”**色域类型为“base.color_bgr2yuvsp420”、“base.color_rgb2yuvsp420”、“base.color_rgb2yvusp420”或base.color_bgr2yvusp420：<li>建议输入的RGB Tensor宽高为偶数，否则输出图片的边缘可能存在异常数据。<li>输出张量的高为输入张量高的1.5倍。例如，输入高为4096，输出的高则为6144，超过部分DVPP接口的限制，使用时需要注意是否满足后续业务需求。|
 |keepMargin|输入|输出的张量中是否保留Tensor中无效的边界区域，默认为False，不保留Tensor中无效的边界区域。若设置“keepMargin”为“true”，输出宽度自动与16对齐，保留无效区域。<br>当cvtColorMode=base.color_gray2rgb或cvtColorMode=base.color_rgba2mrgba时，该参数无效。|
 
-
 **返回参数说明<a name="section92661820181518"></a>**
 
 返回色域转换后的Tensor类数据。
-
 
 #### transpose\_operator<a name="ZH-CN_TOPIC_0000002288584117"></a>
 
@@ -2576,7 +2350,7 @@ cvt_color(inputTensor: Tensor, cvtColorMode: cvt_color_mode, keepMargin = False)
 
 功能仅支持在Device侧的Tensor数据。
 
--   输入参数对应Tensor的形状（Shape）不超过4维。
+- 输入参数对应Tensor的形状（Shape）不超过4维。
 
 **函数原型<a name="section0669166133016"></a>**
 
@@ -2591,11 +2365,9 @@ transpose_operator(input: Tensor, axes: List[int])
 |input|Tensor类|待转置Tensor类。维度支持2维、3维、4维，数据类型支持base.dtype.float32、base.dtype.float16、base.dtype.uint8，具体请参见Tensor类的属性列表。|
 |axes|List[int]|转置选项，长度必须与输入Tensor的维度一致。如传入空列表，则按照反序转置进行处理。若不为空列表则axes中的元素必须包含[0, size-1]区间中的数且每个数只能出现一次，其中size为输入Tensor的维度。|
 
-
 **返回参数说明<a name="section22881624164217"></a>**
 
 返回转置后的Tensor类数据。
-
 
 #### divide<a name="ZH-CN_TOPIC_0000002267926132"></a>
 
@@ -2605,11 +2377,11 @@ transpose_operator(input: Tensor, axes: List[int])
 
 当前支持Atlas 推理系列产品和Atlas 200I/500 A2 推理产品。
 
--   接口中的输入输出Tensor必须在Device侧。
--   输入参数对应Tensor的形状（Shape）相等且不超过4维。
+- 接口中的输入输出Tensor必须在Device侧。
+- 输入参数对应Tensor的形状（Shape）相等且不超过4维。
 
--   scale参数仅支持在Atlas 推理系列产品下传入。支持不同输入数据类型，输出数据类型与精度高的输入Tensor保持一致。
--   请注意处理数据类型越界问题。
+- scale参数仅支持在Atlas 推理系列产品下传入。支持不同输入数据类型，输出数据类型与精度高的输入Tensor保持一致。
+- 请注意处理数据类型越界问题。
 
 **函数原型<a name="section7182916101818"></a>**
 
@@ -2625,11 +2397,9 @@ divide(inputTensor1: Tensor, inputTensor2: Tensor, scale)
 |inputTensor2|Tensor类|除数，输入张量，支持dtype.float16、dtype.float32、dtype.uint8类型输入。|
 |scale|float|可选参数，表示被除数被缩放的倍数（该参数仅支持在Atlas 推理系列产品下使用）。|
 
-
 **返回参数说明<a name="section02231335132519"></a>**
 
 返回相除后的Tensor类数据。
-
 
 #### multiply<a name="ZH-CN_TOPIC_0000002302637117"></a>
 
@@ -2639,10 +2409,10 @@ divide(inputTensor1: Tensor, inputTensor2: Tensor, scale)
 
 当前支持Atlas 推理系列产品和Atlas 200I/500 A2 推理产品。
 
--   接口中的输入输出Tensor必须在Device侧。
--   输入参数对应Tensor的形状（Shape）相等且不超过4维。
--   当不传入scale时，输入参数的各数据类型需保持一致；若传入，支持不同输入数据类型，输出数据类型与精度高的输入Tensor保持一致。
--   请注意处理数据类型越界问题。
+- 接口中的输入输出Tensor必须在Device侧。
+- 输入参数对应Tensor的形状（Shape）相等且不超过4维。
+- 当不传入scale时，输入参数的各数据类型需保持一致；若传入，支持不同输入数据类型，输出数据类型与精度高的输入Tensor保持一致。
+- 请注意处理数据类型越界问题。
 
 **函数原型<a name="section74003459493"></a>**
 
@@ -2658,11 +2428,9 @@ multiply(inputTensor1: Tensor, inputTensor2: Tensor, scale)
 |inputTensor2|Tensor类|乘数，输入张量，支持dtype.float16、dtype.float32、dtype.uint8类型输入。|
 |scale|float|可选参数，表示结果被缩放的倍数。|
 
-
 **返回参数说明<a name="section20653159085"></a>**
 
 返回相乘后的Tensor类数据。
-
 
 #### subtract<a name="ZH-CN_TOPIC_0000002268206994"></a>
 
@@ -2672,9 +2440,9 @@ multiply(inputTensor1: Tensor, inputTensor2: Tensor, scale)
 
 当前支持Atlas 推理系列产品和Atlas 200I/500 A2 推理产品。
 
--   接口中的输入输出Tensor必须在Device侧。
--   输入参数对应Tensor的形状（Shape）相等且不超过4维。
--   请注意处理数据类型越界问题。
+- 接口中的输入输出Tensor必须在Device侧。
+- 输入参数对应Tensor的形状（Shape）相等且不超过4维。
+- 请注意处理数据类型越界问题。
 
 **函数原型<a name="section1372410286522"></a>**
 
@@ -2689,11 +2457,9 @@ subtract(inputTensor1: Tensor, inputTensor2: Tensor,)
 |inputTensor1|Tensor类|被减数，输入张量，支持dtype.float16、dtype.float32、dtype.uint8类型输入。|
 |inputTensor2|Tensor类|减数，输入张量，支持dtype.float16、dtype.float32、dtype.uint8类型输入。|
 
-
 **返回参数说明<a name="section5564112918537"></a>**
 
 返回相减后的Tensor类数据。
-
 
 #### add<a name="ZH-CN_TOPIC_0000002268880908"></a>
 
@@ -2703,9 +2469,9 @@ subtract(inputTensor1: Tensor, inputTensor2: Tensor,)
 
 当前支持Atlas 推理系列产品和Atlas 200I/500 A2 推理产品。
 
--   接口中的输入输出Tensor必须在Device侧。
--   输入参数对应Tensor的形状（Shape）相等且不超过4维。
--   请注意处理数据类型越界问题。
+- 接口中的输入输出Tensor必须在Device侧。
+- 输入参数对应Tensor的形状（Shape）相等且不超过4维。
+- 请注意处理数据类型越界问题。
 
 **函数原型<a name="section27682813263"></a>**
 
@@ -2720,11 +2486,9 @@ add(inputTensor1: Tensor, inputTensor2: Tensor,)
 |inputTensor1|Tensor类|加数，输入张量，支持dtype.float16、dtype.float32、dtype.uint8类型输入。|
 |inputTensor2|Tensor类|加数，输入张量，支持dtype.float16、dtype.float32、dtype.uint8类型输入。|
 
-
 **返回参数说明<a name="section84053267275"></a>**
 
 返回相加后的Tensor类数据。
-
 
 #### min\_operator<a name="ZH-CN_TOPIC_0000002311348953"></a>
 
@@ -2732,9 +2496,9 @@ add(inputTensor1: Tensor, inputTensor2: Tensor,)
 
 图像处理类算法，张量取较小值计算min\_operator，对两个输入Tensor按元素比较并取较小值，支持dtype.float16、dtype.float32、dtype.uint8类型。
 
--   当前支持Atlas 推理系列产品和Atlas 200I/500 A2 推理产品。
--   接口中的输入Tensor必须在Device侧。
--   输入参数对应Tensor的类型和形状（Shape）一致且不超过4维。
+- 当前支持Atlas 推理系列产品和Atlas 200I/500 A2 推理产品。
+- 接口中的输入Tensor必须在Device侧。
+- 输入参数对应Tensor的类型和形状（Shape）一致且不超过4维。
 
 **函数原型<a name="section1810165112113"></a>**
 
@@ -2749,11 +2513,9 @@ min_operator(inputTensor1: Tensor, inputTensor2: Tensor,)
 |inputTensor1|Tensor类|输入张量，支持dtype.float16、dtype.float32、dtype.uint8类型输入。|
 |inputTensor2|Tensor类|输入张量，支持dtype.float16、dtype.float32、dtype.uint8类型输入。|
 
-
 **返回参数说明<a name="section1075778171614"></a>**
 
 返回进行逐项取较小值后的Tensor类数据。
-
 
 #### max\_operator<a name="ZH-CN_TOPIC_0000002276779316"></a>
 
@@ -2761,9 +2523,9 @@ min_operator(inputTensor1: Tensor, inputTensor2: Tensor,)
 
 图像处理类算法，张量取较大值计算max\_operator，对两个输入Tensor按元素比较并取较大值，支持dtype.float16、dtype.float32、dtype.uint8类型。
 
--   当前支持Atlas 推理系列产品和Atlas 200I/500 A2 推理产品。
--   接口中的输入Tensor必须在Device侧。
--   输入参数对应Tensor的类型和形状（Shape）一致且形状不超过4维。
+- 当前支持Atlas 推理系列产品和Atlas 200I/500 A2 推理产品。
+- 接口中的输入Tensor必须在Device侧。
+- 输入参数对应Tensor的类型和形状（Shape）一致且形状不超过4维。
 
 **函数原型<a name="section13555354143117"></a>**
 
@@ -2778,12 +2540,9 @@ max_operator(inputTensor1: Tensor, inputTensor2: Tensor,)
 |inputTensor1|Tensor类|输入张量，支持dtype.float16、dtype.float32、dtype.uint8类型输入。|
 |inputTensor2|Tensor类|输入张量，支持dtype.float16、dtype.float32、dtype.uint8类型输入。|
 
-
 **返回参数说明<a name="section10261838123217"></a>**
 
 返回进行逐项取较大值后的Tensor类数据。
-
-
 
 ### batch\_concat<a name="ZH-CN_TOPIC_0000001860120409"></a>
 
@@ -2803,7 +2562,6 @@ batch_concat(inputs: List)
 |--|--|--|
 |inputs|List[base.Tensor]|Tensor列表。|
 
-
 **返回参数说明<a name="section173905354373"></a>**
 
 Tensor对象。
@@ -2817,7 +2575,6 @@ Tensor对象。
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
 
 ### bytes\_to\_ptr<a name="ZH-CN_TOPIC_0000001860120405"></a>
 
@@ -2837,7 +2594,6 @@ bytes_to_ptr(data: buffer)
 |--|--|--|
 |data|二进制数据类型|传二进制数据。|
 
-
 **返回参数说明<a name="section059318141568"></a>**
 
 返回指针地址值。
@@ -2847,7 +2603,6 @@ bytes_to_ptr(data: buffer)
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
 
 ### image<a name="ZH-CN_TOPIC_0000001860001185"></a>
 
@@ -2871,7 +2626,6 @@ image(inputPath: str, deviceId: int, decodeFormat: image_format)
 |deviceId|int|Device设备的ID号。|
 |decodeFormat|image_format枚举类|输入图片的解码格式。|
 
-
 **返回参数说明<a name="section17312155433315"></a>**
 
 Image对象。
@@ -2885,7 +2639,6 @@ Image对象。
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
 
 ### resize\_info<a name="ZH-CN_TOPIC_0000001860000465"></a>
 
@@ -2908,7 +2661,6 @@ resize_info(image: Image, resize_height: int, resize_width: int, resize_type: Re
 |resize_width|int|缩放宽度。|
 |resize_type|ResizeType|缩放类型。|
 
-
 **返回参数说明<a name="section172989202319"></a>**
 
 ResizedImageInfo对象。
@@ -2918,7 +2670,6 @@ ResizedImageInfo对象。
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
 
 ### transpose<a name="ZH-CN_TOPIC_0000001813200732"></a>
 
@@ -2941,7 +2692,6 @@ transpose(input: Tensor, axes: List)
 |input|Tensor类|待转置Tensor类。维度支持2维、3维、4维，数据类型支持base.dtype.float32、base.dtype.float16、base.dtype.uint8，具体请参见Tensor类的属性列表。|
 |axes|List[int]|转置选项，默认值为空。如果未指定具体axes，则默认生成反序axes对input中的数据进行反序转置。例如：三维张量默认生成反序axes为{2, 1, 0} 。|
 
-
 **返回参数说明<a name="section059318141568"></a>**
 
 返回转置后的Tensor类数据。
@@ -2951,7 +2701,6 @@ transpose(input: Tensor, axes: List)
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
 
 ### tensor\_to\_image<a name="ZH-CN_TOPIC_0000002159288436"></a>
 
@@ -2967,8 +2716,8 @@ Atlas 推理系列产品
 
 例如：
 
--   Tensor类对象对应的图片宽、高为500、499时，转换得到的Image类对象在补边后，通过Image类对象属性original\_width和original\_height可获得原始宽、高分别为500、499，通过Image类对象属性width和height可获得对齐后的宽、高分别为512、500。
--   Tensor类对象对应的图片宽、高为512、500时，转换得到的Image类对象不需要补边，即转换后的Image类对象的原始宽、高分别为512、500，Image类对象的对齐后的宽、高分别为512、500。
+- Tensor类对象对应的图片宽、高为500、499时，转换得到的Image类对象在补边后，通过Image类对象属性original\_width和original\_height可获得原始宽、高分别为500、499，通过Image类对象属性width和height可获得对齐后的宽、高分别为512、500。
+- Tensor类对象对应的图片宽、高为512、500时，转换得到的Image类对象不需要补边，即转换后的Image类对象的原始宽、高分别为512、500，Image类对象的对齐后的宽、高分别为512、500。
 
 **函数原型<a name="section9190146174813"></a>**
 
@@ -2983,12 +2732,9 @@ tensor_to_image(tensor: Tensor, imageFormat: image_format)
 |tensor|Tensor类|Tensor类，输入张量。输入需满足以下要求。<li>元素类型需为Uint8类型。<li>Tensor的维度需为2（YUV400格式时）、3、4。<li>Tensor的宽、高、通道数需与imageFormat相匹配。|
 |imageFormat|image_format枚举类|指定图片的格式，需与inputTensor数据所对应的图片格式相匹配。|
 
-
 **返回参数说明<a name="section142051846164817"></a>**
 
 返回对应的Image对象。
-
-
 
 ## 模型推理<a name="ZH-CN_TOPIC_0000001813361080"></a>
 
@@ -3003,7 +2749,6 @@ tensor_to_image(tensor: Tensor, imageFormat: image_format)
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
 
 #### infer<a name="ZH-CN_TOPIC_0000001813200844"></a>
 
@@ -3034,13 +2779,11 @@ infer(tensorList: List)
 |tensor|Tensor对象|模型推理所需Tensor。如需输入多个Tensor，请使用”,”以分隔形式传入，最大传入Tensor数量为1024。|
 |args|可变参数|
 
-
 原型二：
 
 |参数名|类型|说明|
 |--|--|--|
 |tensorList|List[base.Tensor]|Tensor列表。|
-
 
 **返回参数说明<a name="section8858848122818"></a>**
 
@@ -3049,7 +2792,6 @@ infer(tensorList: List)
 **抛异常接口<a name="section549713524306"></a>**
 
 参数校验失败，分配Tensor内存失败及推理失败，抛出Runtime异常。
-
 
 #### input\_dtype<a name="ZH-CN_TOPIC_0000001813201344"></a>
 
@@ -3069,11 +2811,9 @@ input_dtype(index: int)
 |--|--|--|
 |index|int|模型输入的索引（第index个输入）。|
 
-
 **返回参数说明<a name="section8858848122818"></a>**
 
 返回输入Tensor的数据类型，base.dtype类型。
-
 
 #### input\_shape<a name="ZH-CN_TOPIC_0000001860120273"></a>
 
@@ -3093,11 +2833,9 @@ input_shape(index: int)
 |--|--|--|
 |index|int|模型输入的索引（第index个输入）。|
 
-
 **返回参数说明<a name="section8858848122818"></a>**
 
 返回对应输入的Tensor的shape信息，List\[int\]类型。
-
 
 #### Model<a name="ZH-CN_TOPIC_0000001813200440"></a>
 
@@ -3128,7 +2866,6 @@ Model(option: ModelLoadOptV2, deviceId: int)
 |modelPath|str|模型路径。|
 |deviceId|int|模型部署的芯片ID，默认为0号芯片。（-1表示模型部署在Host侧，为保留字段，请勿使用。）|
 
-
 原型二：
 
 |参数名|类型|说明|
@@ -3136,11 +2873,9 @@ Model(option: ModelLoadOptV2, deviceId: int)
 |option|ModelLoadOptV2数据类型|用户可通过参数选择模型输入方式，具体请参见[ModelLoadOptV2类](#modelloadoptv2类)。|
 |deviceId|int|模型部署的芯片ID，默认为0号芯片。（-1表示模型部署在Host侧，为保留字段，请勿使用。）|
 
-
 **返回参数说明<a name="section726365285"></a>**
 
 模型对象
-
 
 #### model\_gear<a name="ZH-CN_TOPIC_0000001813360276"></a>
 
@@ -3162,7 +2897,6 @@ model_gear()
 
 例如，模型为动态分辨率模型，List\[int\]为某一档的高、宽值。
 
-
 #### output\_dtype<a name="ZH-CN_TOPIC_0000001813201532"></a>
 
 **函数功能<a name="section2093910419288"></a>**
@@ -3181,11 +2915,9 @@ output_dtype(index: int)
 |--|--|--|
 |index|int|模型输出的索引（第index个输出）。|
 
-
 **返回参数说明<a name="section8858848122818"></a>**
 
 返回输出Tensor的数据类型，base.dtype类型。
-
 
 #### output\_shape<a name="ZH-CN_TOPIC_0000001813201192"></a>
 
@@ -3205,11 +2937,9 @@ output_shape(index: int)
 |--|--|--|
 |index|int|模型输出的索引（第index个输出）。|
 
-
 **返回参数说明<a name="section8858848122818"></a>**
 
 返回对应输出的Tensor的shape信息，List\[int\]类型。
-
 
 #### Model类的属性列表<a name="ZH-CN_TOPIC_0000001813200936"></a>
 
@@ -3218,9 +2948,6 @@ output_shape(index: int)
 |input_format|获得模型输入的数据组织形式。|VisionDataFormat类型，NHWC或者NCHW。|
 |input_num|获得模型的输入个数。|int类型。|
 |output_num|获得模型的输出个数。|int类型。|
-
-
-
 
 ### model<a name="ZH-CN_TOPIC_0000001860120657"></a>
 
@@ -3241,7 +2968,6 @@ model(modelPath: str, deviceId: int)
 |modelPath|str|模型路径。|
 |deviceId|int|加载的deviceId。|
 
-
 **返回参数说明<a name="section844453163711"></a>**
 
 Model对象。
@@ -3251,8 +2977,6 @@ Model对象。
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
-
 
 ## 模型后处理<a name="ZH-CN_TOPIC_0000001860001241"></a>
 
@@ -3266,7 +2990,6 @@ Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
 
-
 ### 分类后处理<a name="ZH-CN_TOPIC_0000001813201340"></a>
 
 基类ClassPostProcessBase。
@@ -3276,7 +2999,6 @@ Atlas 推理系列产品
 |模型后处理|说明|
 |--|--|
 |Resnet50PostProcess|ResNet-50后处理。|
-
 
 **构造函数<a name="section16472151743418"></a>**
 
@@ -3296,7 +3018,6 @@ Resnet50PostProcess(config_path, label_path)
 |label_path|str|标签路径。|
 |config_path|str|配置路径。|
 
-
 **Resnet50PostProcess输出参数说明<a name="section10473324153410"></a>**
 
 Resnet50PostProcess对象。
@@ -3313,7 +3034,6 @@ process(tensor)
 |--|--|--|
 |tensor|List[base.Tensor]|Tensor列表。|
 
-
 **后处理函数输出参数说明<a name="section2896183415344"></a>**
 
 list\[list\[ClassInfo\]\]
@@ -3321,7 +3041,6 @@ list\[list\[ClassInfo\]\]
 **抛异常接口<a name="section549713524306"></a>**
 
 传入Tensor失败，拷贝至Host失败，抛出Runtime异常。
-
 
 ### 目标检测后处理<a name="ZH-CN_TOPIC_0000001813201260"></a>
 
@@ -3337,7 +3056,6 @@ list\[list\[ClassInfo\]\]
 |Ssdvgg16PostProcess|Ssdvgg16后处理。|
 |FasterRcnnPostProcess|FasterRcnn后处理。|
 |MaskRcnnMindsporePost|MaskRcnnMindspore后处理。|
-
 
 **统一的构造函数<a name="section199116282352"></a>**
 
@@ -3358,7 +3076,6 @@ postProcessName(config_path, label_path)
 |config_data|dict|配置数据。|
 |label_path|str|标签路径。|
 |config_path|str|配置路径。|
-
 
 **构造函数输出参数说明<a name="section215963533518"></a>**
 
@@ -3382,7 +3099,6 @@ process(tensor, param)
 |params|List[base.ResizedImageInfo]|ResizedImageInfo列表。|
 |param|base.ResizedImageInfo|ResizedImageInfo对象。|
 
-
 **后处理函数输出参数说明<a name="section174554596351"></a>**
 
 list\[list\[ObjectInfo\]\]
@@ -3390,7 +3106,6 @@ list\[list\[ObjectInfo\]\]
 **抛异常接口<a name="section549713524306"></a>**
 
 传入Tensor失败，拷贝至Host失败，抛出Runtime异常。
-
 
 ### 分割后处理<a name="ZH-CN_TOPIC_0000001813200952"></a>
 
@@ -3402,7 +3117,6 @@ list\[list\[ObjectInfo\]\]
 |--|--|
 |Deeplabv3Post|Deeplabv3后处理。|
 |UNetMindSporePostProcess|UNet MindSpore后处理。|
-
 
 **统一的构造函数<a name="section1634319713361"></a>**
 
@@ -3423,7 +3137,6 @@ postProcessName(config_path, label_path)
 |config_data|dict|配置数据。|
 |label_path|str|标签路径。|
 |config_path|str|配置路径。|
-
 
 **构造函数输出参数说明<a name="section125461319369"></a>**
 
@@ -3447,7 +3160,6 @@ process(tensor, param)
 |params|List[base.ResizedImageInfo]|ResizedImageInfo列表。|
 |param|base.ResizedImageInfo|ResizedImageInfo对象。|
 
-
 **后处理函数输出参数说明<a name="section1382415274362"></a>**
 
 list\[SemanticSegInfo\]
@@ -3455,7 +3167,6 @@ list\[SemanticSegInfo\]
 **抛异常接口<a name="section549713524306"></a>**
 
 传入Tensor失败，拷贝至Host失败，抛出Runtime异常。
-
 
 ### 文本生成后处理<a name="ZH-CN_TOPIC_0000001813200564"></a>
 
@@ -3467,7 +3178,6 @@ list\[SemanticSegInfo\]
 |--|--|
 |CrnnPostProcess|Crnn后处理。|
 |TransformerPostProcess|Transformer后处理。|
-
 
 **统一的构造函数<a name="section1447064218364"></a>**
 
@@ -3489,7 +3199,6 @@ postProcessName(config_path, label_path)
 |label_path|str|标签路径。|
 |config_path|str|配置路径。|
 
-
 **构造函数输出参数说明<a name="section1356035013614"></a>**
 
 对应的后处理对象。
@@ -3506,7 +3215,6 @@ process(tensor)
 |--|--|--|
 |tensor|List[base.Tensor]|Tensor列表。|
 
-
 **后处理函数输出参数说明<a name="section28389153712"></a>**
 
 list\[TextsInfo\]
@@ -3514,7 +3222,6 @@ list\[TextsInfo\]
 **抛异常接口<a name="section549713524306"></a>**
 
 传入Tensor失败，拷贝至Host失败，抛出Runtime异常。
-
 
 ### 文本检测后处理<a name="ZH-CN_TOPIC_0000001860000597"></a>
 
@@ -3526,7 +3233,6 @@ list\[TextsInfo\]
 |--|--|
 |CtpnPostProcess|Ctpn后处理。|
 |PSENetPostProcess|PSEnet后处理。|
-
 
 **统一的构造函数<a name="section1781273370"></a>**
 
@@ -3547,7 +3253,6 @@ postProcessName(config_path, label_path)
 |config_data|dict|配置数据。|
 |label_path|str|标签路径。|
 |config_path|str|配置路径。|
-
 
 **构造函数输出参数说明<a name="section1064013142373"></a>**
 
@@ -3571,7 +3276,6 @@ process(tensor, param)
 |params|List[base.ResizedImageInfo]|ResizedImageInfo列表。|
 |param|base.ResizedImageInfo|ResizedImageInfo对象。|
 
-
 **后处理函数输出参数说明<a name="section150972463713"></a>**
 
 list\[list\[TextObjectInfo\]\]
@@ -3579,7 +3283,6 @@ list\[list\[TextObjectInfo\]\]
 **抛异常接口<a name="section549713524306"></a>**
 
 传入Tensor失败，拷贝至Host失败，抛出Runtime异常。
-
 
 ### 关键点检测后处理<a name="ZH-CN_TOPIC_0000001813200540"></a>
 
@@ -3591,7 +3294,6 @@ list\[list\[TextObjectInfo\]\]
 |--|--|
 |OpenPosePostProcess|OpenPose后处理。|
 |HigherHRnetPostProcess|HigherHRnet后处理。|
-
 
 **构造函数<a name="section16472151743418"></a>**
 
@@ -3610,7 +3312,6 @@ postProcessName(config_path, label_path)
 |config_data|dict|配置数据。|
 |label_path|str|标签路径。|
 |config_path|str|配置路径。|
-
 
 **构造函数输出参数说明<a name="section154816911318"></a>**
 
@@ -3634,7 +3335,6 @@ process(tensor, param)
 |params|List[base.ResizedImageInfo]|ResizedImageInfo列表。|
 |param|base.ResizedImageInfo|ResizedImageInfo对象。|
 
-
 **后处理函数输出参数说明<a name="section19211174324810"></a>**
 
 list\[list\[KeyPointDetectionInfo\]\]
@@ -3642,8 +3342,6 @@ list\[list\[KeyPointDetectionInfo\]\]
 **抛异常接口<a name="section549713524306"></a>**
 
 传入Tensor失败，拷贝至Host失败，抛出Runtime异常。
-
-
 
 ## 日志输出<a name="ZH-CN_TOPIC_0000001813360288"></a>
 
@@ -3658,14 +3356,11 @@ list\[list\[KeyPointDetectionInfo\]\]
 |fatal(str)|String|打印Fatal级日志。|
 |init()|-|日志初始化。|
 
-
 **支持的型号<a name="section1714913853014"></a>**
 
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
-
 
 ## 流程编排<a name="ZH-CN_TOPIC_0000001860000685"></a>
 
@@ -3680,7 +3375,6 @@ Atlas 推理系列产品
 |SequentialStream|用于创建队列式流对象。|
 |FunctionalStream|用于创建函数式流对象。|
 
-
 依赖使用方法如下：
 
 ```
@@ -3688,7 +3382,6 @@ from StreamManagerApi import *
 from mindx.sdk import stream
 from mindx.sdk.stream import PluginNode
 ```
-
 
 ### 流程管理<a name="ZH-CN_TOPIC_0000001860000233"></a>
 
@@ -3707,7 +3400,6 @@ streamManagerApi = StreamManagerApi()
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
 
 ##### CreateMultipleStreams<a name="ZH-CN_TOPIC_0000001860001133"></a>
 
@@ -3732,14 +3424,11 @@ def CreateMultipleStreams(streamsConfig: bytes) -> int:
 |--|--|--|
 |streamsConfig|bytes|pipeline配置文件内容。|
 
-
 **返回参数说明<a name="section11678625202811"></a>**
 
 |数据结构|说明|
 |--|--|
 |int|程序执行返回的错误码，请参考[APP_ERROR说明](./api_C++.md#app_error说明)。|
-
-
 
 ##### CreateMultipleStreamsFromFile<a name="ZH-CN_TOPIC_0000001860120153"></a>
 
@@ -3764,14 +3453,11 @@ def CreateMultipleStreamsFromFile(streamsFilePath: bytes) -> int:
 |--|--|--|
 |streamsFilePath|bytes|pipeline配置文件。|
 
-
 **返回参数说明<a name="section2325114733811"></a>**
 
 |数据结构|说明|
 |--|--|
 |int|程序执行返回的错误码，请参考[APP_ERROR说明](./api_C++.md#app_error说明)。|
-
-
 
 ##### DestroyAllStreams<a name="ZH-CN_TOPIC_0000001860120833"></a>
 
@@ -3785,7 +3471,6 @@ def CreateMultipleStreamsFromFile(streamsFilePath: bytes) -> int:
 def DestroyAllStreams() -> int:
     pass
 ```
-
 
 ##### GetProtobuf<a name="ZH-CN_TOPIC_0000001860000237"></a>
 
@@ -3808,14 +3493,11 @@ def GetProtobuf(streamName: bytes, outPluginId: int, keyVec: list) -> list :
 |outPluginId|int|输出插件ID，即appsink元件的编号。|
 |keyVec|bytes list|获取protobuf数据的key，通过key获取对应的protobuf数据。内存由智能指针管理，不需要释放内存。|
 
-
 **返回参数说明<a name="section4856124411306"></a>**
 
 |数据结构|说明|
 |--|--|
 |MxProtobufOut list|推理服务输出protobuf数据，需要将protobuf的value反序列化成输出对应的结构体，类型见[MxProtobufOut](#mxprotobufout)。|
-
-
 
 ##### GetResult<a name="ZH-CN_TOPIC_0000001813361160"></a>
 
@@ -3845,8 +3527,6 @@ def GetResult(streamName: bytes, elementName: bytes, dataSourceVec:StringVector,
 |dataSourceVec|StringVector|待获取的元数据的dataSource。|
 |msTimeOut|unsigned int|超时时间（单位ms），默认为3s。|
 
-
-
 ##### GetResultWithUniqueId<a name="ZH-CN_TOPIC_0000001860121325"></a>
 
 **函数功能<a name="section158460443303"></a>**
@@ -3868,14 +3548,11 @@ def GetResultWithUniqueId(streamName: bytes, uniqueId: unsigned long, timeOutInM
 |uniqueId|unsigned long|流上的输出插件ID，即appsink元件的编号。|
 |timeOutInMs|int|获取结果的超时时间。|
 
-
 **返回参数说明<a name="section4856124411306"></a>**
 
 |数据结构|说明|
 |--|--|
 |MxstDataOutput|推理服务输出数据，类型见[MxDataOutput](#mxdataoutput)。|
-
-
 
 ##### InitManager<a name="ZH-CN_TOPIC_0000001860001429"></a>
 
@@ -3896,14 +3573,11 @@ def InitManager(argStrings: list) -> int:
 |--|--|--|
 |argStrings|bytes list|StreamManager初始化参数，当前为空。|
 
-
 **返回参数说明<a name="section34928557275"></a>**
 
 |数据结构|说明|
 |--|--|
 |int|程序执行返回的错误码，请参考[APP_ERROR说明](./api_C++.md#app_error说明)。|
-
-
 
 ##### SendData<a name="ZH-CN_TOPIC_0000001860120121"></a>
 
@@ -3939,7 +3613,6 @@ def SendData(streamName: bytes, elementName: bytes, metadataVec: MetadataInputVe
 |databuffer|MxBufferInput|待发送的buffer数据。|
 |metadataVec|MetadataInputVector|发送的元数据vector。|
 
-
 输入示例：
 
 ```
@@ -3947,7 +3620,6 @@ metadata = MxMetadataInput()
 metadataVec = MetadataInputVector()
 metadataVec.push_back(metadata)
 ```
-
 
 ##### SendDataWithUniqueId<a name="ZH-CN_TOPIC_0000001813360984"></a>
 
@@ -3976,14 +3648,11 @@ def SendDataWithUniqueId(streamName: bytes, elementName: bytes, dataInput: MxDat
 |elementName|bytes|输入插件的名称，只支持appsrc当作输入插件。|
 |dataInput|请参考MxDataInput|待发送的数据。|
 
-
 **返回参数说明<a name="section4856124411306"></a>**
 
 |数据结构|说明|
 |--|--|
 |int|发送数据后返回的编号，通过该编号获取对应的结果（调用[GetResultWithUniqueId](#getresultwithuniqueid)），结果为-1表示发送失败。|
-
-
 
 ##### SendProtobuf<a name="ZH-CN_TOPIC_0000001860120933"></a>
 
@@ -4012,14 +3681,11 @@ def SendProtobuf(streamName: bytes, elementName: bytes, protobufVec: list) -> in
 |protobufVec|MxProtobufIn list|发送的[MxProtobufIn](#mxprotobufin)列表，将protobuf的key、type、value发给mxStream，其中value是将protobuf序列化后的bytes。|
 |elementName|bytes|输入插件的名称，只支持appsrc当作输入插件。|
 
-
 **返回参数说明<a name="section4856124411306"></a>**
 
 |数据结构|说明|
 |--|--|
 |int|程序执行返回的错误码，请参考[APP_ERROR说明](./api_C++.md#app_error说明)。|
-
-
 
 ##### StopStream<a name="ZH-CN_TOPIC_0000001860120809"></a>
 
@@ -4040,15 +3706,11 @@ def StopStream(streamName: bytes) -> int:
 |--|--|--|
 |streamName|bytes|流的名称。|
 
-
 **返回参数说明<a name="section768711300512"></a>**
 
 |数据结构|说明|
 |--|--|
 |int|程序执行返回的错误码，请参考[APP_ERROR说明](./api_C++.md#app_error说明)。|
-
-
-
 
 #### PluginNode<a name="ZH-CN_TOPIC_0000001860001193"></a>
 
@@ -4061,7 +3723,6 @@ def StopStream(streamName: bytes) -> int:
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
 
 ##### PluginNode<a name="ZH-CN_TOPIC_0000001813200544"></a>
 
@@ -4083,11 +3744,9 @@ PluginNode(factory: str, props: Dict, name: str)
 |props|Dict|属性字典。|
 |name|str|定义名称。|
 
-
 **返回参数说明<a name="section1353018192919"></a>**
 
 插件对象。
-
 
 ##### plugin\_name<a name="ZH-CN_TOPIC_0000001813200904"></a>
 
@@ -4105,7 +3764,6 @@ plugin_name()
 
 返回插件名称。
 
-
 ##### factory<a name="ZH-CN_TOPIC_0000001860000693"></a>
 
 **函数功能<a name="section16306214162915"></a>**
@@ -4122,7 +3780,6 @@ factory()
 
 返回插件类型。
 
-
 ##### to\_json<a name="ZH-CN_TOPIC_0000001860120461"></a>
 
 **函数功能<a name="section22741625122913"></a>**
@@ -4138,7 +3795,6 @@ to_json()
 **返回参数说明<a name="section98181130172918"></a>**
 
 返回插件的JSON字符串说明。
-
 
 ##### \_\_call\_\_<a name="ZH-CN_TOPIC_0000001860120361"></a>
 
@@ -4160,8 +3816,6 @@ __call__(*args)
 
 返回对象本身。
 
-
-
 #### SequentialStream<a name="ZH-CN_TOPIC_0000001860120857"></a>
 
 ##### 类说明<a name="ZH-CN_TOPIC_0000001930298273"></a>
@@ -4173,7 +3827,6 @@ __call__(*args)
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
 
 ##### SequentialStream<a name="ZH-CN_TOPIC_0000001813360452"></a>
 
@@ -4193,11 +3846,9 @@ SequentialStream(name: str)
 |--|--|--|
 |name|str|Stream名称。|
 
-
 **返回参数说明<a name="section349145362913"></a>**
 
 返回SequentialStream对象。
-
 
 ##### to\_json<a name="ZH-CN_TOPIC_0000001813201292"></a>
 
@@ -4214,7 +3865,6 @@ to_json()
 **返回参数说明<a name="section71391637305"></a>**
 
 返回Stream的JSON字符串说明。
-
 
 ##### set\_device\_id<a name="ZH-CN_TOPIC_0000001860000757"></a>
 
@@ -4234,8 +3884,6 @@ set_device_id(deviceId: str)
 |--|--|--|
 |deviceId|str|设备号。|
 
-
-
 ##### add<a name="ZH-CN_TOPIC_0000001813360720"></a>
 
 **函数功能<a name="section5586841153012"></a>**
@@ -4254,11 +3902,9 @@ add(pluginNode: PluginNode)
 |--|--|--|
 |pluginNode|PluginNode|插件节点。|
 
-
 **抛异常接口<a name="section549713524306"></a>**
 
 添加节点插件失败，抛出Runtime异常。
-
 
 ##### build<a name="ZH-CN_TOPIC_0000001860000633"></a>
 
@@ -4280,7 +3926,6 @@ build()
 
 抛出Runtime异常。
 
-
 ##### stop<a name="ZH-CN_TOPIC_0000001813360472"></a>
 
 **函数功能<a name="section159825283019"></a>**
@@ -4296,7 +3941,6 @@ stop()
 **抛异常接口<a name="section549713524306"></a>**
 
 抛出Runtime异常。
-
 
 ##### send<a name="ZH-CN_TOPIC_0000001860000405"></a>
 
@@ -4318,11 +3962,9 @@ send(elementName: str, metadataVec: List, dataBuffer: BufferInput)
 |metadataVec|List[MetadataInput]|protobuf输入数据。|
 |dataBuffer|BufferInput|一般图片输入数据。|
 
-
 **抛异常接口<a name="section549713524306"></a>**
 
 发送数据失败及转换指针内存数据到string失败，抛出Runtime异常。
-
 
 ##### get\_result<a name="ZH-CN_TOPIC_0000001813201164"></a>
 
@@ -4344,11 +3986,9 @@ get_result(element_name: str, data_source_list: List, timeout: int)
 |data_source_list|List[str]|插件源字段。|
 |timeout|int|最长等待时间，单位毫秒，默认为3000ms（3秒）。|
 
-
 **返回参数说明<a name="section135431812318"></a>**
 
 DataOutput对象。
-
 
 ##### send\_multi\_data\_with\_unique\_id<a name="ZH-CN_TOPIC_0000001813360544"></a>
 
@@ -4370,8 +4010,6 @@ send_multi_data_with_unique_id(inPluginNum: int, dataInputVec: List, uniqueId: i
 |dataInputVec|List[MxDataInput]|输入数据（list）。|
 |uniqueId|int|唯一标识（默认为0）。|
 
-
-
 ##### get\_multi\_result\_with\_unique\_id<a name="ZH-CN_TOPIC_0000001813361152"></a>
 
 **函数功能<a name="section141421057855"></a>**
@@ -4391,15 +4029,11 @@ get_multi_result_with_unique_id(unique_id: int, timeout: int)
 |unique_id|int|唯一标识符，使用发送时声明的变量。|
 |timeout|int|最长等待时间，单位毫秒，默认为3000ms（3秒）。|
 
-
 **返回参数说明<a name="section18901444184"></a>**
 
 |返回值|类型|说明|
 |--|--|--|
 |Output|List[MxDataOutput]|推理结果，list的数量对应输出插件的数量。|
-
-
-
 
 #### FunctionalStream<a name="ZH-CN_TOPIC_0000001860000789"></a>
 
@@ -4412,7 +4046,6 @@ get_multi_result_with_unique_id(unique_id: int, timeout: int)
 Atlas 200I/500 A2 推理产品
 
 Atlas 推理系列产品
-
 
 ##### FunctionalStream<a name="ZH-CN_TOPIC_0000001860120501"></a>
 
@@ -4432,11 +4065,9 @@ FunctionalStream(name: str)
 |--|--|--|
 |name|str|Stream名称。|
 
-
 **返回参数说明<a name="section2226152923113"></a>**
 
 返回FunctionalStream对象。
-
 
 ##### FunctionalStream<a name="ZH-CN_TOPIC_0000001813360596"></a>
 
@@ -4458,11 +4089,9 @@ FunctionalStream(name: str, inputs: List, outputs: List)
 |inputs|List[PluginNode]|Stream的输入节点，多输入。|
 |outputs|List[PluginNode]|Stream的输出节点，多输出。|
 
-
 **返回参数说明<a name="section937823819316"></a>**
 
 返回FunctionalStream对象。
-
 
 ##### to\_json<a name="ZH-CN_TOPIC_0000001813200724"></a>
 
@@ -4479,7 +4108,6 @@ to_json()
 **返回参数说明<a name="section18585114614311"></a>**
 
 返回Stream的JSON字符串说明。
-
 
 ##### set\_device\_id<a name="ZH-CN_TOPIC_0000001813360308"></a>
 
@@ -4499,8 +4127,6 @@ set_device_id(deviceId: str)
 |--|--|--|
 |deviceId|str|设备号。|
 
-
-
 ##### build<a name="ZH-CN_TOPIC_0000001813201120"></a>
 
 **函数功能<a name="section18441125914318"></a>**
@@ -4519,7 +4145,6 @@ build()
 
 创建pipeline失败，抛出Runtime异常。
 
-
 ##### stop<a name="ZH-CN_TOPIC_0000001813360528"></a>
 
 **函数功能<a name="section159825283019"></a>**
@@ -4535,7 +4160,6 @@ stop()
 **抛异常接口<a name="section549713524306"></a>**
 
 创建pipeline失败，抛出Runtime异常。
-
 
 ##### send<a name="ZH-CN_TOPIC_0000001860001217"></a>
 
@@ -4557,11 +4181,9 @@ send(elementName: str, metadataVec: List, dataBuffer: BufferInput)
 |metadataVec|List[MetadataInput]|protobuf输入数据。|
 |dataBuffer|BufferInput|一般图片输入数据。|
 
-
 **抛异常接口<a name="section549713524306"></a>**
 
 发送数据失败及转换指针内存数据到string失败，抛出Runtime异常。
-
 
 ##### get\_result<a name="ZH-CN_TOPIC_0000001813201264"></a>
 
@@ -4583,11 +4205,9 @@ get_result(element_name: str, data_source_list: List, timeout: int)
 |data_source_list|List[str]|插件源字段。|
 |timeout|int|最长等待时间，单位毫秒，默认为3000ms（3秒）。|
 
-
 **返回参数说明<a name="section748174283217"></a>**
 
 DataOutput对象。
-
 
 ##### send\_multi\_data\_with\_unique\_id<a name="ZH-CN_TOPIC_0000001860120577"></a>
 
@@ -4609,8 +4229,6 @@ send_multi_data_with_unique_id(inPluginNum: int, dataInputVec: List, uniqueId: i
 |dataInputVec|List[MxDataInput]|输入数据（list）。|
 |uniqueId|int|唯一标识（默认为0）。|
 
-
-
 ##### get\_multi\_result\_with\_unique\_id<a name="ZH-CN_TOPIC_0000001860000717"></a>
 
 **函数功能<a name="section16766154401010"></a>**
@@ -4630,16 +4248,11 @@ get_multi_result_with_unique_id(unique_id: int, timeout: int)
 |unique_id|int|唯一标识符，使用发送时声明的变量。|
 |timeout|int|最长等待时间，单位毫秒，默认为3000ms（3秒）。|
 
-
 **返回参数说明<a name="section499123418111"></a>**
 
 |返回值|类型|说明|
 |--|--|--|
 |Output|List[MxDataOutput]|推理结果，list的数量对应输出插件的数量。|
-
-
-
-
 
 ### 其他接口<a name="ZH-CN_TOPIC_0000001813361364"></a>
 
@@ -4647,11 +4260,6 @@ get_multi_result_with_unique_id(unique_id: int, timeout: int)
 
 该头文件由Google ProtoBuf根据message数据结构自动生成，原型请参见[OSD Protobuf 数据结构定义文件（MxpiOSDType.proto）](../appendix.md#文件示例)。
 
-
 #### MxpiDataType\_pb2.py<a name="ZH-CN_TOPIC_0000001813361416"></a>
 
 该头文件由Google ProtoBuf根据message数据结构自动生成，原型请参见[Google Protobuf数据结构定义文件（MxpiDataType.proto）](../appendix.md#文件示例)。
-
-
-
-

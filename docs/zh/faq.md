@@ -16,9 +16,8 @@ GStreamer的历史缓存没有清除。
 
 **解决方案<a name="section13327194411364"></a>**
 
-1.  确认环境已安装python3.9。
-2.  执行**rm \~/.cache/gstreamer-1.0/registry.**_\{arch\}_**.bin**（其中<i>\{arch\}</i>根据实际运行环境选择“x86\_64”或者“aarch64”）来清除GStreamer的历史缓存，再运行程序即可。
-
+1. 确认环境已安装python3.9。
+2. 执行**rm \~/.cache/gstreamer-1.0/registry.**_\{arch\}_**.bin**（其中<i>\{arch\}</i>根据实际运行环境选择“x86\_64”或者“aarch64”）来清除GStreamer的历史缓存，再运行程序即可。
 
 ### 尝试打印Device侧的Tensor、Image内存数据时，发生coredump<a name="ZH-CN_TOPIC_0000001636784841"></a>
 
@@ -33,7 +32,6 @@ Device侧地址空间与Host侧地址空间相互独立，Host侧无法直接访
 **解决方案<a name="section39205314714"></a>**
 
 请先使用Tensor.ToHost\(\)或Image.ToHost\(\)，将Device侧Tensor类或Image类数据转移到Host侧后，再次尝试打印数据操作。
-
 
 ### 运行WarpAffineHiper或WarpPerspective接口出现Synchronize stream execution failed错误<a name="ZH-CN_TOPIC_0000001763335209"></a>
 
@@ -50,8 +48,6 @@ Device侧地址空间与Host侧地址空间相互独立，Host侧无法直接访
 **解决方案<a name="section1430592116116"></a>**
 
 使用数据切分方式拆分shape或改变转换矩阵以减少数据量。
-
-
 
 ## 依赖冲突类<a name="ZH-CN_TOPIC_0000002289547469"></a>
 
@@ -82,7 +78,6 @@ symbol lookup error: /usr/lib64/libldap.so.2: undefined symbol: EVP_md2, version
 
 需要使用**yum**或者**cmake**命令时，将Vision SDK的“opensource/lib”相关路径从“LD\_LIBRARY\_PATH”环境变量中暂时移除。编译Vision SDK相关程序时，可在CMakeLists.txt中添加链接选项add\_link\_options\(-Wl,-rpath-link,$\{MX\_SDK\_HOME\}/opensource/lib\)指定链接路径，运行Vision SDK相关程序时再将“opensource/lib”相关路径增加至“LD\_LIBRARY\_PATH”环境变量中。
 
-
 ### x86\_64执行TensorOperations接口时发生coredump，堆栈信息最后发生在libffi.so中<a name="ZH-CN_TOPIC_0000002200104290"></a>
 
 **问题现象<a name="section1718213411102"></a>**
@@ -95,23 +90,20 @@ symbol lookup error: /usr/lib64/libldap.so.2: undefined symbol: EVP_md2, version
 
 **解决方案<a name="section1430592116116"></a>**
 
-1.  查看当前环境使用的Python，在对应lib路径下执行以下命令：
+1. 查看当前环境使用的Python，在对应lib路径下执行以下命令：
 
     ```
     find /path/to/python -name "_ctypes.cpython*so"
     ```
 
-2.  使用ldd查看找到的so所依赖的libffi.so的路径：
+2. 使用ldd查看找到的so所依赖的libffi.so的路径：
 
     ```
     ldd /path/to/_ctypes.cpython*so
     ```
 
-3.  执行以下命令，优先加载python依赖的libffi动态库：
+3. 执行以下命令，优先加载python依赖的libffi动态库：
 
     ```
     export LD_PRELOAD=/path/to/libffi.so
     ```
-
-
-
