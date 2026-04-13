@@ -8,10 +8,10 @@
 
 本部分的接口变更说明包括新增、修改、删除和退出声明。接口变更只体现代码层面的修改，不包含文档本身在语言、格式、链接等方面的优化改进。
 
--   新增：表示此次版本新增的接口。
--   修改：表示本接口相比于上个版本有修改。
--   删除：表示该接口在此次版本已经删除。
--   退出声明：表示该接口自作出退出声明的版本起停止演进，且在声明一年后退出并删除。
+- 新增：表示此次版本新增的接口。
+- 修改：表示本接口相比于上个版本有修改。
+- 删除：表示该接口在此次版本已经删除。
+- 退出声明：表示该接口自作出退出声明的版本起停止演进，且在声明一年后退出并删除。
 
 **表 1**  接口变更声明
 
@@ -51,7 +51,6 @@
 |APP_ERROR Threshold(const Tensor &src, Tensor &dst, float thresh, float maxVal, const ThresholdType &thresholdType = ThresholdType::THRESHOLD_BINARY, AscendStream &stream = AscendStream::DefaultStream());|C++|新增|新增阈值处理接口。|6.0.RC3|
 |APP_ERROR Tensor::Malloc()|C++|新增|新增Tensor的内存申请接口。|6.0.RC3|
 
-
 **头文件变更声明<a name="section14426193061213"></a>**
 
 **表 2**  头文件变更声明
@@ -62,5 +61,3 @@
 |DvppWrapperDataType.h|C++|退出声明|即将废弃，预计2025年12月正式删除，该文件为内部头文件，不再对外开放。|6.0.RC1|
 |TensorDvpp.h|C++|删除|已废弃|7.0.RC1|
 |TensorOperations.h|C++|删除|已废弃|7.0.RC1|
-
-

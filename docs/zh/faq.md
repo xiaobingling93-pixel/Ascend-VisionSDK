@@ -59,14 +59,14 @@ Device侧地址空间与Host侧地址空间相互独立，Host侧无法直接访
 
 yum命令的报错提示如下：
 
-```
+```text
 ImportError: /lib64/libcurl.so.4: symbol SSLv3_client_method version OPENSSL_1_1_0 not defined in file libssl.so.1.1 with link time reference
 ModuleNotFoundError: No module named '_conf'
 ```
 
 cmake命令的报错提示如下：
 
-```
+```text
 symbol lookup error: /usr/lib64/libldap.so.2: undefined symbol: EVP_md2, version OPENSSL_3.0.0
 ```
 
@@ -92,18 +92,18 @@ symbol lookup error: /usr/lib64/libldap.so.2: undefined symbol: EVP_md2, version
 
 1. 查看当前环境使用的Python，在对应lib路径下执行以下命令：
 
-    ```
+    ```bash
     find /path/to/python -name "_ctypes.cpython*so"
     ```
 
 2. 使用ldd查看找到的so所依赖的libffi.so的路径：
 
-    ```
+    ```bash
     ldd /path/to/_ctypes.cpython*so
     ```
 
 3. 执行以下命令，优先加载python依赖的libffi动态库：
 
-    ```
+    ```bash
     export LD_PRELOAD=/path/to/libffi.so
     ```
