@@ -18,30 +18,30 @@
 
     **表 1**  环境要求软件依赖
 
-|软件依赖名称|推荐版本|获取链接|
-|--|--|--|
-|操作系统|请参见[支持的硬件和操作系统](introduction.md#支持的硬件和操作系统)|-|
-|系统依赖|-|[Ubuntu系统](installation_guide.md#ubuntu系统)或[CentOS系统](installation_guide.md#ubuntu系统]|
-|CANN开发套件包|8.1.RC1|CANN[获取链接](https://www.hiascend.com/developer/download/commercial/result?module=cann)|
-|npu-driver驱动包|Ascend HDK 25.0.RC1|单击[获取链接](https://www.hiascend.com/developer/download/commercial/result?module=cann)，在左侧配套资源的“编辑资源选择”中进行配置，筛选配套的软件包，确认版本信息后获取所需软件包。请参见各硬件产品中[驱动和固件安装升级指南](https://support.huawei.com/enterprise/zh/ascend-computing/ascend-hdk-pid-252764743)获取对应的指导。|
-|npu-firmware固件包|Ascend HDK 25.0.RC1|
-|numpy|1.25.2|pip3 install numpy==1.25.2|
+    |软件依赖名称|推荐版本|获取链接|
+    |--|--|--|
+    |操作系统|请参见[支持的硬件和操作系统](introduction.md#支持的硬件和操作系统)|-|
+    |系统依赖|-|[Ubuntu系统](installation_guide.md#ubuntu系统)或[CentOS系统](installation_guide.md#ubuntu系统)|
+    |CANN开发套件包|8.1.RC1|CANN[获取链接](https://www.hiascend.com/developer/download/commercial/result?module=cann)|
+    |npu-driver驱动包|Ascend HDK 25.0.RC1|单击[获取链接](https://www.hiascend.com/developer/download/commercial/result?module=cann)，在左侧配套资源的“编辑资源选择”中进行配置，筛选配套的软件包，确认版本信息后获取所需软件包。请参见各硬件产品中[驱动和固件安装升级指南](https://support.huawei.com/enterprise/zh/ascend-computing/ascend-hdk-pid-252764743)获取对应的指导。|
+    |npu-firmware固件包|Ascend HDK 25.0.RC1|
+    |numpy|1.25.2|pip3 install numpy==1.25.2|
 
 2. 获取样例代码。
 
     请访问[获取链接](https://mindx.sdk-6e12.obs.cn-north-4.myhuaweicloud.com/mindxsdk-referenceapps%20/mxVision/YoloV3Infer/YoloV3Infer.zip)，获取样例代码压缩包。
 
 3. 登录已安装Vision SDK的开发环境并将样例代码压缩包上传。
-4. <a name="li25721054121120"></a>解压样例代码压缩包，进入解压后的目录，命令参考如下。
+4. <a id="li25721054121120"></a>解压样例代码压缩包，进入解压后的目录，命令参考如下。
 
-    ```
+    ```bash
     unzip YoloV3Infer.zip
     cd YoloV3Infer
     ```
 
     样例代码目录结构参考如下。
 
-    ```
+    ```text
     YoloV3Infer
     ├── model
     │ ├── yolov3.names                        # yolov3后处理标签文件
@@ -62,7 +62,7 @@
     **图 2**  test.jpg<a name="fig288016489416"></a>  
     ![](figures/test-jpg.jpg "test-jpg")
 
->[!NOTE] 说明
+>[!NOTE]
 >若在openEuler系统上运行时，出现cmake不可用等问题可参考[系统命令yum、cmake不可用](faq.md#系统命令yumcmake不可用)解决。
 
 **代码解析<a name="section6305112522513"></a>**
@@ -71,7 +71,7 @@
 
 1. 初始化资源，配置模型相关变量，如模型路径、配置文件路径、标签路径等。
 
-    ```
+    ```cpp
     // 初始化资源和变量
     const uint32_t YOLOV3_RESIZE = 416; // 图片缩放大小
     
@@ -88,7 +88,7 @@
 
 2. 对输入数据进行前处理。执行MxInit初始化资源，同时初始化ImageProcessor对象后，解码图片，得到Image对象，再进行相应的图片缩放，之后将其转化为推理所需要的数据格式（Tensor类型）。
 
-    ```
+    ```cpp
     // 前处理 
     //构建图像处理类
     MxBase::ImageProcessor imageProcessor(deviceId); 
@@ -116,7 +116,7 @@
 
 3. 构建模型类后，输入前处理构建的Tensor对象，执行Infer接口，之后得到模型输出结果yoloV3Outputs。
 
-    ```
+    ```cpp
     // 模型推理 
     // 构建模型类
     MxBase::Model yoloV3(modelPath, deviceId);
@@ -129,7 +129,7 @@
 
 4. 对模型输出进行后处理。利用Vision SDK提供的后处理模块（也可自行开发），可得到目标检测框及其目标类别，并通过opencv将其在原图上呈现。
 
-    ```
+    ```cpp
     // 后处理 
     //后处理原图信息
     MxBase::ImageInfo imageInfo;
@@ -178,7 +178,7 @@
 
 5. 去初始化，释放资源。
 
-    ```
+    ```cpp
     // 去初始化 
     ret = MxBase::MxDeInit();
     if (ret != APP_ERR_OK) {
@@ -191,20 +191,20 @@
 
 1. 配置环境变量（以CANN的默认安装路径“/usr/local/Ascend/ascend-toolkit”和Vision SDK的安装路径/usr/local/Ascend/mxVision-_\{version\}_为例）。
 
-    ```
+    ```bash
     source /usr/local/Ascend/ascend-toolkit/set_env.sh
     source /usr/local/Ascend/mxVision-{version}/set_env.sh
     ```
 
 2. 运行推理（运行该脚本前，需根据Vision SDK安装路径修改CMakeLists.txt文件中的MX\_SDK\_HOME变量）。
 
-    ```
+    ```bash
     bash run.sh
     ```
 
     如返回如下信息，则表示运行成功。
 
-    ```
+    ```text
     yoloV3Outputs len=3
     ******YoloV3PostProcess******
     Size of objectInfos is 1
@@ -242,16 +242,16 @@
 
     **表 1**  环境要求软件依赖
 
-|软件依赖名称|推荐版本|获取链接|
-|--|--|--|
-|操作系统|请参见支持的硬件和操作系统|-|
-|系统依赖|-|Ubuntu系统或CentOS系统|
-|CANN开发套件包|8.1.RC1|CANN获取链接|
-|npu-driver驱动包|Ascend HDK 25.0.RC1|单击获取链接，在左侧配套资源的“编辑资源选择”中进行配置，筛选配套的软件包，确认版本信息后获取所需软件包。请参见各硬件产品中驱动和固件安装升级指南获取对应的指导。|
-|npu-firmware固件包|Ascend HDK 25.0.RC1|
-|numpy|1.25.2|pip3 install numpy==1.25.2|
-|opencv-python|4.9.0.80|pip3 install opencv-python==4.9.0.80|
-|Python|3.9.2|建议通过获取源码包编译安装，安装步骤可参考[安装Python依赖](appendix.md#安装python依赖)。|
+    |软件依赖名称|推荐版本|获取链接|
+    |--|--|--|
+    |操作系统|请参见支持的硬件和操作系统|-|
+    |系统依赖|-|Ubuntu系统或CentOS系统|
+    |CANN开发套件包|8.1.RC1|CANN获取链接|
+    |npu-driver驱动包|Ascend HDK 25.0.RC1|单击获取链接，在左侧配套资源的“编辑资源选择”中进行配置，筛选配套的软件包，确认版本信息后获取所需软件包。请参见各硬件产品中驱动和固件安装升级指南获取对应的指导。|
+    |npu-firmware固件包|Ascend HDK 25.0.RC1|
+    |numpy|1.25.2|pip3 install numpy==1.25.2|
+    |opencv-python|4.9.0.80|pip3 install opencv-python==4.9.0.80|
+    |Python|3.9.2|建议通过获取源码包编译安装，安装步骤可参考[安装Python依赖](appendix.md#安装python依赖)。|
 
 2. 获取样例代码。
 
@@ -260,14 +260,14 @@
 3. 登录已安装Vision SDK的开发环境并将样例代码压缩包上传。
 4. 解压样例代码压缩包，进入解压后的目录，命令参考如下。
 
-    ```
+    ```bash
     unzip resnet50_sdk_python_sample.zip
     cd resnet50_sdk_python_sample
     ```
 
     样例代码目录结构参考如下。
 
-    ```
+    ```text
     |-- resnet50_sdk_python_sample
     |   |-- main.py
     |   |-- README.md
@@ -295,7 +295,7 @@
 
 1. 在“main.py”文件中，引入样例所需的第三方库以及Vision SDK模型推理所需文件。
 
-    ```
+    ```python
     import numpy as np  # 用于对多维数组进行计算
     import cv2  # 图片处理三方库，用于对图片进行前后处理
     
@@ -306,7 +306,7 @@
 
     程序主要流程如下：
 
-    ```
+    ```python
     if __name__ == "__main__":
         base.mx_init()   # 初始化 Vision SDK 资源
         process()        # 程序主要逻辑
@@ -315,7 +315,7 @@
 
 2. 配置模型相关变量，如图片路径、模型路径、配置文件路径、标签路径等。
 
-    ```
+    ```python
     '''配置模型相关变量'''
     pic_path = 'data/test.jpg'  # 单张图片
     model_path = "model/resnet50.om"  # 模型路径
@@ -327,7 +327,7 @@
 
 3. 对输入数据进行前处理。先使用OpenCV读入图片，得到三维数组，再进行相应的图片裁剪、缩放、转换颜色空间等处理并将其转化为推理所需要的数据格式（Tensor类型）。
 
-    ```
+    ```python
     '''前处理'''
     img_bgr = cv2.imread(pic_path)
     img_rgb = img_bgr[:,:,::-1]
@@ -346,7 +346,7 @@
 
 4. 使用model.infer\(\)接口进行模型推理，得到模型输出结果。
 
-    ```
+    ```python
     '''模型推理'''
     model = base.model(modelPath=model_path, deviceId=device_id)  # 初始化 base.model 类
     output = model.infer([img])[0]  # 执行推理。输入数据类型：List[base.Tensor]， 返回模型推理输出的 List[base.Tensor]
@@ -354,7 +354,7 @@
 
 5. 对模型输出进行后处理。利用Vision SDK提供的后处理模块，可得到预测类别及其置信度并将其在原图上呈现。
 
-    ```
+    ```python
     '''后处理'''
     postprocessor = post.Resnet50PostProcess(config_path=config_path, label_path=label_path)  # 获取后处理对象
     pred = postprocessor.process([output])[0][0]  # 利用Vision SDK接口进行后处理，pred：<ClassInfo classId=... confidence=... className=...>
@@ -372,20 +372,20 @@
 
 1. 配置环境变量（以CANN的默认安装路径“/usr/local/Ascend/ascend-toolkit”和Vision SDK的安装路径/usr/local/Ascend/mxVision-_\{version\}_为例）。
 
-    ```
+    ```bash
     source /usr/local/Ascend/ascend-toolkit/set_env.sh
     source /usr/local/Ascend/mxVision-{version}/set_env.sh
     ```
 
 2. 运行推理。
 
-    ```
+    ```bash
     bash run.sh
     ```
 
     如返回如下信息，则表示运行成功。
 
-    ```
+    ```text
     Standard Poodle: 0.98583984375
     save infer result success
     ```
@@ -425,14 +425,14 @@
 
 4. <a name="li143504413543"></a>解压样例代码压缩包，进入解压后的目录，命令参考如下。
 
-    ```
+    ```bash
     unzip pipelineSample.zip 
     cd pipelineSample
     ```
 
     样例代码目录结构参考如下。
 
-    ```
+    ```text
     |-- pipelineSample
     |   |-- data
     |   |   |-- dog1_1024_683.jpg            //测试图片
@@ -467,7 +467,7 @@
 
 样例如下所示。
 
-```
+```json
 {
   "objectdetection": {                // 修改"objectdetection" 为当前业务推理流程的名称
     "stream_config": {
@@ -534,7 +534,7 @@
 }
 ```
 
->[!NOTE] 说明
+>[!NOTE]
 >pipeline文件中的注释仅用于辅助理解，在编写pipeline文件时，请删除其中的注释文字，否则会导致文件解析失败。
 
 在这段pipeline中，有以下关键概念：
@@ -550,7 +550,7 @@
 
 在本样例中，关键步骤与代码参考如下，不可以直接拷贝编译运行，需要根据实际情况修改pipeline文件路径、输入图片路径、Stream名称，Stream名称需要与pipeline文件中的业务推理流程的名称匹配，如上述pipeline文件的业务推理流程的名称为“objectdetection”。完整样例代码请参考样例文件。
 
-```
+```cpp
 int main(int argc, char* argv[])
  {
     // 1.解析pipeline文件
@@ -618,21 +618,21 @@ int main(int argc, char* argv[])
 1. 登录已安装Vision SDK的开发环境，进入“pipelineSample/src”目录。
 2. 配置环境变量（以CANN的默认安装路径“/usr/local/Ascend/ascend-toolkit”和Vision SDK的安装路径/home/mxVision-_\{version\}_为例）。
 
-    ```
+    ```bash
     source /usr/local/Ascend/ascend-toolkit/set_env.sh
     source /home/mxVision-{version}/set_env.sh
     ```
 
 3. 运行应用，执行编译脚本。
 
-    ```
+    ```bash
     chmod +x run.sh
     ./run.sh
     ```
 
     终端上屏显的结果如下，“classId”表示类别号、“className”表示类名称，“confidence”表示该分类的最大置信度：
 
-    ```
+    ```text
     Results:{
         "MxpiObject":[{"classVec":[{
             "classId":16,

@@ -45,9 +45,9 @@
 
 |MindSDK软件版本|MindSDK待升级版本|CANN版本兼容性|Ascend HDK版本兼容性|
 |--|--|--|--|
-|MindSDK 7.3.0|<li>MindSDK 6.0.RC3及6.0.RC3.x<li>MindSDK 6.0.0及6.0.0.x<li>MindSDK 7.0.RC1及7.0.RC1.x<li>MindSDK 7.1.RC1及7.1.RC1.x<li>MindSDK 7.2.RC1及7.2.RC1.x<li>MindSDK 7.3.0及7.3.0.x|<li>CANN 8.1.RC1及8.1.RC1.x<li>CANN 8.2.RC1及8.2.RC1.x<li>CANN 8.3.RC1及8.3.RC1.x<li>CANN 8.5.0及8.5.0.x|<li>Ascend HDK 25.0.RC1及Ascend HDK 25.0.RC1.x<li>Ascend HDK 25.2.0及Ascend HDK 25.2.0.x<li>Ascend HDK 25.3.RC1及Ascend HDK 25.3.RC1.x<li>Ascend HDK 25.5.0及Ascend HDK 25.5.0.x|
+|MindSDK 7.3.0|<li>MindSDK 6.0.RC3及6.0.RC3.x</li><li>MindSDK 6.0.0及6.0.0.x</li><li>MindSDK 7.0.RC1及7.0.RC1.x</li><li>MindSDK 7.1.RC1及7.1.RC1.x</li><li>MindSDK 7.2.RC1及7.2.RC1.x</li><li>MindSDK 7.3.0及7.3.0.x</li>|<li>CANN 8.1.RC1及8.1.RC1.x</li><li>CANN 8.2.RC1及8.2.RC1.x</li><li>CANN 8.3.RC1及8.3.RC1.x</li><li>CANN 8.5.0及8.5.0.x</li>|<li>Ascend HDK 25.0.RC1及Ascend HDK 25.0.RC1.x</li><li>Ascend HDK 25.2.0及Ascend HDK 25.2.0.x</li><li>Ascend HDK 25.3.RC1及Ascend HDK 25.3.RC1.x</li><li>Ascend HDK 25.5.0及Ascend HDK 25.5.0.x</li>|
 
-> [!NOTE] 说明 
+> [!NOTE] 
 >软件版本兼容性是指网元软件版本升级时，关联设备、网管和上层OSS不需要联动升级或打补丁，仍然可以支持已有功能。
 
 # 版本使用注意事项<a name="ZH-CN_TOPIC_0000002492282032"></a>
@@ -60,7 +60,7 @@
 
 |特性名称|特性描述|配套产品型号|
 |--|--|--|
-|Vision SDK|无新增特性|<li>Atlas 300I 推理卡（型号 3010）（x86_64）<li>Atlas 300I 推理卡（型号 3000）（Arm）<li>Atlas 500 A2 智能小站<li>Atlas 300I Pro 推理卡<li>Atlas 300I Duo 推理卡<li>Atlas 300V 视频解析卡<li>Atlas 300V Pro 视频解析卡<li>Atlas 200I SoC A1 核心板<li>Atlas 800I A2推理产品|
+|Vision SDK|无新增特性|<li>Atlas 300I 推理卡（型号 3010）（x86_64）</li><li>Atlas 300I 推理卡（型号 3000）（Arm）</li><li>Atlas 500 A2 智能小站</li><li>Atlas 300I Pro 推理卡</li><li>Atlas 300I Duo 推理卡</li><li>Atlas 300V 视频解析卡</li><li>Atlas 300V Pro 视频解析卡</li><li>Atlas 200I SoC A1 核心板</li><li>Atlas 800I A2推理产品</li>|
 
 ## 业务接口变更<a name="ZH-CN_TOPIC_0000002492442008"></a>
 
