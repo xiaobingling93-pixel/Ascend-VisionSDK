@@ -2,7 +2,7 @@
 
 ## 使用须知<a name="ZH-CN_TOPIC_0000001813200964"></a>
 
-> [!NOTICE] 须知
+> [!NOTICE]
 >
 >- 本章节开放的类，请遵循同一个类实例在单一线程中使用的原则，请勿将同一个类实例在不同的线程中使用。
 >- 请注意输入为集合数据类型的函数，应基于性能和实际业务需求限制长度，以防止可能出现的内存问题。
@@ -261,7 +261,7 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 
 #### ModelLoadOptV2类<a name="ZH-CN_TOPIC_0000001860120521"></a>
 
-> [!NOTICE] 须知
+> [!NOTICE]
 >请根据实际情况选择对应配置，如配置与实际输入存在差异，会在[Model](#model)处抛出**RuntimeError**。
 
 **表 1**  模型加载选项
@@ -305,7 +305,7 @@ from mindx.sdk.base import Image, Model, ImageProcessor, Size, post
 |data|str|图片数据。|
 |fragmentId|int|分块ID。|
 |customParam|str|自定义的参数。|
-|roiBoxs|List[float]|裁剪框坐标数组，[x0,y0,x1,x1]。|
+|roiBoxs|List[float]|裁剪框坐标数组，[x0,y0,x1,y1]。|
 
 #### MxDataOutput类<a name="ZH-CN_TOPIC_0000001813200588"></a>
 
@@ -634,7 +634,7 @@ Stream接收的数据结构定义。
 **结构定义<a name="section39491416276"></a>**
 
 ```python
-class MxDataInput :
+class MxDataInput:
     def __init__(self):
         self.data = None
         self.fragmentId = None
@@ -730,7 +730,7 @@ class MxProtobufOut:
 **结构定义<a name="section12113617142717"></a>**
 
 ```python
-class MxDataInputExt :
+class MxDataInputExt:
     def __init__(self):
         self.data = None
         self.fragmentId = None
@@ -788,7 +788,7 @@ class MxMetadataOutput:
     def __init__(self):
         self.errorCode = None
         self.errorMsg = None
-        self.dataType= None
+        self.dataType = None
         self.serializedMetadata = None
     def SetErrorInfo(self, errorCodeIn, errorMsgIn):
         pass
@@ -974,7 +974,7 @@ Stream输出的数据定义。
 class MxBufferOutput:
     def __init__(self):
         self.errorCode = None
-        self.errorMsg= None
+        self.errorMsg = None
         self.data = None
     def SetErrorInfo(self, errorCodeIn, errorMsgIn):
         pass
@@ -1121,7 +1121,7 @@ Atlas 推理系列产品
 
 #### Tensor<a name="ZH-CN_TOPIC_0000001860120189"></a>
 
-> [!NOTICE] 须知
+> [!NOTICE]
 >多个Tensor对象按batch维进行concat操作时请使用base.batch\_concat\(\)函数，具体使用方式请参见[batch\_concat\(inputs\)](#batch_concat)。
 
 **函数功能<a name="section848202711379"></a>**
@@ -1572,7 +1572,7 @@ crop_resize(inputImage: Image, cropResizeVec: List)
 |参数名|类型|说明|
 |--|--|--|
 |inputImage|Image类|输入抠图缩放前的Image类。|
-|cropResizeVec|List[tuple(Rect, Size)]|输入图像的抠图缩放参数列表。Rect为抠图坐标框，Size为缩放宽高。|
+|cropResizeVec|List[Tuple(Rect, Size)]|输入图像的抠图缩放参数列表。Rect为抠图坐标框，Size为缩放宽高。|
 
 **返回参数说明<a name="section8858848122818"></a>**
 
@@ -1815,7 +1815,7 @@ def callback_func(decodedImage: Image, channelId: int, frameId: int) -> None
 |channelId|int|视频流索引，在VideoDecoder类初始化设置。|
 |frameId|int|视频帧索引，由VideoDecoder类的decode函数来设置。|
 
-> [!NOTICE] 须知 
+> [!NOTICE]
 >在回调函数中抛异常会触发C++侧抛出异常，引起程序coredump，建议在回调中捕获异常并处理。
 
 #### VdecCallBacker<a name="ZH-CN_TOPIC_0000001860000329"></a>
@@ -1963,7 +1963,7 @@ def callback_func(pyBytes: bytes, outDataSize: int, channelId: int, frameId: int
 |channelId|int|视频流索引，在VideoEncoder类初始化设置。|
 |frameId|int|视频帧索引，由VideoEncoder类的encode函数来设置。|
 
-> [!NOTICE] 须知 
+> [!NOTICE]
 >在回调函数中抛异常会触发C++侧抛出异常，引起程序coredump，建议在回调中捕获异常并处理。
 
 #### VencCallBacker<a name="ZH-CN_TOPIC_0000001813200868"></a>
@@ -2447,7 +2447,7 @@ multiply(inputTensor1: Tensor, inputTensor2: Tensor, scale)
 **函数原型<a name="section1372410286522"></a>**
 
 ```python
-subtract(inputTensor1: Tensor, inputTensor2: Tensor,)
+subtract(inputTensor1: Tensor, inputTensor2: Tensor)
 ```
 
 **输入参数说明<a name="section832420504523"></a>**
@@ -2476,7 +2476,7 @@ subtract(inputTensor1: Tensor, inputTensor2: Tensor,)
 **函数原型<a name="section27682813263"></a>**
 
 ```python
-add(inputTensor1: Tensor, inputTensor2: Tensor,)
+add(inputTensor1: Tensor, inputTensor2: Tensor)
 ```
 
 **输入参数说明<a name="section997313471267"></a>**
@@ -2503,7 +2503,7 @@ add(inputTensor1: Tensor, inputTensor2: Tensor,)
 **函数原型<a name="section1810165112113"></a>**
 
 ```python
-min_operator(inputTensor1: Tensor, inputTensor2: Tensor,)
+min_operator(inputTensor1: Tensor, inputTensor2: Tensor)
 ```
 
 **输入参数说明<a name="section6818122141219"></a>**
@@ -2530,7 +2530,7 @@ min_operator(inputTensor1: Tensor, inputTensor2: Tensor,)
 **函数原型<a name="section13555354143117"></a>**
 
 ```python
-max_operator(inputTensor1: Tensor, inputTensor2: Tensor,)
+max_operator(inputTensor1: Tensor, inputTensor2: Tensor)
 ```
 
 **输入参数说明<a name="section13834810153218"></a>**
@@ -2729,7 +2729,7 @@ tensor_to_image(tensor: Tensor, imageFormat: image_format)
 
 |参数名|类型|说明|
 |--|--|--|
-|tensor|Tensor类|Tensor类，输入张量。输入需满足以下要求。<li>元素类型需为Uint8类型。</li><li>Tensor的维度需为2（YUV400格式时）、3、4。</li><li>Tensor的宽、高、通道数需与imageFormat相匹配。</li>|
+|tensor|Tensor类|Tensor类，输入张量。输入需满足以下要求。<li>元素类型需为uint8类型。</li><li>Tensor的维度需为2（YUV400格式时）、3、4。</li><li>Tensor的宽、高、通道数需与imageFormat相匹配。</li>|
 |imageFormat|image_format枚举类|指定图片的格式，需与inputTensor数据所对应的图片格式相匹配。|
 
 **返回参数说明<a name="section142051846164817"></a>**
@@ -3564,7 +3564,7 @@ def GetResultWithUniqueId(streamName: bytes, uniqueId: unsigned long, timeOutInM
 
 |数据结构|说明|
 |--|--|
-|MxstDataOutput|推理服务输出数据，类型见[MxDataOutput](#mxdataoutput)。|
+|MxDataOutput|推理服务输出数据，类型见[MxDataOutput](#mxdataoutput)。|
 
 ##### InitManager<a name="ZH-CN_TOPIC_0000001860001429"></a>
 
@@ -3924,7 +3924,7 @@ add(pluginNode: PluginNode)
 
 加载已添加的插件。
 
-需与stop\(\)搭配使用，请勿在一个进程中重复调用build与stop。
+需与stop()搭配使用，请勿在一个进程中重复调用build与stop。
 
 pipeline中，插件及pipeline配置项的个数限制最大5120个。
 
@@ -4145,7 +4145,7 @@ set_device_id(deviceId: str)
 
 加载已添加的插件。构建流程时，会根据插件的上下游关系进行递归操作，最大递归次数为4096，请合理设置插件及其输入输出。pipeline中，插件及pipeline配置项的个数限制最大5120个。
 
-需与stop\(\)搭配使用，请勿在一个进程中重复调用build与stop。
+需与stop()搭配使用，请勿在一个进程中重复调用build与stop。
 
 **函数原型<a name="section10981418161217"></a>**
 
